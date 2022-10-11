@@ -37,7 +37,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            _nowObj.Move();
+            _nowObj.Run();
         }
 
         if(HorizontalInput > 0)

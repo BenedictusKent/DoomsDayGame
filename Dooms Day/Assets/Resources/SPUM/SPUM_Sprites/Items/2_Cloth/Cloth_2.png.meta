@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bfcdc1ad53e615349895de3be8ba1006
+guid: bb9ab5f5e257d564cab6587b033dfa12
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -32,9 +32,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -44,11 +46,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -66,9 +68,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -131,11 +136,11 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.6111111, y: 0.7222222}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
       spriteID: ce6c7a1300a9f4c40800000000000000
       internalID: 5498782995666421484
@@ -156,7 +161,7 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
       spriteID: 7dcaa2f19ff05ce50800000000000000
       internalID: 6828881972621389015
@@ -173,35 +178,14 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.3888889, y: 0.7222222}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
       spriteID: 30d5a1972f2de3ed0800000000000000
       internalID: -2432274809877799677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cloth_2_0
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 26
-        width: 4
-        height: 1
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 918d5f34f3ad72690800000000000000
-      internalID: -7626887478670665703
       vertices: []
       indices: 
       edges: []
@@ -216,6 +200,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Right: 5498782995666421484
+      Left: -2432274809877799677
+      Body: 6828881972621389015
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

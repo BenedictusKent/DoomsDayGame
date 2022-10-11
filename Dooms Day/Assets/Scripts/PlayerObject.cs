@@ -1,50 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[System.Serializable]
+public class MyEvents : UnityEvent<PlayerObject.PlayerState>
+{
+
+}
+
+[ExecuteInEditMode]
 public class PlayerObject : MonoBehaviour
 {
     public SPUM_Prefabs _prefabs;
     public enum PlayerState
     {
         idle,
-        move,
+        run,
         attack,
         death,
     }
-    public PlayerState _playerState = PlayerState.idle;
+    private PlayerState _currentState;
+    public PlayerState CurrentState{
+        get => _currentState;
+        set {
+            _stateChanged.Invoke(value);
+            _currentState = value;
+        }
+    }
+
+    private MyEvents _stateChanged = new MyEvents();
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Start()
     {
-
+        _stateChanged.AddListener(PlayStateAnimation);
     }
+
+    private void PlayStateAnimation(PlayerState state){
+        _prefabs.PlayAnimation(state.ToString());
+    }
+
     void Update()
     {
         /*
         transform.position = new Vector3(transform.position.x,transform.position.y,transform.localPosition.y * 0.01f);
-        switch(_playerState)
+        switch(_currentState)
         {
             case PlayerState.idle:
             break;
 
-            case PlayerState.move:
+            case PlayerState.run:
             break;
         }
         */
     }
 
+    
     public void Idle()
     {
-        _playerState = PlayerState.idle;
-        _prefabs.PlayAnimation(0);
+        _currentState = PlayerState.idle;
+        PlayStateAnimation(_currentState);
     }
 
-    public void Move()
+    public void Run()
     {
-        _playerState = PlayerState.move;
-        _prefabs.PlayAnimation(1);
+        _currentState = PlayerState.run;
+        PlayStateAnimation(_currentState);
     }
 
     public void TurnRight()
@@ -56,4 +79,5 @@ public class PlayerObject : MonoBehaviour
     {
         _prefabs.transform.localScale = Vector3.one;
     }
+    
 }
