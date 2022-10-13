@@ -21,6 +21,12 @@ public class EnemyMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if(movement.x != 0 && movement.y != 0)
+        {
+            movement.x *= 0.7f;
+            movement.y *= 0.7f;
+        }
+
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Speed", movement.sqrMagnitude);
     }
