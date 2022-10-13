@@ -83,4 +83,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs: {fileID: 0}
-  _playerState: 0
