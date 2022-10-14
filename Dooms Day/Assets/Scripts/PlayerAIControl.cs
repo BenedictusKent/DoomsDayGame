@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerAIControl : MonoBehaviour
 {
     public PlayerObject _nowObj;
 
     public float speed = 10.0f;
+    private float ReactTime = 0.5f;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -15,18 +16,24 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb = _nowObj.GetComponent<Rigidbody2D>();
+        InvokeRepeating("ChangeMove", 0.5f, ReactTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
     {
-        movement.x = Input.GetAxisRaw("Horizontal"); //A,D
-        movement.y = Input.GetAxisRaw("Vertical"); //W,S
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    void ChangeMove()
+    {
+        movement.x = Random.Range(-1, 2); //A,D
+        movement.y = Random.Range(-1, 2); //W,S
 
         if(movement.x != 0 && movement.y != 0)
         {
@@ -51,7 +58,5 @@ public class PlayerControl : MonoBehaviour
         {
             _nowObj.TurnLeft();
         }
-
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 }
