@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerAIControl : MonoBehaviour
 {
     public PlayerObject _nowObj;
+    private GameObject Meteorite;
 
     public float speed = 10.0f;
-    private float ReactTime = 0.5f;
+    private float LocateTime = DataBase.AIattacktime, LocateNeedTime = DataBase.AIattacktime, MoveNeedTime = DataBase.AImovetime;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -16,7 +17,8 @@ public class PlayerAIControl : MonoBehaviour
     void Start()
     {
         rb = _nowObj.GetComponent<Rigidbody2D>();
-        InvokeRepeating("ChangeMove", 0.5f, ReactTime);
+        Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
+        InvokeRepeating("ChangeMove", 0.5f, MoveNeedTime);
     }
 
     // Update is called once per frame
@@ -28,6 +30,28 @@ public class PlayerAIControl : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        AIattack();
+    }
+
+    void AIattack()
+    {
+        if (_nowObj.GetComponent<GetMeteorite>().haveMeteorite == true)
+        {
+            LocateTime -= Time.fixedDeltaTime;
+            if(LocateTime <= 0)
+            {
+                LocateTime = LocateNeedTime;
+                _nowObj.GetComponent<GetMeteorite>().haveMeteorite = false;
+                attack();
+            }
+        }
+    }
+
+    void attack()
+    {
+        Meteorite.GetComponent<MeteoriteTo>().AInum = _nowObj.GetComponent<GetMeteorite>().Num;
+        Meteorite.GetComponent<MeteoriteTo>().speed = 2;
+        Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
     }
 
     void ChangeMove()
