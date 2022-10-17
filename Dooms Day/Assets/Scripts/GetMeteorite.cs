@@ -23,16 +23,13 @@ public class GetMeteorite : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D Coll)
+    void OnCollisionEnter2D(Collision2D Coll)
     {
-        if (Coll.gameObject.tag == "Meteorite")
-        {
-            haveMeteorite = true;
-        }
         if (Coll.gameObject.tag == "Monster")
         {
             haveMonster = true;
         }
+
         if (Coll.gameObject.tag == "Monster" && haveMeteorite)
         {
             main.GetComponent<Finish>().playernum -= 1;
@@ -40,6 +37,23 @@ public class GetMeteorite : MonoBehaviour
             attack();
             Destroy(gameObject);
         }
+    }
+
+    void OnCollisionExit2D(Collision2D Coll)
+    {
+        if (Coll.gameObject.tag == "Monster")
+        {
+            haveMonster = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D Coll)
+    {
+        if (Coll.gameObject.tag == "Meteorite")
+        {
+            haveMeteorite = true;
+        }
+
         if (Coll.gameObject.tag == "Meteorite" && haveMonster)
         {
             main.GetComponent<Finish>().playernum -= 1;
@@ -54,10 +68,6 @@ public class GetMeteorite : MonoBehaviour
         if (Coll.gameObject.tag == "Meteorite")
         {
             haveMeteorite = false;
-        }
-        if (Coll.gameObject.tag == "Monster")
-        {
-            haveMonster = false;
         }
     }
 
