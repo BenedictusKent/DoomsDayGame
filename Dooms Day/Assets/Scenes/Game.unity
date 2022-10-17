@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1416015905}
   enemyGFX: {fileID: 1905178230}
-  speed: 400
+  speed: 800
   nextWaypointDistance: 3
 --- !u!70 &178093381
 CapsuleCollider2D:
