@@ -6,6 +6,7 @@ public class MousePress : MonoBehaviour
 {
     public GameObject player;
     private GameObject Meteorite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class MousePress : MonoBehaviour
         {
             if (player.GetComponent<GetMeteorite>().haveMeteorite == true)
             {
-                Meteorite.GetComponent<MeteoriteTo>().to = GetComponent<GetMeteorite>().Num;
+                Meteorite.GetComponent<MeteoriteTo>().to = GetComponent<GetMeteorite>().PlayerID;
                 Meteorite.GetComponent<MeteoriteTo>().speed = 2;
                 Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
                 player.GetComponent<GetMeteorite>().haveMeteorite = false;

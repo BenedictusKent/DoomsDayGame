@@ -5,16 +5,16 @@ using UnityEngine;
 public class GetMeteorite : MonoBehaviour
 {
     private GameObject Meteorite, main;
-    public bool haveMeteorite, havedog;
-    public int Num, HP = 1;
-    int to;
+    public bool haveMeteorite, haveMonster;
+    public int PlayerID, HP = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
         main = GameObject.Find("GameService");
         haveMeteorite = false;
-        havedog = false;
+        haveMonster = false;
     }
 
     // Update is called once per frame
@@ -29,18 +29,18 @@ public class GetMeteorite : MonoBehaviour
         {
             haveMeteorite = true;
         }
-        if (Coll.gameObject.tag == "whitedog")
+        if (Coll.gameObject.tag == "Monster")
         {
-            havedog = true;
+            haveMonster = true;
         }
-        if (Coll.gameObject.tag == "whitedog" && haveMeteorite)
+        if (Coll.gameObject.tag == "Monster" && haveMeteorite)
         {
             main.GetComponent<Finish>().playernum -= 1;
             HP = 0;
             attack();
             Destroy(gameObject);
         }
-        if (Coll.gameObject.tag == "Meteorite" && havedog)
+        if (Coll.gameObject.tag == "Meteorite" && haveMonster)
         {
             main.GetComponent<Finish>().playernum -= 1;
             HP = 0;
@@ -55,15 +55,15 @@ public class GetMeteorite : MonoBehaviour
         {
             haveMeteorite = false;
         }
-        if (Coll.gameObject.tag == "whitedog")
+        if (Coll.gameObject.tag == "Monster")
         {
-            havedog = false;
+            haveMonster = false;
         }
     }
 
     void attack()
     {
-        Meteorite.GetComponent<MeteoriteTo>().AIfarnum = Num;
+        Meteorite.GetComponent<MeteoriteTo>().AIfarnum = PlayerID;
         Meteorite.GetComponent<MeteoriteTo>().speed = 2;
         Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
     }

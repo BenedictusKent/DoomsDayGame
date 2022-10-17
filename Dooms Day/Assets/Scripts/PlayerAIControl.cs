@@ -49,7 +49,7 @@ public class PlayerAIControl : MonoBehaviour
 
     void attack()
     {
-        Meteorite.GetComponent<MeteoriteTo>().AInum = _nowObj.GetComponent<GetMeteorite>().Num;
+        Meteorite.GetComponent<MeteoriteTo>().AInum = _nowObj.GetComponent<GetMeteorite>().PlayerID;
         Meteorite.GetComponent<MeteoriteTo>().speed = 2;
         Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
     }
