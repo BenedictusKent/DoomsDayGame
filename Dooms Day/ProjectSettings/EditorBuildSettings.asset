@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseMenu.unity
     guid: 38d7f9e921d57d5469ed54b39b703004
+  - enabled: 1
+    path: Assets/Scenes/SelectMenu.unity
+    guid: 313269d4de68c5c4d935b75ed377a579
   m_configObjects: {}
