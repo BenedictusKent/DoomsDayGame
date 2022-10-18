@@ -80,9 +80,12 @@ public class EnemyAI : MonoBehaviour
             rb.velocity = Vector3.zero;
     }
 
-    // private void OnTriggerEnter2D(Collider2D collider)
-    // {
-    //     frozen = true;
-    //     Debug.Log("triggered!");
-    // }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.CompareTag("Trap"))
+        {
+            frozen = true;
+            Debug.Log("triggered!");
+        }
+    }
 }
