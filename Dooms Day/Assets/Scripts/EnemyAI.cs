@@ -8,11 +8,12 @@ public class EnemyAI : MonoBehaviour
     public Transform target;
     public Transform enemyGFX;
     public float speed = 200f;
-    public float nextWaypointDistance = 3f;
+    public float nextWaypointDistance = 1.2f;
 
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedEndOfPath = false;
+    private bool frozen = false;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -55,22 +56,33 @@ public class EnemyAI : MonoBehaviour
         else
             reachedEndOfPath = false;
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.fixedDeltaTime;
-
-        rb.AddForce(force);
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if(distance < nextWaypointDistance)
-            currentWaypoint++;
-
-        if(force.x >= 0.01f)
+        if(!frozen)
         {
-            enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * speed * Time.fixedDeltaTime;
+
+            rb.AddForce(force);
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            if(distance < nextWaypointDistance)
+                currentWaypoint++;
+
+            if(rb.velocity.x >= 0.01f)
+            {
+                enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else if(rb.velocity.x <= -0.01f)
+            {
+                enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+            }
         }
-        else if(force.x <= -0.01f)
-        {
-            enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
-        }
+        if(frozen)
+            rb.velocity = Vector3.zero;
     }
+
+    // private void OnTriggerEnter2D(Collider2D collider)
+    // {
+    //     frozen = true;
+    //     Debug.Log("triggered!");
+    // }
 }

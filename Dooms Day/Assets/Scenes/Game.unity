@@ -157,7 +157,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0.5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1416015905}
   enemyGFX: {fileID: 1905178230}
-  speed: 800
-  nextWaypointDistance: 3
+  speed: 600
+  nextWaypointDistance: 1.2
 --- !u!70 &178093381
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 453256208}
   - component: {fileID: 453256210}
   - component: {fileID: 453256209}
+  - component: {fileID: 453256211}
   m_Layer: 0
   m_Name: Tilemap_Floor
   m_TagString: Untagged
@@ -7069,6 +7070,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &453256211
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453256207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87cca9bb9c501b4efbafefac15d64940, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &466891066 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3545113732452401576, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
