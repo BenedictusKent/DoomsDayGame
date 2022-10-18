@@ -89,7 +89,14 @@ public class EnemyAI : MonoBehaviour
         {
             frozen = true;
             animator.SetTrigger("isTriggered");
-            Debug.Log("triggered!");
+            Invoke("unfreezeEnemy", 2);
         }
+    }
+
+    private void unfreezeEnemy()
+    {
+        frozen = false;
+        animator.ResetTrigger("isTriggered");
+        animator.Play("Trap_Idle");
     }
 }
