@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
+    public GameObject Player;
     public int playernum = 5;
-    float TimeRun = 0.25f;
+    private float TimeRun = 0.25f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +17,26 @@ public class Finish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    void FixedUpdate()
+    {
         if(playernum == 1)
         {
-            TimeRun -= Time.deltaTime;
+            TimeRun -= Time.fixedDeltaTime;
             if (TimeRun <= 0)
             {
                 SceneManager.LoadScene("WinMenu");
+            }
+        }
+
+        if(Player == null)
+        {
+            TimeRun -= Time.fixedDeltaTime;
+            if (TimeRun <= 0)
+            {
+                SceneManager.LoadScene("LoseMenu");
             }
         }
     }
