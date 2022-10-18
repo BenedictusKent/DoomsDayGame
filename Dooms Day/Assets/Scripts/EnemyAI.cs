@@ -28,6 +28,13 @@ public class EnemyAI : MonoBehaviour
         animator = trapObject.GetComponent<Animator>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
+        InvokeRepeating("IncreaseSpeed", 2f, 2f);
+    }
+
+    void IncreaseSpeed()
+    {
+        speed += 100;
+        Debug.Log(speed);
     }
 
     void UpdatePath()
