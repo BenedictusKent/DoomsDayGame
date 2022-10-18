@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1416015905}
   enemyGFX: {fileID: 1905178230}
+  trapObject: {fileID: 1205697054}
   speed: 600
   nextWaypointDistance: 1.2
 --- !u!70 &178093381
@@ -7654,6 +7655,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8907335164246643396, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
+      propertyPath: m_Size.x
+      value: 0.40214688
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907335164246643396, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.15114461
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907335164246643396, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0016363218
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907335164246643396, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.040176164
+      objectReference: {fileID: 0}
     - target: {fileID: 8907335164246643399, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
       propertyPath: m_Name
       value: Trap
@@ -17995,6 +18012,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3332f8db7f76504d8927343ba3d3694, type: 3}
+--- !u!1 &1205697054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8907335164246643399, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
+  m_PrefabInstance: {fileID: 903324319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1279844165
 GameObject:
   m_ObjectHideFlags: 0

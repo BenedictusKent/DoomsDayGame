@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform target;
     public Transform enemyGFX;
+    public GameObject trapObject;
     public float speed = 200f;
     public float nextWaypointDistance = 1.2f;
 
@@ -17,12 +18,14 @@ public class EnemyAI : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        animator = trapObject.GetComponent<Animator>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -85,6 +88,7 @@ public class EnemyAI : MonoBehaviour
         if(collider.gameObject.CompareTag("Trap"))
         {
             frozen = true;
+            animator.SetTrigger("isTriggered");
             Debug.Log("triggered!");
         }
     }
