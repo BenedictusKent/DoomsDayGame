@@ -17,15 +17,15 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGameEasy()
     {
-        DataBase.AIattacktime = 1f;
+        DataBase.AIattacktime = 1.2f;
         DataBase.AImovetime = 0.75f;
         SceneManager.LoadScene("Game");
     }
 
     public void PlayGameNormal()
     {
-        DataBase.AIattacktime = 0.5f;
-        DataBase.AImovetime = 0.5f;
+        DataBase.AIattacktime = 0.65f;
+        DataBase.AImovetime = 0.65f;
         SceneManager.LoadScene("Game");
     }
 
