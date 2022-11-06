@@ -7453,7 +7453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6180461770201251885, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6180461770201251885, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
       propertyPath: m_Size.y
@@ -8135,7 +8135,7 @@ GameObject:
   - component: {fileID: 992366878}
   - component: {fileID: 992366879}
   m_Layer: 0
-  m_Name: "\u6307\u6A19"
+  m_Name: index
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8150,7 +8150,7 @@ Transform:
   m_GameObject: {fileID: 992366877}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 1031865861}
   m_RootOrder: 2
@@ -8195,12 +8195,12 @@ SpriteRenderer:
   m_SortingLayerID: -1191077861
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b5d798c0b1d8e74086db8cd932a5d42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 855fde79e366f1f4da8923cbcf50b443, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.7, y: 2.4}
+  m_Size: {x: 5.37, y: 4.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

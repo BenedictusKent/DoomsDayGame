@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ce2135753f3920dc3a30aec5d294e120
   - enabled: 1
+    path: Assets/Scenes/RuleMenu.unity
+    guid: 4d8a9fc417c3a9d488bb2cf822441b48
+  - enabled: 1
+    path: Assets/Scenes/SelectMenu.unity
+    guid: 313269d4de68c5c4d935b75ed377a579
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 3b9f0b5b2be034c2d8ab91095e69ef22
   - enabled: 1
@@ -17,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseMenu.unity
     guid: 38d7f9e921d57d5469ed54b39b703004
-  - enabled: 1
-    path: Assets/Scenes/SelectMenu.unity
-    guid: 313269d4de68c5c4d935b75ed377a579
   m_configObjects: {}
