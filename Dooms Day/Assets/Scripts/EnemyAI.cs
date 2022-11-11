@@ -105,5 +105,6 @@ public class EnemyAI : MonoBehaviour
         frozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");
+        trapObject.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
     }
 }
