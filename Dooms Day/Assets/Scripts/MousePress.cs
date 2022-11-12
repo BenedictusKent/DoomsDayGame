@@ -5,12 +5,13 @@ using UnityEngine;
 public class MousePress : MonoBehaviour
 {
     public GameObject player;
-    private GameObject Meteorite;
+    private GameObject Meteorite, GameService;
 
     // Start is called before the first frame update
     void Start()
     {
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
+        GameService = GameObject.Find("GameService");
     }
 
     // Update is called once per frame
@@ -31,5 +32,15 @@ public class MousePress : MonoBehaviour
                 player.GetComponent<GetMeteorite>().haveMeteorite = false;
             }
         }
+    }
+
+    void OnMouseEnter()
+    {
+        GameService.GetComponent<CursorControl>().MoveOnPlayer();
+    }
+
+    void OnMouseExit()
+    {
+        GameService.GetComponent<CursorControl>().LeavePlayer();
     }
 }
