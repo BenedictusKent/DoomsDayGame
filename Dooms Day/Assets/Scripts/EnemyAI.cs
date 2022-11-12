@@ -5,27 +5,24 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
+    public TrapLogic trapvar;
     public Transform target;
     public Transform enemyGFX;
-    public GameObject trapObject;
     public float speed = 200f;
     public float nextWaypointDistance = 1.2f;
 
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedEndOfPath = false;
-    private bool frozen = false;
 
     Seeker seeker;
     Rigidbody2D rb;
-    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        animator = trapObject.GetComponent<Animator>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("IncreaseSpeed", 2f, 2f);
@@ -66,7 +63,7 @@ public class EnemyAI : MonoBehaviour
         else
             reachedEndOfPath = false;
 
-        if(!frozen)
+        if(!trapvar.enemyFrozen)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = direction * speed * Time.fixedDeltaTime;
@@ -86,25 +83,7 @@ public class EnemyAI : MonoBehaviour
                 enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
-        if(frozen)
+        if(trapvar.enemyFrozen)
             rb.velocity = Vector3.zero;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.CompareTag("Trap"))
-        {
-            frozen = true;
-            animator.SetTrigger("isTriggered");
-            Invoke("unfreezeEnemy", 2);
-        }
-    }
-
-    private void unfreezeEnemy()
-    {
-        frozen = false;
-        animator.ResetTrigger("isTriggered");
-        animator.Play("Trap_Idle");
-        trapObject.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
     }
 }
