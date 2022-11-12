@@ -6,6 +6,7 @@ using Pathfinding;
 public class EnemyAI : MonoBehaviour
 {
     public TrapLogic trapvar;
+    public TrapLogic2 trap2var;
     public Transform target;
     public Transform enemyGFX;
     public float speed = 200f;
@@ -85,5 +86,8 @@ public class EnemyAI : MonoBehaviour
         }
         if(trapvar.enemyFrozen)
             rb.velocity = Vector3.zero;
+        else if(trap2var.enemySlow){
+            rb.velocity /= 2;
+        }
     }
 }
