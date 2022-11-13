@@ -19,14 +19,18 @@ public class TrapLogic2 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.tag == "Monster") {
-            enemySlow = true;
-            animator.SetTrigger("isTriggered");
-            Invoke("UnfreezeEnemy", 2);
+            if(playerSlow == false) {
+                enemySlow = true;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezeEnemy", 2);
+            }
         }
         else {
-            playerSlow = true;
-            animator.SetTrigger("isTriggered");
-            Invoke("UnfreezePlayer", 2);
+            if(enemySlow == false) {
+                playerSlow = true;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezePlayer", 2);
+            }
         }
     }
 

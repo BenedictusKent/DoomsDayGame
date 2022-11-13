@@ -19,14 +19,18 @@ public class TrapLogic : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.tag == "Monster") {
-            enemyFrozen = true;
-            animator.SetTrigger("isTriggered");
-            Invoke("UnfreezeEnemy", 2);
+            if(playerFrozen == false) {
+                enemyFrozen = true;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezeEnemy", 2);
+            }
         }
         else {
-            playerFrozen = true;
-            animator.SetTrigger("isTriggered");
-            Invoke("UnfreezePlayer", 2);
+            if(enemyFrozen == false) {
+                playerFrozen = true;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezePlayer", 2);
+            }
         }
     }
 
