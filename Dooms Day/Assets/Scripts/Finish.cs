@@ -27,6 +27,7 @@ public class Finish : MonoBehaviour
             TimeRun -= Time.fixedDeltaTime;
             if (TimeRun <= 0)
             {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 SceneManager.LoadScene("WinMenu");
             }
         }
@@ -36,6 +37,7 @@ public class Finish : MonoBehaviour
             TimeRun -= Time.fixedDeltaTime;
             if (TimeRun <= 0)
             {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 SceneManager.LoadScene("LoseMenu");
             }
         }
