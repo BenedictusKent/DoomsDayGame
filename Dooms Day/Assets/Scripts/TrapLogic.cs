@@ -27,11 +27,10 @@ public class TrapLogic : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(master.allowupdate) 
         {
-            // Debug.Log(master.allowupdate);
             if(master.randomgen == 0) {
                 transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
                 master.randomgen = -1;
@@ -68,8 +67,6 @@ public class TrapLogic : MonoBehaviour
         animator.Play("Trap_Idle");
         master.activatedtrap[0] = 0;
         master.allowupdate = true;
-        // changePosition = true;
-        // transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
     }
 
     private void UnfreezePlayer()
@@ -79,7 +76,5 @@ public class TrapLogic : MonoBehaviour
         animator.Play("Trap_Idle");
         master.activatedtrap[0] = 0;
         master.allowupdate = true;
-        // changePosition = true;
-        // transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
     }
 }
