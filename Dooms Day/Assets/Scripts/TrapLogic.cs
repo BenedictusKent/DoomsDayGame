@@ -6,6 +6,9 @@ public class TrapLogic : MonoBehaviour
 {
     public bool enemyFrozen = false;
     public bool playerFrozen = false;
+    
+    private bool changePosition = false;
+    private TrapMaster master;
 
     Animator animator;
 
@@ -13,7 +16,31 @@ public class TrapLogic : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+        master = GameObject.Find("TrapMaster").GetComponent<TrapMaster>();
+        if(master.randomgen == 0) {
+            transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+            master.randomgen = -1;
+            master.allowupdate = false;
+        }
+        else {
+            transform.position = new Vector3(-10.0f, 0f, -8.5f);
+        }
+    }
+
+    void Update()
+    {
+        if(master.allowupdate) 
+        {
+            // Debug.Log(master.allowupdate);
+            if(master.randomgen == 0) {
+                transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+                master.randomgen = -1;
+                master.allowupdate = false;
+            }
+            else {
+                transform.position = new Vector3(-10.0f, 0f, -8.5f);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -39,7 +66,10 @@ public class TrapLogic : MonoBehaviour
         enemyFrozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");
-        transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+        master.activatedtrap[0] = 0;
+        master.allowupdate = true;
+        // changePosition = true;
+        // transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
     }
 
     private void UnfreezePlayer()
@@ -47,6 +77,9 @@ public class TrapLogic : MonoBehaviour
         playerFrozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");
-        transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+        master.activatedtrap[0] = 0;
+        master.allowupdate = true;
+        // changePosition = true;
+        // transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
     }
 }
