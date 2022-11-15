@@ -24,21 +24,21 @@ public class MainMenu : MonoBehaviour
     {
         DataBase.AIattacktime = 1.2f;
         DataBase.AImovetime = 0.75f;
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
     }
 
     public void PlayGameNormal()
     {
         DataBase.AIattacktime = 0.65f;
         DataBase.AImovetime = 0.65f;
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
     }
 
     public void PlayGameHard()
     {
         DataBase.AIattacktime = 0.4f;
         DataBase.AImovetime = 0.4f;
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
     }
 
     public void Again()
