@@ -6,10 +6,11 @@ public class TrapLogic : MonoBehaviour
 {
     public bool enemyFrozen = false;
     public bool playerFrozen = false;
-    
-    private bool changePosition = false;
-    private TrapMaster master;
+    public bool allowReset = false;
+    public bool allowUpdate = false;
+    public int trapActivated = -1;
 
+    private TrapMaster master;
     Animator animator;
 
     // Start is called before the first frame update
@@ -19,8 +20,6 @@ public class TrapLogic : MonoBehaviour
         master = GameObject.Find("TrapMaster").GetComponent<TrapMaster>();
         if(master.randomgen == 0) {
             transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
-            master.randomgen = -1;
-            master.allowupdate = false;
         }
         else {
             transform.position = new Vector3(-10.0f, 0f, -8.5f);
@@ -29,33 +28,36 @@ public class TrapLogic : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(master.allowupdate) 
+        if(allowUpdate) 
         {
-            if(master.randomgen == 0) {
-                transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
-                master.randomgen = -1;
-                master.allowupdate = false;
-            }
-            else {
-                transform.position = new Vector3(-10.0f, 0f, -8.5f);
-            }
+            allowUpdate = false;
+            transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+        }
+        else if(allowReset) 
+        {
+            allowReset = false;
+            transform.position = new Vector3(-10.0f, 0f, -8.5f);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.tag == "Monster") {
-            if(playerFrozen == false) {
-                enemyFrozen = true;
-                animator.SetTrigger("isTriggered");
-                Invoke("UnfreezeEnemy", 2);
+        if(trapActivated == -1)
+        {
+            trapActivated = 0;
+            if(collider.tag == "Monster") {
+                if(playerFrozen == false) {
+                    enemyFrozen = true;
+                    animator.SetTrigger("isTriggered");
+                    Invoke("UnfreezeEnemy", 2);
+                }
             }
-        }
-        else {
-            if(enemyFrozen == false) {
-                playerFrozen = true;
-                animator.SetTrigger("isTriggered");
-                Invoke("UnfreezePlayer", 2);
+            else {
+                if(enemyFrozen == false) {
+                    playerFrozen = true;
+                    animator.SetTrigger("isTriggered");
+                    Invoke("UnfreezePlayer", 2);
+                }
             }
         }
     }
@@ -65,8 +67,7 @@ public class TrapLogic : MonoBehaviour
         enemyFrozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");
-        master.activatedtrap[0] = 0;
-        master.allowupdate = true;
+        trapActivated = 1;
     }
 
     private void UnfreezePlayer()
@@ -74,7 +75,6 @@ public class TrapLogic : MonoBehaviour
         playerFrozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");
-        master.activatedtrap[0] = 0;
-        master.allowupdate = true;
+        trapActivated = 1;
     }
 }

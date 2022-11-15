@@ -5,27 +5,42 @@ using UnityEngine;
 public class TrapMaster : MonoBehaviour
 {
     public int randomgen = -1;
-    public int[] activatedtrap = {-1, -1};
-    public bool allowupdate = false;
+
+    private TrapLogic trap;
+    private TrapLogic2 trap2;
     
     // Start is called before the first frame update
     void Start()
     {
+        trap = GameObject.Find("Trap").GetComponent<TrapLogic>();
+        trap2 = GameObject.Find("Trap2").GetComponent<TrapLogic2>();
         randomgen = Random.Range(0, 2);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(activatedtrap[0] == 0 && activatedtrap[1] == -1) {
+        if(trap.trapActivated == 1) {
+            trap.trapActivated = -1;
             randomgen = Random.Range(0, 2);
-            activatedtrap[0] = -1;
-            activatedtrap[1] = -1;
+            ChangeUpdate(randomgen);
         }
-        else if(activatedtrap[0] == -1 && activatedtrap[1] == 1) {
+        else if(trap2.trapActivated == 1) {
+            trap2.trapActivated = -1;
             randomgen = Random.Range(0, 2);
-            activatedtrap[0] = -1;
-            activatedtrap[1] = -1;
+            ChangeUpdate(randomgen);
+        }
+    }
+
+    void ChangeUpdate(int randomgen)
+    {
+        if(randomgen == 0) {
+            trap.allowUpdate = true;
+            trap2.allowReset = true;
+        }
+        else if(randomgen == 1) {
+            trap2.allowUpdate = true;
+            trap.allowReset = true;
         }
     }
 }
