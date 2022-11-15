@@ -13,6 +13,8 @@ public class TrapLogic : MonoBehaviour
     private TrapMaster master;
     Animator animator;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,8 @@ public class TrapLogic : MonoBehaviour
             }
             else {
                 if(enemyFrozen == false) {
+                    player = collider.gameObject;
+                    player.GetComponent<PlayerControl>().frozen = true;
                     playerFrozen = true;
                     animator.SetTrigger("isTriggered");
                     Invoke("UnfreezePlayer", 2);
@@ -72,6 +76,7 @@ public class TrapLogic : MonoBehaviour
 
     private void UnfreezePlayer()
     {
+        player.GetComponent<PlayerControl>().frozen = false;
         playerFrozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");

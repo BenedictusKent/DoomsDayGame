@@ -742,11 +742,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 398434282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81810ea121cee914c95c7c18451c16e2, type: 3}
+  m_Script: {fileID: 11500000, guid: e9824f0ee2dbaab44819e7fe4ffac95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAI: 1
   _nowObj: {fileID: 2030951760}
   speed: 5
+  frozen: 0
+  slow: 0
+  orgspeed: 5
 --- !u!114 &398434285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7336,11 +7340,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 466891066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81810ea121cee914c95c7c18451c16e2, type: 3}
+  m_Script: {fileID: 11500000, guid: e9824f0ee2dbaab44819e7fe4ffac95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAI: 1
   _nowObj: {fileID: 843892744}
   speed: 5
+  frozen: 0
+  slow: 0
+  orgspeed: 5
 --- !u!114 &466891069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7848,11 +7856,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 842475093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81810ea121cee914c95c7c18451c16e2, type: 3}
+  m_Script: {fileID: 11500000, guid: e9824f0ee2dbaab44819e7fe4ffac95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAI: 1
   _nowObj: {fileID: 766084964}
   speed: 5
+  frozen: 0
+  slow: 0
+  orgspeed: 5
 --- !u!114 &842475096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8058,8 +8070,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9824f0ee2dbaab44819e7fe4ffac95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAI: 0
   _nowObj: {fileID: 1031865862}
   speed: 5
+  frozen: 0
+  slow: 0
+  orgspeed: 5
 --- !u!1001 &903324319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8409,6 +8425,7 @@ GameObject:
   - component: {fileID: 1064499469}
   - component: {fileID: 1064499468}
   - component: {fileID: 1064499470}
+  - component: {fileID: 1064499471}
   m_Layer: 7
   m_Name: Tilemap_Wall
   m_TagString: Untagged
@@ -18294,6 +18311,31 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!68 &1064499471
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064499466}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.1
+  m_Points:
+  - {x: 17.630106, y: -9.655912}
+  - {x: -17.411283, y: -9.578352}
+  - {x: -17.439774, y: 10.329805}
+  - {x: 17.675598, y: 10.328111}
+  - {x: 17.496304, y: -9.609325}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &1065777791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2117635318228533863, guid: 06d4774cc6e7f47c7984f62e135c33ad, type: 3}
@@ -18530,6 +18572,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyFrozen: 0
   playerFrozen: 0
+  allowReset: 0
+  allowUpdate: 0
+  trapActivated: -1
 --- !u!1 &1206871777
 GameObject:
   m_ObjectHideFlags: 0
@@ -18868,8 +18913,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomgen: 0
-  activatedtrap: ffffffffffffffff
-  allowupdate: 0
 --- !u!4 &1401876608
 Transform:
   m_ObjectHideFlags: 0
@@ -19531,11 +19574,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite01: {fileID: 21300000, guid: c0c5d00add8dec3498c04ce1ee6156a4, type: 3}
   sprite02: {fileID: 21300000, guid: 4b8449115f5b96a46b124e25e616d4db, type: 3}
+  sprite03: {fileID: 21300000, guid: 82b715801eed08245b95015153c227f1, type: 3}
   Player01: {fileID: 883396279}
   Particle01: {fileID: 3216364555707398208, guid: 1268f298edf6b584b9c515255dcce7ca, type: 3}
   Particle02: {fileID: 7239311344311584200, guid: da97eb81ecfb2854f8871bf36a17daa4, type: 3}
   Particle03: {fileID: 1042727520119931355, guid: 20bd7b866330ffc409a1ff7db146e65d, type: 3}
   Particle04: {fileID: 4679022235582755459, guid: cf757b3af77f72a49a7e1ff8ab61a711, type: 3}
+  Particle05: {fileID: 2704333146655992581, guid: f62626a50dd029b498d548edf2d806e1, type: 3}
+  Particle06: {fileID: 7239311344311584200, guid: da97eb81ecfb2854f8871bf36a17daa4, type: 3}
 --- !u!1001 &1656318608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19783,11 +19829,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1710463728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81810ea121cee914c95c7c18451c16e2, type: 3}
+  m_Script: {fileID: 11500000, guid: e9824f0ee2dbaab44819e7fe4ffac95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAI: 1
   _nowObj: {fileID: 214645234}
   speed: 5
+  frozen: 0
+  slow: 0
+  orgspeed: 5
 --- !u!114 &1710463731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19840,7 +19890,7 @@ GameObject:
   - component: {fileID: 1903109754}
   - component: {fileID: 1903109753}
   m_Layer: 5
-  m_Name: skill01
+  m_Name: FirstSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
