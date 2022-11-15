@@ -19572,9 +19572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8360fd179c85214abf7d1f99d038803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite01: {fileID: 21300000, guid: c0c5d00add8dec3498c04ce1ee6156a4, type: 3}
-  sprite02: {fileID: 21300000, guid: 4b8449115f5b96a46b124e25e616d4db, type: 3}
-  sprite03: {fileID: 21300000, guid: 82b715801eed08245b95015153c227f1, type: 3}
+  sprite00: {fileID: 21300000, guid: c0c5d00add8dec3498c04ce1ee6156a4, type: 3}
+  sprite01: {fileID: 21300000, guid: 4b8449115f5b96a46b124e25e616d4db, type: 3}
+  sprite02: {fileID: 21300000, guid: 82b715801eed08245b95015153c227f1, type: 3}
   Player01: {fileID: 883396279}
   Particle01: {fileID: 3216364555707398208, guid: 1268f298edf6b584b9c515255dcce7ca, type: 3}
   Particle02: {fileID: 7239311344311584200, guid: da97eb81ecfb2854f8871bf36a17daa4, type: 3}

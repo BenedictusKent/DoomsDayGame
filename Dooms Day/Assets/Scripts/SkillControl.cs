@@ -9,9 +9,9 @@ public class SkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill;
-    public Sprite sprite01, sprite02, sprite03;
+    public Sprite sprite00, sprite01, sprite02;
 
-    // skill01
+    // skill00
     public GameObject Player01;
     private PlayerControl player01_control;
     private float orgspeed;
@@ -21,7 +21,7 @@ public class SkillControl : MonoBehaviour
     private GameObject Particle01_copy;
     private GameObject Particle02_copy;
 
-    // skill02
+    // skill01
     Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
     private PlayerControl pc2, pc3, pc4, pc5, pctemp;
     private float os2, os3, os4, os5, ostemp;
@@ -34,7 +34,7 @@ public class SkillControl : MonoBehaviour
 
     private Finish finish;
 
-    // skill03
+    // skill02
     public GameObject Particle05;
     private GameObject Particle05_copy;
     public GameObject Particle06;
@@ -48,23 +48,25 @@ public class SkillControl : MonoBehaviour
         front = FirstSkill.GetComponent<Image>();
         back = FirstSkill.transform.GetChild(0).GetComponent<Image>();
         back.fillAmount = 0f;
-        coldtime = 5f;
 
         switch(DataBase.characterID)
         {
+            case 0: {
+                front.sprite = sprite00;
+                back.sprite = sprite00;
+                coldtime = 8f;
+                break;
+            }
             case 1: {
                 front.sprite = sprite01;
                 back.sprite = sprite01;
+                coldtime = 10f;
                 break;
             }
             case 2: {
                 front.sprite = sprite02;
                 back.sprite = sprite02;
-                break;
-            }
-            case 3: {
-                front.sprite = sprite03;
-                back.sprite = sprite03;
+                coldtime = 12f;
                 break;
             }
         }
@@ -93,7 +95,7 @@ public class SkillControl : MonoBehaviour
         {
             times += Time.deltaTime;
             back.fillAmount = (coldtime - times) / coldtime;
-            if(times >= 5f)
+            if(times >= coldtime)
             {
                 times = 0f;
                 iscold = false;
@@ -105,7 +107,7 @@ public class SkillControl : MonoBehaviour
         {
             switch(DataBase.characterID)
             {
-                case 1: {
+                case 0: {
                     show();
                     player01_control.orgspeed = orgspeed * 2;
                     Particle01_copy = Instantiate(Particle01);
@@ -117,7 +119,7 @@ public class SkillControl : MonoBehaviour
                     Invoke("endFirstSkill", 2.0f);
                     break;
                 }
-                case 2: {
+                case 1: {
                     show();
                     checkrandomvalue();
                     Particle03_copy = Instantiate(Particle03);
@@ -156,7 +158,7 @@ public class SkillControl : MonoBehaviour
                     Invoke("endFirstSkill", 1.5f);
                     break;
                 }
-                case 3: {
+                case 2: {
                     show();
                     checkrandomvalue();
                     Particle05_copy = Instantiate(Particle05);
@@ -184,19 +186,19 @@ public class SkillControl : MonoBehaviour
     {
         switch(DataBase.characterID)
         {
-            case 1: {
+            case 0: {
                 player01_control.orgspeed = orgspeed;
                 Destroy(Particle01_copy);
                 Destroy(Particle02_copy);
                 break;
             }
-            case 2: {
+            case 1: {
                 pctemp.orgspeed = ostemp;
                 Destroy(Particle03_copy);
                 Destroy(Particle04_copy);
                 break;
             }
-            case 3: {
+            case 2: {
                 Destroy(Particle05_copy);
                 Destroy(Particle06_copy);
                 break;
