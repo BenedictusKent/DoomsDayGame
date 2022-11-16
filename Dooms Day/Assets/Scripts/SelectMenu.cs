@@ -22,13 +22,13 @@ public class SelectMenu : MonoBehaviour
             case 0: {
                 skillimg.sprite = sprite00;
                 FirstSkillName.text = "光翼奔馳";
-                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 8s";
+                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 10s";
                 break;
             }
             case 1: {
                 skillimg.sprite = sprite01;
                 FirstSkillName.text = "極冰束縛";
-                FirstSkillDesc.text = "隨機將一名其他玩家束縛在原地，持續1.5秒。CD: 10s";
+                FirstSkillDesc.text = "隨機將一名其他玩家束縛在原地，持續2秒。CD: 8s";
                 break;
             }
             case 2: {
@@ -54,13 +54,13 @@ public class SelectMenu : MonoBehaviour
             case 0: {
                 skillimg.sprite = sprite00;
                 FirstSkillName.text = "光翼奔馳";
-                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 8s";
+                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 10s";
                 break;
             }
             case 1: {
                 skillimg.sprite = sprite01;
                 FirstSkillName.text = "極冰束縛";
-                FirstSkillDesc.text = "隨機將一名其他玩家束縛在原地，持續1.5秒。CD: 10s";
+                FirstSkillDesc.text = "隨機將一名其他玩家束縛在原地，持續2秒。CD: 8s";
                 break;
             }
             case 2: {
@@ -80,13 +80,13 @@ public class SelectMenu : MonoBehaviour
             case 0: {
                 skillimg.sprite = sprite00;
                 FirstSkillName.text = "光翼奔馳";
-                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 8s";
+                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 10s";
                 break;
             }
             case 1: {
                 skillimg.sprite = sprite01;
                 FirstSkillName.text = "極冰束縛";
-                FirstSkillDesc.text = "隨機將一名其他玩家束縛在原地，持續1.5秒。CD: 10s";
+                FirstSkillDesc.text = "隨機將一名其他玩家束縛在原地，持續2秒。CD: 8s";
                 break;
             }
             case 2: {

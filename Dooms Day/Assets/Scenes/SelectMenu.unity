@@ -3471,7 +3471,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u5C07\u79FB\u52D5\u901F\u5EA6\u63D0\u5347\u81F32\u500D\uFF0C\u6301\u7E8C2\u79D2\u3002CD:
-    8s"
+    10s"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d24eb697c87a9942a82196aceeea6df, type: 2}
   m_sharedMaterial: {fileID: -2765570538622319684, guid: 8d24eb697c87a9942a82196aceeea6df, type: 2}

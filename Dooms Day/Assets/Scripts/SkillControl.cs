@@ -23,6 +23,7 @@ public class SkillControl : MonoBehaviour
 
     // skill01
     Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
+    public GameObject P2, P3, P4, P5;
     private PlayerControl pc2, pc3, pc4, pc5, pctemp;
     private float os2, os3, os4, os5, ostemp;
     private int to;
@@ -54,13 +55,13 @@ public class SkillControl : MonoBehaviour
             case 0: {
                 front.sprite = sprite00;
                 back.sprite = sprite00;
-                coldtime = 8f;
+                coldtime = 10f;
                 break;
             }
             case 1: {
                 front.sprite = sprite01;
                 back.sprite = sprite01;
-                coldtime = 10f;
+                coldtime = 8f;
                 break;
             }
             case 2: {
@@ -74,10 +75,10 @@ public class SkillControl : MonoBehaviour
         player01_control = Player01.GetComponent<PlayerControl>();
         orgspeed = player01_control.speed;
 
-        PlayerNum.Add(2, GameObject.FindGameObjectsWithTag("Player")[0]);
-        PlayerNum.Add(3, GameObject.FindGameObjectsWithTag("Player")[1]);
-        PlayerNum.Add(4, GameObject.FindGameObjectsWithTag("Player")[2]);
-        PlayerNum.Add(5, GameObject.FindGameObjectsWithTag("Player")[3]);
+        PlayerNum.Add(2, P2);
+        PlayerNum.Add(3, P3);
+        PlayerNum.Add(4, P4);
+        PlayerNum.Add(5, P5);
         pc2 = PlayerNum[2].GetComponent<PlayerControl>();
         pc3 = PlayerNum[3].GetComponent<PlayerControl>();
         pc4 = PlayerNum[4].GetComponent<PlayerControl>();
@@ -155,7 +156,7 @@ public class SkillControl : MonoBehaviour
                     Particle04_copy = Instantiate(Particle04);
                     Particle04_copy.transform.parent = PlayerNum[to].transform;
                     Particle04_copy.transform.localPosition = Vector3.zero;
-                    Invoke("endFirstSkill", 1.5f);
+                    Invoke("endFirstSkill", 2.0f);
                     break;
                 }
                 case 2: {
@@ -168,7 +169,7 @@ public class SkillControl : MonoBehaviour
                     Particle06_copy = Instantiate(Particle06);
                     Particle06_copy.transform.parent = PlayerNum[to].transform;
                     Particle06_copy.transform.localPosition = Vector3.zero;
-                    Invoke("endFirstSkill", 1.5f);
+                    Invoke("endFirstSkill", 2.0f);
                     break;
                 }
             }
