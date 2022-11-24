@@ -70,6 +70,12 @@ public class PlayerObject : MonoBehaviour
         PlayStateAnimation(_currentState);
     }
 
+    public void Attack()
+    {
+        _currentState = PlayerState.attack;
+        PlayStateAnimation(_currentState);
+    }
+
     public void TurnRight()
     {
         _prefabs.transform.localScale = new Vector3(-1,1,1);
