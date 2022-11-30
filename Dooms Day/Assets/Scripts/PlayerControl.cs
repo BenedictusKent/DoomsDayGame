@@ -18,6 +18,11 @@ public class PlayerControl : MonoBehaviour
     public bool frozen, slow;
     public float orgspeed = 10.0f;
 
+    public bool isdie;
+
+    public AudioClip throwball;
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +30,17 @@ public class PlayerControl : MonoBehaviour
         orgspeed = speed;
         frozen = false;
         slow = false;
+        isdie = false;
 
         if(isAI)
         {
             Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
             InvokeRepeating("ChangeMove", 0.5f, MoveNeedTime);
+
+            _audioSource = this.gameObject.AddComponent<AudioSource>();
+            _audioSource.loop = false;
+            _audioSource.volume = 1f;
+            _audioSource.clip = throwball;
         }
     }
 
@@ -41,29 +52,31 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(frozen)
+        if(!isdie)
         {
-            speed = 0f;
-        }
-        else if(slow)
-        {
-            speed = orgspeed / 2;
-        }
-        else
-        {
-            speed = orgspeed;
-        }
+            if(frozen)
+            {
+                speed = 0f;
+            }
+            else if(slow)
+            {
+                speed = orgspeed / 2;
+            }
+            else
+            {
+                speed = orgspeed;
+            }
 
-        if(isAI)
-        {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-            AIattack();
+            if(isAI)
+            {
+                rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+                AIattack();
+            }
+            else
+            {
+                HumanControl();
+            }
         }
-        else
-        {
-            HumanControl();
-        }
-
     }
 
     // Human
@@ -116,6 +129,7 @@ public class PlayerControl : MonoBehaviour
 
     void attack()
     {
+        _audioSource.Play();
         Meteorite.GetComponent<MeteoriteTo>().AInum = _nowObj.GetComponent<GetMeteorite>().PlayerID;
         Meteorite.GetComponent<MeteoriteTo>().speed = 2;
         Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
@@ -123,31 +137,34 @@ public class PlayerControl : MonoBehaviour
 
     void ChangeMove()
     {
-        movement.x = Random.Range(-1, 2); //A,D
-        movement.y = Random.Range(-1, 2); //W,S
+        if(!isdie)
+        {
+            movement.x = Random.Range(-1, 2); //A,D
+            movement.y = Random.Range(-1, 2); //W,S
 
-        if(movement.x != 0 && movement.y != 0)
-        {
-            movement.x *= 0.7f;
-            movement.y *= 0.7f;
-        }
+            if(movement.x != 0 && movement.y != 0)
+            {
+                movement.x *= 0.7f;
+                movement.y *= 0.7f;
+            }
 
-        if(movement.x == 0 && movement.y == 0)
-        {
-            _nowObj.Idle();
-        }
-        else
-        {
-            _nowObj.Run();
-        }
+            if(movement.x == 0 && movement.y == 0)
+            {
+                _nowObj.Idle();
+            }
+            else
+            {
+                _nowObj.Run();
+            }
 
-        if(movement.x > 0)
-        {
-            _nowObj.TurnRight();
-        }
-        else if(movement.x < 0)
-        {
-            _nowObj.TurnLeft();
+            if(movement.x > 0)
+            {
+                _nowObj.TurnRight();
+            }
+            else if(movement.x < 0)
+            {
+                _nowObj.TurnLeft();
+            }
         }
     }
 

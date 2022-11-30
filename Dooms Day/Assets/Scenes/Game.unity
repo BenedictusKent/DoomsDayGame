@@ -848,6 +848,8 @@ MonoBehaviour:
   frozen: 0
   slow: 0
   orgspeed: 5
+  isdie: 0
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &398434285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 883396279}
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &398434286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +880,8 @@ MonoBehaviour:
   haveMonster: 0
   PlayerID: 5
   HP: 1
+  Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
+  Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
 --- !u!1 &429899130
 GameObject:
   m_ObjectHideFlags: 0
@@ -7796,6 +7801,8 @@ MonoBehaviour:
   frozen: 0
   slow: 0
   orgspeed: 5
+  isdie: 0
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &466891069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7812,6 +7819,8 @@ MonoBehaviour:
   haveMonster: 0
   PlayerID: 2
   HP: 1
+  Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
+  Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
 --- !u!114 &466891070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7825,6 +7834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 883396279}
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &472926042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2307415247399226439, guid: d5d233cb552ed8649b0d3cb9ad22063b, type: 3}
@@ -8317,6 +8327,8 @@ MonoBehaviour:
   frozen: 0
   slow: 0
   orgspeed: 5
+  isdie: 0
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &842475096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8330,6 +8342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 883396279}
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &842475097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8346,6 +8359,8 @@ MonoBehaviour:
   haveMonster: 0
   PlayerID: 4
   HP: 1
+  Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
+  Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
 --- !u!4 &843892743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1337621318058762958, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
@@ -8391,7 +8406,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ff7443e0d0f4db42280e15634e126aa1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8510,6 +8525,8 @@ MonoBehaviour:
   haveMonster: 0
   PlayerID: 1
   HP: 1
+  Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
+  Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
 --- !u!114 &883396283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8528,6 +8545,8 @@ MonoBehaviour:
   frozen: 0
   slow: 0
   orgspeed: 5
+  isdie: 0
+  throwball: {fileID: 0}
 --- !u!1001 &903324319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8765,7 +8784,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 1031865861}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &992366879
 SpriteRenderer:
@@ -19009,7 +19028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699839059909026797, guid: 06d4774cc6e7f47c7984f62e135c33ad, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1699839059909026797, guid: 06d4774cc6e7f47c7984f62e135c33ad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -20048,6 +20067,8 @@ MonoBehaviour:
   frozen: 0
   slow: 0
   orgspeed: 5
+  isdie: 0
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &1710463731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20061,6 +20082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 883396279}
+  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!114 &1710463732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20077,6 +20099,8 @@ MonoBehaviour:
   haveMonster: 0
   PlayerID: 3
   HP: 1
+  Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
+  Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
 --- !u!114 &1845260369 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7292769665763891556, guid: 6616b91ffc4786845a46e2542155d538, type: 3}

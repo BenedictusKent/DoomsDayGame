@@ -30,12 +30,15 @@ public class PlayerObject : MonoBehaviour
     }
 
     private MyEvents _stateChanged = new MyEvents();
+
+    private bool islock;
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Start()
     {
         _stateChanged.AddListener(PlayStateAnimation);
+        islock = false;
     }
 
     private void PlayStateAnimation(PlayerState state){
@@ -60,20 +63,34 @@ public class PlayerObject : MonoBehaviour
     
     public void Idle()
     {
-        _currentState = PlayerState.idle;
-        PlayStateAnimation(_currentState);
+        if(!islock)
+        {
+            _currentState = PlayerState.idle;
+            PlayStateAnimation(_currentState);
+        }
     }
 
     public void Run()
     {
-        _currentState = PlayerState.run;
-        PlayStateAnimation(_currentState);
+        if(!islock)
+        {
+            _currentState = PlayerState.run;
+            PlayStateAnimation(_currentState);
+        }
     }
 
     public void Attack()
     {
         _currentState = PlayerState.attack;
         PlayStateAnimation(_currentState);
+    }
+
+    public void Death()
+    {
+        islock = true;
+        _currentState = PlayerState.death;
+        PlayStateAnimation(_currentState);
+        Invoke("unlock", 2f);
     }
 
     public void TurnRight()
@@ -84,6 +101,11 @@ public class PlayerObject : MonoBehaviour
     public void TurnLeft()
     {
         _prefabs.transform.localScale = Vector3.one;
+    }
+
+    void unlock()
+    {
+        islock = false;
     }
     
 }

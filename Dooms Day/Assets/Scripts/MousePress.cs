@@ -7,11 +7,19 @@ public class MousePress : MonoBehaviour
     public GameObject player;
     private GameObject Meteorite, GameService;
 
+    public AudioClip throwball;
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
         GameService = GameObject.Find("GameService");
+
+        _audioSource = this.gameObject.AddComponent<AudioSource>();
+        _audioSource.loop = false;
+        _audioSource.volume = 1f;
+        _audioSource.clip = throwball;
     }
 
     // Update is called once per frame
@@ -26,6 +34,7 @@ public class MousePress : MonoBehaviour
         {
             if (player.GetComponent<GetMeteorite>().haveMeteorite == true)
             {
+                _audioSource.Play();
                 Meteorite.GetComponent<MeteoriteTo>().to = GetComponent<GetMeteorite>().PlayerID;
                 Meteorite.GetComponent<MeteoriteTo>().speed = 2;
                 Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
