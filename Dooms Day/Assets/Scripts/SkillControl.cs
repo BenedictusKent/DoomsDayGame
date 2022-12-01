@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkillControl : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class SkillControl : MonoBehaviour
     private float times, coldtime;
     private GameObject FirstSkill;
     public Sprite sprite00, sprite01, sprite02;
+    public TMP_Text counttimetext;
+    private int coldtimeint;
+    private int counttime;
 
     // skill00
     public GameObject Player01;
@@ -49,6 +53,7 @@ public class SkillControl : MonoBehaviour
         front = FirstSkill.GetComponent<Image>();
         back = FirstSkill.transform.GetChild(0).GetComponent<Image>();
         back.fillAmount = 0f;
+        counttimetext.text = "";
 
         switch(DataBase.characterID)
         {
@@ -56,18 +61,21 @@ public class SkillControl : MonoBehaviour
                 front.sprite = sprite00;
                 back.sprite = sprite00;
                 coldtime = 10f;
+                coldtimeint = 10;
                 break;
             }
             case 1: {
                 front.sprite = sprite01;
                 back.sprite = sprite01;
                 coldtime = 8f;
+                coldtimeint = 8;
                 break;
             }
             case 2: {
                 front.sprite = sprite02;
                 back.sprite = sprite02;
                 coldtime = 12f;
+                coldtimeint = 12;
                 break;
             }
         }
@@ -181,6 +189,18 @@ public class SkillControl : MonoBehaviour
     {
         iscold = true;
         back.fillAmount = 1f;
+        counttime = coldtimeint;
+        InvokeRepeating("startcount", 0f, 1f);
+    }
+
+    void startcount()
+    {
+        counttimetext.text = counttime + "";
+        counttime--;
+        if(counttime == -1){
+            counttimetext.text = "";
+            CancelInvoke("startcount");
+        }
     }
 
     void endFirstSkill()
