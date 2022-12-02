@@ -35,7 +35,7 @@ public class MousePress : MonoBehaviour
             if (player.GetComponent<GetMeteorite>().haveMeteorite == true)
             {
                 _audioSource.Play();
-                Meteorite.GetComponent<MeteoriteTo>().to = GetComponent<GetMeteorite>().PlayerID;
+                Meteorite.GetComponent<MeteoriteTo>().to = this.transform.parent.gameObject.GetComponent<GetMeteorite>().PlayerID;
                 Meteorite.GetComponent<MeteoriteTo>().speed = 2;
                 Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
                 player.GetComponent<GetMeteorite>().haveMeteorite = false;

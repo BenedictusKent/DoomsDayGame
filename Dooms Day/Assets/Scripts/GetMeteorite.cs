@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetMeteorite : MonoBehaviour
 {
-    private GameObject Meteorite, main;
+    private GameObject Meteorite, main, GameService;
     public bool haveMeteorite, haveMonster;
     public int PlayerID, HP = 1;
     private PlayerObject _nowObj;
@@ -25,6 +25,8 @@ public class GetMeteorite : MonoBehaviour
         haveMonster = false;
         isalive = true;
         _nowObj = GetComponent<PlayerObject>();
+
+        GameService = GameObject.Find("GameService");
     }
 
     // Update is called once per frame
@@ -47,6 +49,7 @@ public class GetMeteorite : MonoBehaviour
                 _nowObj.Death();
                 GetComponent<PlayerControl>().isdie = true;
                 isalive = false;
+                GameService.GetComponent<CursorControl>().LeavePlayer();
                 Particle01_copy = Instantiate(Particle01);
                 Particle01_copy.transform.parent = transform;
                 Particle01_copy.transform.localPosition = Vector3.zero;
@@ -80,6 +83,7 @@ public class GetMeteorite : MonoBehaviour
                 _nowObj.Death();
                 GetComponent<PlayerControl>().isdie = true;
                 isalive = false;
+                GameService.GetComponent<CursorControl>().LeavePlayer();
                 Particle01_copy = Instantiate(Particle01);
                 Particle01_copy.transform.parent = transform;
                 Particle01_copy.transform.localPosition = Vector3.zero;

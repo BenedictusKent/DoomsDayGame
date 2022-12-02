@@ -47,22 +47,19 @@ public class TrapLogic2 : MonoBehaviour
     {
         if(trapActivated == -1)
         {
-            trapActivated = 0;
             if(collider.tag == "Monster") {
-                if(playerSlow == false) {
-                    enemySlow = true;
-                    animator.SetTrigger("isTriggered");
-                    Invoke("UnfreezeEnemy", 2);
-                }
+                trapActivated = 0;
+                enemySlow = true;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezeEnemy", 2);
             }
-            else {
-                if(enemySlow == false) {
-                    player = collider.gameObject;
-                    player.GetComponent<PlayerControl>().slow = true;
-                    playerSlow = true;
-                    animator.SetTrigger("isTriggered");
-                    Invoke("UnfreezePlayer", 2);
-                }
+            else if(collider.tag == "Player"){
+                trapActivated = 0;
+                player = collider.gameObject;
+                player.GetComponent<PlayerControl>().slow = true;
+                //playerSlow = true;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezePlayer", 2);
             }
         }
     }
@@ -78,7 +75,7 @@ public class TrapLogic2 : MonoBehaviour
     private void UnfreezePlayer()
     {
         player.GetComponent<PlayerControl>().slow = false;
-        playerSlow = false;
+        //playerSlow = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap2_Idle");
         trapActivated = 1;
