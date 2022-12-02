@@ -9,21 +9,24 @@ public class EnemyAI : MonoBehaviour
     public TrapLogic2 trap2var;
     public Transform target;
     public Transform enemyGFX;
+    public Finish endScript;
     public float speed = 200f;
     public float nextWaypointDistance = 1.2f;
 
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedEndOfPath = false;
-
+    
     Seeker seeker;
     Rigidbody2D rb;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("IncreaseSpeed", 2f, 2f);
@@ -88,6 +91,10 @@ public class EnemyAI : MonoBehaviour
             rb.velocity = Vector3.zero;
         else if(trap2var.enemySlow){
             rb.velocity /= 2;
+        }
+        if(endScript.enemyDead) {
+            animator.SetTrigger("isDead");
+            animator.Play("Enemy_Dead");
         }
     }
 }

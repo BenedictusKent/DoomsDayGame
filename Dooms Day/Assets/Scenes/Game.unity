@@ -277,6 +277,7 @@ MonoBehaviour:
   trap2var: {fileID: 472926042}
   target: {fileID: 1416015905}
   enemyGFX: {fileID: 1905178230}
+  endScript: {fileID: 1648095688}
   speed: 1800
   nextWaypointDistance: 1.2
 --- !u!70 &178093381
@@ -20063,6 +20064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 883396279}
   playernum: 5
+  enemyDead: 0
 --- !u!4 &1648095689
 Transform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Finish : MonoBehaviour
 {
     public GameObject Player;
     public int playernum = 5;
+    public bool enemyDead = false;
     private float TimeRun = 0.25f;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Finish : MonoBehaviour
     {
         if(playernum == 1)
         {
+            enemyDead = true;
             TimeRun -= Time.fixedDeltaTime;
             if (TimeRun <= 0)
             {
