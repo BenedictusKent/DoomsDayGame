@@ -97,6 +97,7 @@ public class EnemyAI : MonoBehaviour
             rb.velocity /= 3;
         }
         if(endScript.enemyDead) {
+            rb.velocity = Vector3.zero;
             animator.SetTrigger("isDead");
             animator.Play("Enemy_Dead");
         }

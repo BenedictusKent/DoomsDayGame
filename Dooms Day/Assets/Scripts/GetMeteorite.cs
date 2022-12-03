@@ -16,6 +16,9 @@ public class GetMeteorite : MonoBehaviour
 
     private bool isalive;
 
+    public AudioClip playerdead01;
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,11 @@ public class GetMeteorite : MonoBehaviour
         _nowObj = GetComponent<PlayerObject>();
 
         GameService = GameObject.Find("GameService");
+
+        _audioSource = this.gameObject.AddComponent<AudioSource>();
+        _audioSource.loop = false;
+        _audioSource.volume = 0.5f;
+        _audioSource.clip = playerdead01;
     }
 
     // Update is called once per frame
@@ -56,6 +64,7 @@ public class GetMeteorite : MonoBehaviour
                 Particle02_copy = Instantiate(Particle02);
                 Particle02_copy.transform.parent = transform;
                 Particle02_copy.transform.localPosition = Vector3.zero;
+                _audioSource.Play();
                 Invoke("attackAndDestroy", 2f);
             }
         }
@@ -90,6 +99,7 @@ public class GetMeteorite : MonoBehaviour
                 Particle02_copy = Instantiate(Particle02);
                 Particle02_copy.transform.parent = transform;
                 Particle02_copy.transform.localPosition = Vector3.zero;
+                _audioSource.Play();
                 Invoke("attackAndDestroy", 2f);
             }
         }

@@ -9,10 +9,24 @@ public class Finish : MonoBehaviour
     public int playernum = 5;
     public bool enemyDead = false;
     private float TimeRun = 0.25f;
+    private bool isend;
+
+    public GameObject Monster;
+    public GameObject Particle01;
+    private GameObject Particle01_copy;
+
+    public AudioClip monsterdead01;
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        isend = false;
 
+        _audioSource = this.gameObject.AddComponent<AudioSource>();
+        _audioSource.loop = false;
+        _audioSource.volume = 1f;
+        _audioSource.clip = monsterdead01;
     }
 
     // Update is called once per frame
@@ -23,25 +37,36 @@ public class Finish : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(playernum == 1)
+        if(!isend)
         {
-            enemyDead = true;
-            TimeRun -= Time.fixedDeltaTime;
-            if (TimeRun <= 0)
+            if(playernum == 1)
             {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                SceneManager.LoadScene("WinMenu");
+                isend = true;
+                enemyDead = true;
+                Particle01_copy = Instantiate(Particle01);
+                Particle01_copy.transform.parent = Monster.transform;
+                Particle01_copy.transform.localPosition = Vector3.zero;
+                _audioSource.Play();
+                Invoke("toWinMenu", 2.25f);
             }
-        }
 
-        if(Player == null)
-        {
-            TimeRun -= Time.fixedDeltaTime;
-            if (TimeRun <= 0)
+            if(Player == null)
             {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                SceneManager.LoadScene("LoseMenu");
+                isend = true;
+                Invoke("toLoseMenu", 0.25f);
             }
         }
+    }
+
+    void toWinMenu()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        SceneManager.LoadScene("WinMenu");
+    }
+
+    void toLoseMenu()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        SceneManager.LoadScene("LoseMenu");
     }
 }

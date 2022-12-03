@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
 
-    public bool frozen, slow;
+    public bool frozen, slow, slow2;
     public float orgspeed = 10.0f;
 
     public bool isdie;
@@ -30,6 +30,7 @@ public class PlayerControl : MonoBehaviour
         orgspeed = speed;
         frozen = false;
         slow = false;
+        slow2 = false;
         isdie = false;
 
         if(isAI)
@@ -61,6 +62,10 @@ public class PlayerControl : MonoBehaviour
             else if(slow)
             {
                 speed = orgspeed / 2;
+            }
+            else if(slow2)
+            {
+                speed = orgspeed / 3;
             }
             else
             {
