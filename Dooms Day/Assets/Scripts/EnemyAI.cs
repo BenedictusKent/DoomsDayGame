@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public TrapLogic trapvar;
     public TrapLogic2 trap2var;
+    public TrapLogic3 trap3var;
     public Transform target;
     public Transform enemyGFX;
     public Finish endScript;
@@ -91,6 +92,9 @@ public class EnemyAI : MonoBehaviour
             rb.velocity = Vector3.zero;
         else if(trap2var.enemySlow){
             rb.velocity /= 2;
+        }
+        else if(trap3var.enemySlow){
+            rb.velocity /= 3;
         }
         if(endScript.enemyDead) {
             animator.SetTrigger("isDead");
