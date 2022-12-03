@@ -54,12 +54,15 @@ public class TrapLogic2 : MonoBehaviour
                 Invoke("UnfreezeEnemy", 2);
             }
             else if(collider.tag == "Player"){
-                trapActivated = 0;
                 player = collider.gameObject;
-                player.GetComponent<PlayerControl>().slow = true;
-                //playerSlow = true;
-                animator.SetTrigger("isTriggered");
-                Invoke("UnfreezePlayer", 2);
+                if(!player.GetComponent<PlayerControl>().isdie)
+                {
+                    trapActivated = 0;
+                    player.GetComponent<PlayerControl>().slow = true;
+                    //playerSlow = true;
+                    animator.SetTrigger("isTriggered");
+                    Invoke("UnfreezePlayer", 2);
+                }
             }
         }
     }
