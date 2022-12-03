@@ -39,7 +39,12 @@ public class Finish : MonoBehaviour
     {
         if(!isend)
         {
-            if(playernum == 1)
+            if(Player == null)
+            {
+                isend = true;
+                Invoke("toLoseMenu", 0.25f);
+            }
+            else if(playernum == 1)
             {
                 isend = true;
                 enemyDead = true;
@@ -48,12 +53,6 @@ public class Finish : MonoBehaviour
                 Particle01_copy.transform.localPosition = Vector3.zero;
                 _audioSource.Play();
                 Invoke("toWinMenu", 2.25f);
-            }
-
-            if(Player == null)
-            {
-                isend = true;
-                Invoke("toLoseMenu", 0.25f);
             }
         }
     }

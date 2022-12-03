@@ -15,6 +15,8 @@ public class SkillControl : MonoBehaviour
     private int coldtimeint;
     private int counttime;
 
+    private GameObject Meteorite;
+
     // skill00
     public GameObject Player01;
     private PlayerControl player01_control;
@@ -95,6 +97,8 @@ public class SkillControl : MonoBehaviour
         os3 = pc3.speed;
         os4 = pc4.speed;
         os5 = pc5.speed;
+
+        Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
     }
 
     // Update is called once per frame
@@ -251,6 +255,13 @@ public class SkillControl : MonoBehaviour
 
     void teleport()
     {
-        Player01.transform.position = PlayerNum[to].transform.position;
+        PlayerNum[to].transform.position = Player01.transform.position;
+        if (Player01.GetComponent<GetMeteorite>().haveMeteorite == true)
+        {
+            Meteorite.GetComponent<MeteoriteTo>().to = to;
+            Meteorite.GetComponent<MeteoriteTo>().speed = 2;
+            Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
+            Player01.GetComponent<GetMeteorite>().haveMeteorite = false;
+        }
     }
 }

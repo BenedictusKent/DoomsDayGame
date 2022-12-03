@@ -33,8 +33,8 @@ public class SelectMenu : MonoBehaviour
             }
             case 2: {
                 skillimg.sprite = sprite02;
-                FirstSkillName.text = "奪命偷襲";
-                FirstSkillDesc.text = "隨機傳送至一名其他玩家身旁，施法0.5秒。CD: 12s";
+                FirstSkillName.text = "黑暗新星";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，施法0.5秒。CD: 12s";
                 break;
             }
         }
@@ -65,8 +65,8 @@ public class SelectMenu : MonoBehaviour
             }
             case 2: {
                 skillimg.sprite = sprite02;
-                FirstSkillName.text = "奪命偷襲";
-                FirstSkillDesc.text = "隨機傳送至一名其他玩家身旁，施法0.5秒。CD: 12s";
+                FirstSkillName.text = "黑暗新星";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，施法0.5秒。CD: 12s";
                 break;
             }
         }
@@ -91,8 +91,8 @@ public class SelectMenu : MonoBehaviour
             }
             case 2: {
                 skillimg.sprite = sprite02;
-                FirstSkillName.text = "奪命偷襲";
-                FirstSkillDesc.text = "隨機傳送至一名其他玩家身旁，施法0.5秒。CD: 12s";
+                FirstSkillName.text = "黑暗新星";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，施法0.5秒。CD: 12s";
                 break;
             }
         }

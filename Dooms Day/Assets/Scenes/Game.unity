@@ -20142,7 +20142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite00: {fileID: 21300000, guid: c0c5d00add8dec3498c04ce1ee6156a4, type: 3}
   sprite01: {fileID: 21300000, guid: 4b8449115f5b96a46b124e25e616d4db, type: 3}
-  sprite02: {fileID: 21300000, guid: 82b715801eed08245b95015153c227f1, type: 3}
+  sprite02: {fileID: 21300000, guid: 2d66fb2411c3eb84fa80ae8e211f1b54, type: 3}
   counttimetext: {fileID: 2025264783}
   Player01: {fileID: 883396279}
   Particle01: {fileID: 3216364555707398208, guid: 1268f298edf6b584b9c515255dcce7ca, type: 3}

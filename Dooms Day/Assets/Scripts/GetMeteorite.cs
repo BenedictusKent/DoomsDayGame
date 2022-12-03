@@ -122,8 +122,6 @@ public class GetMeteorite : MonoBehaviour
 
     void attackAndDestroy()
     {
-        Destroy(Particle01_copy);
-        Destroy(Particle02_copy);
         main.GetComponent<Finish>().playernum -= 1;
         HP = 0;
         attack();
