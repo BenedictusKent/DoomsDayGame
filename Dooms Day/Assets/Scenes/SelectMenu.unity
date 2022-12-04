@@ -3040,6 +3040,7 @@ MonoBehaviour:
   sprite01: {fileID: 21300000, guid: 4b8449115f5b96a46b124e25e616d4db, type: 3}
   sprite02: {fileID: 21300000, guid: 2d66fb2411c3eb84fa80ae8e211f1b54, type: 3}
   sprite03: {fileID: 21300000, guid: 090f0ad7529b74d40919eec9395d8035, type: 3}
+  sprite04: {fileID: 21300000, guid: 32f26da338bf51e4e9de95466aaf29ee, type: 3}
   FirstSkillName: {fileID: 870319657}
   FirstSkillDesc: {fileID: 2143941020}
 --- !u!4 &1058027415

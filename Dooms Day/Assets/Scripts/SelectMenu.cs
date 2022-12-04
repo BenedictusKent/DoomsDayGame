@@ -8,7 +8,7 @@ public class SelectMenu : MonoBehaviour
 {
     private Image skillimg;
     private GameObject FirstSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04;
 
     public TMP_Text FirstSkillName, FirstSkillDesc;
 
@@ -43,6 +43,12 @@ public class SelectMenu : MonoBehaviour
                 FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
                 break;
             }
+            case 4: {
+                skillimg.sprite = sprite04;
+                FirstSkillName.text = "潛能釋放";
+                FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
+                break;
+            }
         }
     }
 
@@ -54,7 +60,7 @@ public class SelectMenu : MonoBehaviour
 
     public void NextSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 1) % 4;
+        DataBase.characterID = (DataBase.characterID + 1) % 5;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -79,6 +85,12 @@ public class SelectMenu : MonoBehaviour
                 skillimg.sprite = sprite03;
                 FirstSkillName.text = "聖光守護";
                 FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
+                break;
+            }
+            case 4: {
+                skillimg.sprite = sprite04;
+                FirstSkillName.text = "潛能釋放";
+                FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
                 break;
             }
         }
@@ -86,7 +98,7 @@ public class SelectMenu : MonoBehaviour
 
     public void PreviousSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 3) % 4;
+        DataBase.characterID = (DataBase.characterID + 4) % 5;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -111,6 +123,12 @@ public class SelectMenu : MonoBehaviour
                 skillimg.sprite = sprite03;
                 FirstSkillName.text = "聖光守護";
                 FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
+                break;
+            }
+            case 4: {
+                skillimg.sprite = sprite04;
+                FirstSkillName.text = "潛能釋放";
+                FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
                 break;
             }
         }

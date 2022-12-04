@@ -10,7 +10,7 @@ public class SkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -49,6 +49,9 @@ public class SkillControl : MonoBehaviour
 
     // skill03
 
+    // skill04
+    private float EnhanceValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +66,24 @@ public class SkillControl : MonoBehaviour
         frontp = PassiveSkill.GetComponent<Image>();
         backp = PassiveSkill.transform.GetChild(0).GetComponent<Image>();
         backp.fillAmount = 0f;
+
+        player01_control = Player01.GetComponent<PlayerControl>();
+        orgspeed = player01_control.speed;
+
+        PlayerNum.Add(2, P2);
+        PlayerNum.Add(3, P3);
+        PlayerNum.Add(4, P4);
+        PlayerNum.Add(5, P5);
+        pc2 = PlayerNum[2].GetComponent<PlayerControl>();
+        pc3 = PlayerNum[3].GetComponent<PlayerControl>();
+        pc4 = PlayerNum[4].GetComponent<PlayerControl>();
+        pc5 = PlayerNum[5].GetComponent<PlayerControl>();
+        os2 = pc2.speed;
+        os3 = pc3.speed;
+        os4 = pc4.speed;
+        os5 = pc5.speed;
+
+        Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
 
         switch(DataBase.characterID)
         {
@@ -97,25 +118,17 @@ public class SkillControl : MonoBehaviour
                 Player01.GetComponent<GetMeteorite>().HP = 3;
                 break;
             }
+            case 4: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite04;
+                backp.sprite = sprite04;
+                EnhanceValue = 0.75f;
+                player01_control.orgspeed = orgspeed * EnhanceValue;
+                backp.fillAmount = 1f;
+                InvokeRepeating("potential", 10f, 10f);
+                break;
+            }
         }
-
-        player01_control = Player01.GetComponent<PlayerControl>();
-        orgspeed = player01_control.speed;
-
-        PlayerNum.Add(2, P2);
-        PlayerNum.Add(3, P3);
-        PlayerNum.Add(4, P4);
-        PlayerNum.Add(5, P5);
-        pc2 = PlayerNum[2].GetComponent<PlayerControl>();
-        pc3 = PlayerNum[3].GetComponent<PlayerControl>();
-        pc4 = PlayerNum[4].GetComponent<PlayerControl>();
-        pc5 = PlayerNum[5].GetComponent<PlayerControl>();
-        os2 = pc2.speed;
-        os3 = pc3.speed;
-        os4 = pc4.speed;
-        os5 = pc5.speed;
-
-        Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
     }
 
     // Update is called once per frame
@@ -204,6 +217,9 @@ public class SkillControl : MonoBehaviour
                 case 3: {
                     break;
                 }
+                case 4: {
+                    break;
+                }
             }
             
         }
@@ -282,6 +298,17 @@ public class SkillControl : MonoBehaviour
             Meteorite.GetComponent<MeteoriteTo>().speed = 2;
             Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
             Player01.GetComponent<GetMeteorite>().haveMeteorite = false;
+        }
+    }
+
+    void potential()
+    {
+        EnhanceValue += 0.25f;
+        player01_control.orgspeed = orgspeed * EnhanceValue;
+        backp.fillAmount -= (1f / 3f);
+        if(EnhanceValue > 1.4f)
+        {
+            CancelInvoke("potential");
         }
     }
 }
