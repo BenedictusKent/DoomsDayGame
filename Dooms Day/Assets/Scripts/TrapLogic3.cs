@@ -9,7 +9,10 @@ public class TrapLogic3 : MonoBehaviour
     public bool allowReset = false;
     public bool allowUpdate = false;
     public int trapActivated = -1;
+    public GameObject warning;
 
+    private float x = -10.0f;
+    private float y = -10.0f;
     private TrapMaster master;
     Animator animator;
 
@@ -21,11 +24,20 @@ public class TrapLogic3 : MonoBehaviour
         animator = GetComponent<Animator>();
         master = GameObject.Find("TrapMaster").GetComponent<TrapMaster>();
         if(master.randomgen == 2) {
-            transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+            x = Random.Range(-6f, 6f);
+            y = Random.Range(-3f, 3f);
+            warning.transform.position = new Vector3(x, y, -8.5f);
+            Invoke("AppearingTrap", 1);
         }
         else {
             transform.position = new Vector3(-10.0f, 2.0f, -8.5f);
         }
+    }
+
+    private void AppearingTrap()
+    {
+        warning.transform.position = new Vector3(-10.0f, -4.0f, -8.5f);
+        transform.position = new Vector3(x, y, -8.5f);
     }
 
     void FixedUpdate()
@@ -33,7 +45,10 @@ public class TrapLogic3 : MonoBehaviour
         if(allowUpdate) 
         {
             allowUpdate = false;
-            transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), -8.5f);
+            x = Random.Range(-6f, 6f);
+            y = Random.Range(-3f, 3f);
+            warning.transform.position = new Vector3(x, y, -8.5f);
+            Invoke("AppearingTrap", 1);
             trapActivated = -1;
         }
         if(allowReset)
