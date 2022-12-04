@@ -8,7 +8,7 @@ public class SelectMenu : MonoBehaviour
 {
     private Image skillimg;
     private GameObject FirstSkill;
-    public Sprite sprite00, sprite01, sprite02;
+    public Sprite sprite00, sprite01, sprite02, sprite03;
 
     public TMP_Text FirstSkillName, FirstSkillDesc;
 
@@ -34,7 +34,13 @@ public class SelectMenu : MonoBehaviour
             case 2: {
                 skillimg.sprite = sprite02;
                 FirstSkillName.text = "黑暗新星";
-                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，施法0.5秒。CD: 12s";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，如果有碎片則甩給該玩家，施法0.5秒。CD: 12s";
+                break;
+            }
+            case 3: {
+                skillimg.sprite = sprite03;
+                FirstSkillName.text = "聖光守護";
+                FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
                 break;
             }
         }
@@ -48,7 +54,7 @@ public class SelectMenu : MonoBehaviour
 
     public void NextSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 1) % 3;
+        DataBase.characterID = (DataBase.characterID + 1) % 4;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -66,7 +72,13 @@ public class SelectMenu : MonoBehaviour
             case 2: {
                 skillimg.sprite = sprite02;
                 FirstSkillName.text = "黑暗新星";
-                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，施法0.5秒。CD: 12s";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，如果有碎片則甩給該玩家，施法0.5秒。CD: 12s";
+                break;
+            }
+            case 3: {
+                skillimg.sprite = sprite03;
+                FirstSkillName.text = "聖光守護";
+                FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
                 break;
             }
         }
@@ -74,7 +86,7 @@ public class SelectMenu : MonoBehaviour
 
     public void PreviousSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 2) % 3;
+        DataBase.characterID = (DataBase.characterID + 3) % 4;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -92,7 +104,13 @@ public class SelectMenu : MonoBehaviour
             case 2: {
                 skillimg.sprite = sprite02;
                 FirstSkillName.text = "黑暗新星";
-                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，施法0.5秒。CD: 12s";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，如果有碎片則甩給該玩家，施法0.5秒。CD: 12s";
+                break;
+            }
+            case 3: {
+                skillimg.sprite = sprite03;
+                FirstSkillName.text = "聖光守護";
+                FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
                 break;
             }
         }

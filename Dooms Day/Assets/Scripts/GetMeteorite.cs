@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GetMeteorite : MonoBehaviour
 {
@@ -13,11 +14,15 @@ public class GetMeteorite : MonoBehaviour
     private GameObject Particle01_copy;
     public GameObject Particle02;
     private GameObject Particle02_copy;
+    public GameObject Particle03;
+    private GameObject Particle03_copy;
 
     private bool isalive;
 
     public AudioClip playerdead01;
     private AudioSource _audioSource;
+
+    private Image backp;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,14 @@ public class GetMeteorite : MonoBehaviour
         _audioSource.loop = false;
         _audioSource.volume = 0.5f;
         _audioSource.clip = playerdead01;
+
+        switch(DataBase.characterID)
+        {
+            case 3: {
+                backp = GameObject.Find("PassiveSkill").transform.GetChild(0).GetComponent<Image>();
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -52,17 +65,33 @@ public class GetMeteorite : MonoBehaviour
 
             if (Coll.gameObject.tag == "Monster" && haveMeteorite)
             {
-                _nowObj.Death();
-                GetComponent<PlayerControl>().isdie = true;
-                isalive = false;
-                Particle01_copy = Instantiate(Particle01);
-                Particle01_copy.transform.parent = transform;
-                Particle01_copy.transform.localPosition = Vector3.zero;
-                Particle02_copy = Instantiate(Particle02);
-                Particle02_copy.transform.parent = transform;
-                Particle02_copy.transform.localPosition = Vector3.zero;
-                _audioSource.Play();
-                Invoke("attackAndDestroy", 2f);
+                if(HP == 1)
+                {
+                    _nowObj.Death();
+                    GetComponent<PlayerControl>().isdie = true;
+                    isalive = false;
+                    Particle01_copy = Instantiate(Particle01);
+                    Particle01_copy.transform.parent = transform;
+                    Particle01_copy.transform.localPosition = Vector3.zero;
+                    Particle02_copy = Instantiate(Particle02);
+                    Particle02_copy.transform.parent = transform;
+                    Particle02_copy.transform.localPosition = Vector3.zero;
+                    _audioSource.Play();
+                    Invoke("attackAndDestroy", 2f);
+                }
+                else
+                {
+                    HP -= 1;
+                    backp.fillAmount += 0.5f;
+                    Particle03_copy = Instantiate(Particle03);
+                    Particle03_copy.transform.parent = transform;
+                    Particle03_copy.transform.localPosition = Vector3.zero;
+                    if (haveMeteorite)
+                    {
+                        attack();
+                        haveMeteorite = false;
+                    }
+                }
             }
         }
     }
@@ -86,17 +115,33 @@ public class GetMeteorite : MonoBehaviour
 
             if (Coll.gameObject.tag == "Meteorite" && haveMonster)
             {
-                _nowObj.Death();
-                GetComponent<PlayerControl>().isdie = true;
-                isalive = false;
-                Particle01_copy = Instantiate(Particle01);
-                Particle01_copy.transform.parent = transform;
-                Particle01_copy.transform.localPosition = Vector3.zero;
-                Particle02_copy = Instantiate(Particle02);
-                Particle02_copy.transform.parent = transform;
-                Particle02_copy.transform.localPosition = Vector3.zero;
-                _audioSource.Play();
-                Invoke("attackAndDestroy", 2f);
+                if(HP == 1)
+                {
+                    _nowObj.Death();
+                    GetComponent<PlayerControl>().isdie = true;
+                    isalive = false;
+                    Particle01_copy = Instantiate(Particle01);
+                    Particle01_copy.transform.parent = transform;
+                    Particle01_copy.transform.localPosition = Vector3.zero;
+                    Particle02_copy = Instantiate(Particle02);
+                    Particle02_copy.transform.parent = transform;
+                    Particle02_copy.transform.localPosition = Vector3.zero;
+                    _audioSource.Play();
+                    Invoke("attackAndDestroy", 2f);
+                }
+                else
+                {
+                    HP -= 1;
+                    backp.fillAmount += 0.5f;
+                    Particle03_copy = Instantiate(Particle03);
+                    Particle03_copy.transform.parent = transform;
+                    Particle03_copy.transform.localPosition = Vector3.zero;
+                    if (haveMeteorite)
+                    {
+                        attack();
+                        haveMeteorite = false;
+                    }
+                }
             }
         }
     }

@@ -6,11 +6,11 @@ using TMPro;
 
 public class SkillControl : MonoBehaviour
 {
-    private Image front, back;
+    private Image front, back, frontp, backp;
     private bool iscold = false;
     private float times, coldtime;
-    private GameObject FirstSkill;
-    public Sprite sprite00, sprite01, sprite02;
+    private GameObject FirstSkill, PassiveSkill;
+    public Sprite sprite00, sprite01, sprite02, sprite03;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -47,6 +47,8 @@ public class SkillControl : MonoBehaviour
     public GameObject Particle06;
     private GameObject Particle06_copy;
 
+    // skill03
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,9 +59,15 @@ public class SkillControl : MonoBehaviour
         back.fillAmount = 0f;
         counttimetext.text = "";
 
+        PassiveSkill = GameObject.Find("PassiveSkill");
+        frontp = PassiveSkill.GetComponent<Image>();
+        backp = PassiveSkill.transform.GetChild(0).GetComponent<Image>();
+        backp.fillAmount = 0f;
+
         switch(DataBase.characterID)
         {
             case 0: {
+                PassiveSkill.SetActive(false);
                 front.sprite = sprite00;
                 back.sprite = sprite00;
                 coldtime = 10f;
@@ -67,6 +75,7 @@ public class SkillControl : MonoBehaviour
                 break;
             }
             case 1: {
+                PassiveSkill.SetActive(false);
                 front.sprite = sprite01;
                 back.sprite = sprite01;
                 coldtime = 8f;
@@ -74,10 +83,18 @@ public class SkillControl : MonoBehaviour
                 break;
             }
             case 2: {
+                PassiveSkill.SetActive(false);
                 front.sprite = sprite02;
                 back.sprite = sprite02;
                 coldtime = 12f;
                 coldtimeint = 12;
+                break;
+            }
+            case 3: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite03;
+                backp.sprite = sprite03;
+                Player01.GetComponent<GetMeteorite>().HP = 3;
                 break;
             }
         }
@@ -182,6 +199,9 @@ public class SkillControl : MonoBehaviour
                     Particle06_copy.transform.parent = PlayerNum[to].transform;
                     Particle06_copy.transform.localPosition = Vector3.zero;
                     Invoke("endFirstSkill", 2.0f);
+                    break;
+                }
+                case 3: {
                     break;
                 }
             }

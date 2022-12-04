@@ -8,7 +8,7 @@ public class Finish : MonoBehaviour
     public GameObject Player;
     public int playernum = 5;
     public bool enemyDead = false;
-    private float TimeRun = 0.25f;
+    //private float TimeRun = 0.25f;
     private bool isend;
 
     public GameObject Monster;
