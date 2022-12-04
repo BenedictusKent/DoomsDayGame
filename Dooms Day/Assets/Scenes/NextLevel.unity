@@ -1046,6 +1046,7 @@ MonoBehaviour:
   HP: 1
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  Particle03: {fileID: 0}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
 --- !u!1 &429899130
 GameObject:
@@ -7987,6 +7988,7 @@ MonoBehaviour:
   HP: 1
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  Particle03: {fileID: 0}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
 --- !u!114 &472926042 stripped
 MonoBehaviour:
@@ -8674,6 +8676,7 @@ MonoBehaviour:
   HP: 1
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  Particle03: {fileID: 0}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
 --- !u!4 &843892743 stripped
 Transform:
@@ -8854,6 +8857,7 @@ MonoBehaviour:
   HP: 1
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  Particle03: {fileID: 0}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
 --- !u!114 &883396283
 MonoBehaviour:
@@ -20069,6 +20073,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 178093383}
     m_Modifications:
+    - target: {fileID: 4892146745981430896, guid: ae04b3bf277ae062cb0f41563660bff4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 52614d32f64dafc1fb436938a7e8cefa, type: 2}
     - target: {fileID: 4892146745981430900, guid: ae04b3bf277ae062cb0f41563660bff4, type: 3}
       propertyPath: m_Name
       value: GunnerGFX
@@ -20117,6 +20125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4892146745981430903, guid: ae04b3bf277ae062cb0f41563660bff4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8793639957104055765, guid: 99062ccc20dd717d792f28baa050a211, type: 3}
     m_RemovedComponents:
     - {fileID: 4892146745981430898, guid: ae04b3bf277ae062cb0f41563660bff4, type: 3}
     - {fileID: 4892146745981430897, guid: ae04b3bf277ae062cb0f41563660bff4, type: 3}
@@ -20218,6 +20230,8 @@ MonoBehaviour:
   sprite00: {fileID: 21300000, guid: c0c5d00add8dec3498c04ce1ee6156a4, type: 3}
   sprite01: {fileID: 21300000, guid: 4b8449115f5b96a46b124e25e616d4db, type: 3}
   sprite02: {fileID: 21300000, guid: 2d66fb2411c3eb84fa80ae8e211f1b54, type: 3}
+  sprite03: {fileID: 0}
+  sprite04: {fileID: 0}
   counttimetext: {fileID: 2025264783}
   Player01: {fileID: 883396279}
   Particle01: {fileID: 3216364555707398208, guid: 1268f298edf6b584b9c515255dcce7ca, type: 3}
@@ -20511,6 +20525,7 @@ MonoBehaviour:
   HP: 1
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  Particle03: {fileID: 0}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
 --- !u!114 &1845260369 stripped
 MonoBehaviour:
