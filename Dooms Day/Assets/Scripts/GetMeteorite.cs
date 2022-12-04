@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetMeteorite : MonoBehaviour
 {
-    private GameObject Meteorite, main, GameService;
+    private GameObject Meteorite, GameService;
     public bool haveMeteorite, haveMonster;
     public int PlayerID, HP = 1;
     private PlayerObject _nowObj;
@@ -23,13 +23,11 @@ public class GetMeteorite : MonoBehaviour
     void Start()
     {
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
-        main = GameObject.Find("GameService");
+        GameService = GameObject.Find("GameService");
         haveMeteorite = false;
         haveMonster = false;
         isalive = true;
         _nowObj = GetComponent<PlayerObject>();
-
-        GameService = GameObject.Find("GameService");
 
         _audioSource = this.gameObject.AddComponent<AudioSource>();
         _audioSource.loop = false;
@@ -57,7 +55,6 @@ public class GetMeteorite : MonoBehaviour
                 _nowObj.Death();
                 GetComponent<PlayerControl>().isdie = true;
                 isalive = false;
-                GameService.GetComponent<CursorControl>().LeavePlayer();
                 Particle01_copy = Instantiate(Particle01);
                 Particle01_copy.transform.parent = transform;
                 Particle01_copy.transform.localPosition = Vector3.zero;
@@ -92,7 +89,6 @@ public class GetMeteorite : MonoBehaviour
                 _nowObj.Death();
                 GetComponent<PlayerControl>().isdie = true;
                 isalive = false;
-                GameService.GetComponent<CursorControl>().LeavePlayer();
                 Particle01_copy = Instantiate(Particle01);
                 Particle01_copy.transform.parent = transform;
                 Particle01_copy.transform.localPosition = Vector3.zero;
@@ -122,7 +118,7 @@ public class GetMeteorite : MonoBehaviour
 
     void attackAndDestroy()
     {
-        main.GetComponent<Finish>().playernum -= 1;
+        GameService.GetComponent<Finish>().playernum -= 1;
         HP = 0;
         attack();
         Destroy(gameObject);
