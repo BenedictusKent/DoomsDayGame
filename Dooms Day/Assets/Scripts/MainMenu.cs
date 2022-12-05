@@ -41,6 +41,13 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene("Game");
     }
 
+    public void PlayGameHell()
+    {
+        DataBase.AIattacktime = 0.3f;
+        DataBase.AImovetime = 0.3f;
+        //SceneManager.LoadScene("Game");
+    }
+
     public void Again()
     {
         SceneManager.LoadScene("Game");

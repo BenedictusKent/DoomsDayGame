@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         DataBase.isPause = true;
+        DataBase.PauseMenuAvailable = false;
         Time.timeScale = 0f;
     }
 
@@ -27,8 +28,9 @@ public class Timer : MonoBehaviour
             }
             else if(time_int == -1)
             {
-                time_UI.text = "";
+                time_UI.gameObject.SetActive(false);
                 DataBase.isPause = false;
+                DataBase.PauseMenuAvailable = true;
                 Time.timeScale = 1f;
                 start_game = true;
             }
