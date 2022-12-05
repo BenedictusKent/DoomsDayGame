@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7772239381880555137, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772239381880555137, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 7772239381880555139, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -999,6 +1007,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &398434284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398434282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &398434286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,6 +1424,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &466891068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466891066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &466891069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2472,6 +2516,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &842475095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842475093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &842475097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2703,6 +2765,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3545113732452401576, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
   m_PrefabInstance: {fileID: 766551275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &883396280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883396279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &883396282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5439,6 +5519,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &1710463730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710463728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &1710463732
 MonoBehaviour:
   m_ObjectHideFlags: 0
