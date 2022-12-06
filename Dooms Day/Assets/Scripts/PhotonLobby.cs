@@ -21,6 +21,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1.0f;
         if(PhotonNetwork.IsConnected == false)
         {
             SceneManager.LoadScene("RuleMenu");

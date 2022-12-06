@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room.unity
     guid: 2a93d69d8a3c60344a11b1658f026fc1
+  - enabled: 1
+    path: Assets/Scenes/OnlineGame.unity
+    guid: f91c91fd5c4171f4ca6f30c57e6f95f9
   m_configObjects: {}

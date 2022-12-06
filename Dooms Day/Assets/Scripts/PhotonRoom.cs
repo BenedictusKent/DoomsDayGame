@@ -27,8 +27,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         {
             textRoomName.text = PhotonNetwork.CurrentRoom.Name;
             UpdatePlayerList();
+            buttonStartGame.interactable = PhotonNetwork.IsMasterClient;
         }
-        buttonStartGame.interactable = PhotonNetwork.IsMasterClient;
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
@@ -57,7 +57,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
 
     public void OnClickStartGame()
     {
-
+        SceneManager.LoadScene("OnlineGame");
     }
     public void OnClickLeaveRoom()
     {
