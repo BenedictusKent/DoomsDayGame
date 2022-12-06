@@ -14,6 +14,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     [SerializeField]
     InputField inputRoomNameCreate, inputRoomNameJoin;
     [SerializeField]
+    InputField inputPlayerName;
+    [SerializeField]
     Text textRoomList;
 
     // Start is called before the first frame update
@@ -25,22 +27,29 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.JoinLobby();
+            if(PhotonNetwork.CurrentLobby == null){
+                PhotonNetwork.JoinLobby();
+            }
+            CreateRoomWindow.SetActive(false);
+            JoinRoomWindow.SetActive(false);
         }
 
-        CreateRoomWindow.SetActive(false);
-        JoinRoomWindow.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnConnectedToMaster()
     {
-        
+        Debug.Log("Connected to Master.");
+        PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedLobby()
     {
         Debug.Log("Lobby is joined.");
+    }
+
+    public string GetPlayerName()
+    {
+        return inputPlayerName.text.Trim();
     }
 
     public void OpenCreateRoomWindow()
@@ -68,14 +77,16 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public void OnClickCreateRoom()
     {
         string roomName = inputRoomNameCreate.text.Trim();
+        string playerName = GetPlayerName();
 
-        if(roomName.Length > 0)
+        if(roomName.Length > 0 && playerName.Length > 0)
         {
             PhotonNetwork.CreateRoom(roomName);
+            PhotonNetwork.LocalPlayer.NickName = playerName;
         }
         else
         {
-            Debug.Log("Invalid RoomName!");
+            Debug.Log("Invalid RoomName or PlayerName!");
         }
     }
 
@@ -100,14 +111,16 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public void OnClickJoinRoom()
     {
         string roomName = inputRoomNameJoin.text.Trim();
+        string playerName = GetPlayerName();
 
-        if(roomName.Length > 0)
+        if(roomName.Length > 0 && playerName.Length > 0)
         {
             PhotonNetwork.JoinRoom(roomName);
+            PhotonNetwork.LocalPlayer.NickName = playerName;
         }
         else
         {
-            Debug.Log("Invalid RoomName!");
+            Debug.Log("Invalid RoomName or PlayerName!");
         }
     }
 }
