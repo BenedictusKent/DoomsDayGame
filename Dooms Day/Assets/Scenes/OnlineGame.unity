@@ -3071,6 +3071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap
       objectReference: {fileID: 0}
+    - target: {fileID: 8907335164246643399, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8907335164246643419, guid: 6c7d419d74a1550dc8718bed6ec8b2c7, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -4509,7 +4513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1401876607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7191,6 +7195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap2
       objectReference: {fileID: 0}
+    - target: {fileID: 3286542037332381397, guid: d5d233cb552ed8649b0d3cb9ad22063b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6479097275472663002, guid: d5d233cb552ed8649b0d3cb9ad22063b, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -7326,6 +7334,10 @@ PrefabInstance:
     - target: {fileID: 76342052359271318, guid: 9390dcd3f949fc3f58285ce182a5cb14, type: 3}
       propertyPath: m_Name
       value: Trap3
+      objectReference: {fileID: 0}
+    - target: {fileID: 76342052359271318, guid: 9390dcd3f949fc3f58285ce182a5cb14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1087075682393754256, guid: 9390dcd3f949fc3f58285ce182a5cb14, type: 3}
       propertyPath: m_RootOrder
