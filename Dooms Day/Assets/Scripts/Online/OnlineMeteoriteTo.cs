@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+using HashTable = ExitGames.Client.Photon.Hashtable;
 
-public class OnlineMeteoriteTo : MonoBehaviour
+public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
 {
     Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
     public GameObject one, two, three, four, five;
@@ -15,11 +17,14 @@ public class OnlineMeteoriteTo : MonoBehaviour
     private float fardistance, fartmp;
     private int farID;
 
+    private GameObject GameService;
+
     private PhotonView _pv;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameService = GameObject.Find("GameService");
         PlayerNum.Add(1, one);
         PlayerNum.Add(2, two);
         PlayerNum.Add(3, three);
@@ -27,12 +32,11 @@ public class OnlineMeteoriteTo : MonoBehaviour
         PlayerNum.Add(5, five);
 
         _pv = this.gameObject.GetComponent<PhotonView>();
-        if(!_pv.IsMine){
-            Destroy(this);
-        }
 
-        randomvalue();
-        speedbool = true;
+        if(_pv.IsMine){
+            randomvalue();
+        }
+  
         AInum = 0;
         AIfarnum = 0;
     }
@@ -42,7 +46,11 @@ public class OnlineMeteoriteTo : MonoBehaviour
     {
         if(AInum > 0)
         {
-            checkrandomvalue(AInum);
+            if(_pv.IsMine){
+                if(GameService.GetComponent<OnlineFinish>().playnum > 1){
+                    checkrandomvalue(AInum);
+                }
+            }
             AInum = 0;
         }
 
@@ -58,7 +66,9 @@ public class OnlineMeteoriteTo : MonoBehaviour
             speedbool = false;
         }
         
-        MoveBall();
+        if(to > 0){
+            MoveBall();
+        }
     }
 
     void GetFirstSpeed()
@@ -68,21 +78,31 @@ public class OnlineMeteoriteTo : MonoBehaviour
 
     void MoveBall()
     {
-        moveball(PlayerNum[to]);
+        if(PlayerNum[to] != null){
+            moveball(PlayerNum[to]);
+        }
     }
 
     void randomvalue()
     {
-        to = Random.Range(1, 6);
+        int value = Random.Range(1, 6);
+        HashTable table = new HashTable();
+        table.Add("Action", "Mto");
+        table.Add("to", value);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(table);
     }
 
     void checkrandomvalue(int ID)
     {
-        to = Random.Range(1, 6);
-        while (dead() || to == ID)
+        int value = Random.Range(1, 6);
+        while (dead(value) || value == ID)
         {
-            to = Random.Range(1, 6);
+            value = Random.Range(1, 6);
         }
+        HashTable table = new HashTable();
+        table.Add("Action", "Mto");
+        table.Add("to", value);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(table);
     }
 
     void farvalue(int ID)
@@ -105,9 +125,9 @@ public class OnlineMeteoriteTo : MonoBehaviour
         to = farID;
     }
 
-    bool dead()
+    bool dead(int value)
     {
-        if(PlayerNum[to] == null)
+        if(PlayerNum[value] == null)
         {
             return true;
         }
@@ -131,5 +151,19 @@ public class OnlineMeteoriteTo : MonoBehaviour
             return tmp;
         else
             return (firstSpeed / tmp);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, HashTable changedProps)
+    {
+        if((string)changedProps["Action"] == "Mto"){
+            to = (int)changedProps["to"];
+            speed = 2.0f;
+            speedbool = true;
+        }
+        else if((string)changedProps["Action"] == "Mfar"){
+            AIfarnum = (int)changedProps["AIfarnum"];
+            speed = 2.0f;
+            speedbool = true;
+        }
     }
 }

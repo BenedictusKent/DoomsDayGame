@@ -11,7 +11,7 @@ public class OnlineEnemyAI : MonoBehaviour
     public OnlineTrapLogic3 trap3var;
     public Transform target;
     public Transform enemyGFX;
-    public Finish endScript;
+    public OnlineFinish endScript;
     public float speed = 200f;
     public float nextWaypointDistance = 1.2f;
 

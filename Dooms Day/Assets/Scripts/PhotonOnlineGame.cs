@@ -22,6 +22,7 @@ public class PhotonOnlineGame : MonoBehaviour
 
     public void InitGame()
     {
+        DataBase.playerID = PhotonNetwork.LocalPlayer.ActorNumber;
         Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
         switch(PhotonNetwork.LocalPlayer.ActorNumber){
             case 1: pv1.RequestOwnership(); pv1.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;

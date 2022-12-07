@@ -12,6 +12,7 @@ public class Finish : MonoBehaviour
     private bool isend;
 
     public GameObject Monster;
+    public GameObject Monster2;
     public GameObject Particle01;
     private GameObject Particle01_copy;
 
@@ -49,8 +50,19 @@ public class Finish : MonoBehaviour
                 isend = true;
                 enemyDead = true;
                 Particle01_copy = Instantiate(Particle01);
-                Particle01_copy.transform.parent = Monster.transform;
-                Particle01_copy.transform.localPosition = Vector3.zero;
+                switch(DataBase.mapID)
+                {
+                    case 0: {
+                        Particle01_copy.transform.parent = Monster.transform;
+                        Particle01_copy.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                    case 1: {
+                        Particle01_copy.transform.parent = Monster2.transform;
+                        Particle01_copy.transform.localPosition = Vector3.zero;
+                        break;
+                    }
+                }
                 _audioSource.Play();
                 Invoke("toWinMenu", 2.25f);
             }

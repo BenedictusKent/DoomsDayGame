@@ -8,4 +8,8 @@ public static class DataBase
     public static bool isPause = false, isHell = false, PauseMenuAvailable = false;
 
     public static int characterID = 0, mapID = 0;
+
+    public static int playerID = 1;
+    public static string WinnerName = "?";
+    public static bool isOpt = false;
 }

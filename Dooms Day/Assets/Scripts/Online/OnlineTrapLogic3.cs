@@ -14,7 +14,7 @@ public class OnlineTrapLogic3 : MonoBehaviour
 
     private float x = -10.0f;
     private float y = -10.0f;
-    private TrapMaster master;
+    private OnlineTrapMaster master;
     Animator animator;
 
     private GameObject player;
@@ -24,12 +24,13 @@ public class OnlineTrapLogic3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _pv = this.gameObject.GetComponent<PhotonView>();
         if(!_pv.IsMine){
             Destroy(this);
         }
         
         animator = GetComponent<Animator>();
-        master = GameObject.Find("TrapMaster").GetComponent<TrapMaster>();
+        master = GameObject.Find("TrapMaster").GetComponent<OnlineTrapMaster>();
         if(master.randomgen == 2) {
             x = Random.Range(-6f, 6f);
             y = Random.Range(-3f, 3f);

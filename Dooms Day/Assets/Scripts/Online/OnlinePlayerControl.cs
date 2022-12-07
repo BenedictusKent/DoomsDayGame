@@ -26,6 +26,8 @@ public class OnlinePlayerControl : MonoBehaviour
 
     private PhotonView _pv;
 
+    private GameObject GameService;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class OnlinePlayerControl : MonoBehaviour
         slow = false;
         slow2 = false;
         isdie = false;
+        GameService = GameObject.Find("GameService");
         _pv = this.gameObject.GetComponent<PhotonView>();
 
         if(isAI)
@@ -54,6 +57,7 @@ public class OnlinePlayerControl : MonoBehaviour
     void checkIsMine()
     {
         if(!_pv.IsMine){
+            Destroy(this.gameObject.GetComponent<OnlineGetMeteorite>());
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             Destroy(this);
         }
@@ -136,13 +140,13 @@ public class OnlinePlayerControl : MonoBehaviour
     // AI
     void AIattack()
     {
-        if (_nowObj.GetComponent<GetMeteorite>().haveMeteorite == true)
+        if (_nowObj.GetComponent<OnlineGetMeteorite>().haveMeteorite == true)
         {
             LocateTime -= Time.fixedDeltaTime;
             if(LocateTime <= 0)
             {
                 LocateTime = LocateNeedTime;
-                _nowObj.GetComponent<GetMeteorite>().haveMeteorite = false;
+                _nowObj.GetComponent<OnlineGetMeteorite>().haveMeteorite = false;
                 attack();
             }
         }
@@ -150,10 +154,10 @@ public class OnlinePlayerControl : MonoBehaviour
 
     void attack()
     {
-        _audioSource.Play();
-        Meteorite.GetComponent<MeteoriteTo>().AInum = _nowObj.GetComponent<GetMeteorite>().PlayerID;
-        Meteorite.GetComponent<MeteoriteTo>().speed = 2;
-        Meteorite.GetComponent<MeteoriteTo>().speedbool = true;
+        if(GameService.GetComponent<OnlineFinish>().playnum > 1){
+            _audioSource.Play();
+            Meteorite.GetComponent<OnlineMeteoriteTo>().AInum = _nowObj.GetComponent<OnlineGetMeteorite>().PlayerID;
+        }
     }
 
     void ChangeMove()

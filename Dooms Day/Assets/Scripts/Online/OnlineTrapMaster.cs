@@ -16,6 +16,7 @@ public class OnlineTrapMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _pv = this.gameObject.GetComponent<PhotonView>();
         if(!_pv.IsMine){
             Destroy(this);
         }

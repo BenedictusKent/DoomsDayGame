@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OnlineGame.unity
     guid: f91c91fd5c4171f4ca6f30c57e6f95f9
+  - enabled: 1
+    path: Assets/Scenes/OnlineEndMenu.unity
+    guid: f5872abda8054ef49be66392d8263294
   m_configObjects: {}

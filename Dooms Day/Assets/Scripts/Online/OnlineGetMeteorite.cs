@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using HashTable = ExitGames.Client.Photon.Hashtable;
 
 public class OnlineGetMeteorite : MonoBehaviour
 {
@@ -30,11 +31,6 @@ public class OnlineGetMeteorite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _pv = this.gameObject.GetComponent<PhotonView>();
-        if(!_pv.IsMine){
-            Destroy(this);
-        }
-
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
         GameService = GameObject.Find("GameService");
         haveMeteorite = false;
@@ -164,15 +160,15 @@ public class OnlineGetMeteorite : MonoBehaviour
 
     void attack()
     {
-        Meteorite.GetComponent<OnlineMeteoriteTo>().AIfarnum = PlayerID;
-        Meteorite.GetComponent<OnlineMeteoriteTo>().speed = 2;
-        Meteorite.GetComponent<OnlineMeteoriteTo>().speedbool = true;
+        HashTable table = new HashTable();
+        table.Add("Action", "Mfar");
+        table.Add("AIfarnum", PlayerID);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(table);
     }
 
     void attackAndDestroy()
     {
-        GameService.GetComponent<Finish>().playernum -= 1;
-        HP = 0;
+        GameService.GetComponent<OnlineFinish>().CallRpcPlayerDead(PlayerID);
         attack();
         PhotonNetwork.Destroy(gameObject);
     }
