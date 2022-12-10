@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 100588936}
   - component: {fileID: 100588935}
   m_Layer: 5
-  m_Name: Menu Button
+  m_Name: LeaveRoom Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leave room
+  m_text: Leave Room
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
   m_sharedMaterial: {fileID: -6656518538230778095, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
@@ -1833,7 +1833,7 @@ GameObject:
   - component: {fileID: 1520626403}
   - component: {fileID: 1520626402}
   m_Layer: 5
-  m_Name: Again Button
+  m_Name: BacktoRoom Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2076,12 +2076,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 50
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to room
+  m_text: Back to Room
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
   m_sharedMaterial: {fileID: -6656518538230778095, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}

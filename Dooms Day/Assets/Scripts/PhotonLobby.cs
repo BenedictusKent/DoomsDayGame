@@ -124,4 +124,14 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
             Debug.Log("Invalid RoomName or PlayerName!");
         }
     }
+
+    public void OnClickMainMenu()
+    {
+        PhotonNetwork.Disconnect();
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

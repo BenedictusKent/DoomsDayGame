@@ -1111,6 +1111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoaderCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7772239381880555143, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
 --- !u!224 &916752937 stripped
@@ -1128,6 +1132,10 @@ PrefabInstance:
     - target: {fileID: 121798, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
       propertyPath: m_Name
       value: SceneLoader 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 121798, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
       propertyPath: onLoaded.m_PersistentCalls.m_Calls.Array.size

@@ -1388,6 +1388,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11409234, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FinishSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: BackgroundAudio
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
       propertyPath: onLoaded.m_PersistentCalls.m_Calls.Array.size
       value: 0

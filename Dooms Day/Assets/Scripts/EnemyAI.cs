@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
+    public Transform target1, target2;
     public TrapLogic trapvar;
     public TrapLogic2 trap2var;
     public TrapLogic3 trap3var;
@@ -25,6 +26,10 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch(DataBase.mapID){
+            case 0: target = target1; break;
+            case 1: target = target2; break;
+        }
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GetMeteorite : MonoBehaviour
 {
+    public GameObject Meteorite1, Meteorite2;
     private GameObject Meteorite, GameService;
     public bool haveMeteorite, haveMonster;
     public int PlayerID, HP = 1;
@@ -27,7 +28,10 @@ public class GetMeteorite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
+        switch(DataBase.mapID){
+            case 0: Meteorite = Meteorite1; break;
+            case 1: Meteorite = Meteorite2; break;
+        }
         GameService = GameObject.Find("GameService");
         haveMeteorite = false;
         haveMonster = false;

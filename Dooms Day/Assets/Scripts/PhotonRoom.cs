@@ -59,6 +59,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("OnlineGame");
     }
+    
     public void OnClickLeaveRoom()
     {
         PhotonNetwork.LeaveRoom();

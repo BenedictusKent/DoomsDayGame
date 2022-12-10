@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoaderCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7772239381880555143, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b4db59a4707fb94798062d8d3480986, type: 3}
 --- !u!1 &53512338
@@ -711,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Back to lobby
+  m_text: 'Back to Lobby
 
 '
   m_isRightToLeft: 0
@@ -1112,7 +1116,7 @@ GameObject:
   - component: {fileID: 413311568}
   - component: {fileID: 413311567}
   m_Layer: 5
-  m_Name: PAUSE
+  m_Name: MENU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,7 +1161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PAUSE
+  m_text: MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
   m_sharedMaterial: {fileID: -6656518538230778095, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
@@ -1657,7 +1661,7 @@ GameObject:
   - component: {fileID: 606287270}
   - component: {fileID: 606287269}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1702,7 +1706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
   m_sharedMaterial: {fileID: -6656518538230778095, guid: cf66ee71fbd92ae0ea7eec7c8d384a11, type: 2}
@@ -2924,7 +2928,7 @@ GameObject:
   - component: {fileID: 886442985}
   - component: {fileID: 886442984}
   m_Layer: 5
-  m_Name: BtnExit
+  m_Name: BtnQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2989,14 +2993,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 886442985}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Position1
+      - m_Target: {fileID: 1648095693}
+        m_TargetAssemblyTypeName: OnlineOptMenu, Assembly-CSharp
+        m_MethodName: OnClickQuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3019,7 +3023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8980392, g: 0.23137255, b: 0.14901961, a: 1}
+  m_Color: {r: 1, g: 0.6862745, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6582,7 +6586,7 @@ GameObject:
   - component: {fileID: 1960042662}
   - component: {fileID: 1960042661}
   m_Layer: 5
-  m_Name: BtnMainMenu
+  m_Name: BtnLobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

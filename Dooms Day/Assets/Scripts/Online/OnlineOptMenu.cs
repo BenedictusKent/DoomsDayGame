@@ -48,4 +48,10 @@ public class OnlineOptMenu : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("Lobby");
     }
+
+    public void OnClickQuitGame()
+    {
+        Debug.Log("QUIT!");
+        Application.Quit();
+    }
 }

@@ -1043,6 +1043,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8277348, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277348, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11409234, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: SkipType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: AudioVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FadeInSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FinishSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FadeOutSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: useTimeScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: useBackgrounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: BackgroundAudio
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: SceneSmoothLoad
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FinishSoundVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FadeBackgroundSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 11439510, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
       propertyPath: onLoaded.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -1143,6 +1199,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7075868624291869166, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+      propertyPath: FlashImage
+      value: 
+      objectReference: {fileID: 2094275284}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
 --- !u!1 &313720270
@@ -4891,6 +4951,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090497899}
   m_CullTransparentMesh: 1
+--- !u!1 &2094275284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 155474, guid: ac211359ace3a1b44b5612313fe10e1c, type: 3}
+  m_PrefabInstance: {fileID: 310253085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143941018
 GameObject:
   m_ObjectHideFlags: 0
