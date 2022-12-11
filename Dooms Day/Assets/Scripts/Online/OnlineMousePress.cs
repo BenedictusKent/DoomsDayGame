@@ -49,7 +49,7 @@ public class OnlineMousePress : MonoBehaviour
                 table.Add("Action", "Mto");
                 table.Add("to", PlayerID);
                 PhotonNetwork.LocalPlayer.SetCustomProperties(table);
-                PlayerNum[DataBase.playerID].GetComponent<OnlineGetMeteorite>().haveMeteorite = false;
+                //PlayerNum[DataBase.playerID].GetComponent<OnlineGetMeteorite>().haveMeteorite = false;
             }
         }
     }
