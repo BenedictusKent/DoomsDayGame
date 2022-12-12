@@ -24,6 +24,7 @@ public class OnlineEnemyAI : MonoBehaviour
     Animator animator;
 
     private PhotonView _pv;
+    private bool deadlock;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class OnlineEnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         _pv = this.gameObject.GetComponent<PhotonView>();
+        deadlock = false;
 
         if(!_pv.IsMine){
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
@@ -108,8 +110,11 @@ public class OnlineEnemyAI : MonoBehaviour
         }
         if(endScript.enemyDead) {
             rb.velocity = Vector3.zero;
-            animator.SetTrigger("isDead");
-            animator.Play("Enemy_Dead");
+            if(!deadlock){
+                animator.SetTrigger("isDead");
+                deadlock = true;
+            }
+            //animator.Play("Enemy_Dead");
         }
     }
 }

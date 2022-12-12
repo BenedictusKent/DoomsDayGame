@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
+    private bool deadlock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        deadlock = false;
 
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("IncreaseSpeed", 2f, 2f);
@@ -103,8 +106,11 @@ public class EnemyAI : MonoBehaviour
         }
         if(endScript.enemyDead) {
             rb.velocity = Vector3.zero;
-            animator.SetTrigger("isDead");
-            animator.Play("Enemy_Dead");
+            if(!deadlock){
+                animator.SetTrigger("isDead");
+                deadlock = true;
+            }
+            //animator.Play("Enemy_Dead");
         }
     }
 }

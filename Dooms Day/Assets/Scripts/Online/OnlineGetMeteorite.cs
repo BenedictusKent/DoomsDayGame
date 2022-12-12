@@ -82,6 +82,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                     Particle02_copy.transform.localPosition = Vector3.zero;
                     _audioSource.Play();
                     Invoke("attackAndDestroy", 2f);
+                    GetComponent<OnlinePlayerControl>().CallRpcPlayerDeadAnimation(PlayerID);
                 }
                 else
                 {
@@ -132,6 +133,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                     Particle02_copy.transform.localPosition = Vector3.zero;
                     _audioSource.Play();
                     Invoke("attackAndDestroy", 2f);
+                    GetComponent<OnlinePlayerControl>().CallRpcPlayerDeadAnimation(PlayerID);
                 }
                 else
                 {

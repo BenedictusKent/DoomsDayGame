@@ -22,9 +22,15 @@ public class PhotonOnlineGame : MonoBehaviour
 
     public void InitGame()
     {
-        DataBase.playerID = PhotonNetwork.LocalPlayer.ActorNumber;
-        Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
-        switch(PhotonNetwork.LocalPlayer.ActorNumber){
+        int count = 0;
+        foreach(var kvp in PhotonNetwork.PlayerList){
+            count++;
+            if(kvp == PhotonNetwork.CurrentRoom.Players[PhotonNetwork.LocalPlayer.ActorNumber]){
+                break;
+            }
+        }
+        DataBase.playerID = count;
+        switch(count){
             case 1: pv1.RequestOwnership(); pv1.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
             case 2: pv2.RequestOwnership(); pv2.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
             case 3: pv3.RequestOwnership(); pv3.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;

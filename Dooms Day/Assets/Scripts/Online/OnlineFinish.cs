@@ -74,7 +74,7 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
             Particle01_copy.transform.localPosition = Vector3.zero;
             _audioSource.Play();
             if(PhotonNetwork.CurrentRoom.PlayerCount >= lastnum){
-                DataBase.WinnerName = PhotonNetwork.CurrentRoom.Players[lastnum].NickName;
+                DataBase.WinnerName = PhotonNetwork.PlayerList[lastnum - 1].NickName;
             }
             else{
                 DataBase.WinnerName = "AI";
@@ -89,7 +89,7 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
             Particle01_copy.transform.localPosition = Vector3.zero;
             _audioSource.Play();
             if(PhotonNetwork.CurrentRoom.PlayerCount >= lastnum){
-                DataBase.WinnerName = PhotonNetwork.CurrentRoom.Players[lastnum].NickName;
+                DataBase.WinnerName = PhotonNetwork.PlayerList[lastnum - 1].NickName;
             }
             else{
                 DataBase.WinnerName = "AI";
