@@ -765,6 +765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec158c193bda9cd49a38fa59e253abd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   player: {fileID: 883396279}
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!70 &381096700
@@ -823,6 +825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 2030951760}
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   speed: 5
   frozen: 0
   slow: 0
@@ -830,6 +834,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &398434284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398434282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &398434286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,6 +864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 5
@@ -7765,6 +7789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 843892744}
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   speed: 5
   frozen: 0
   slow: 0
@@ -7772,6 +7798,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &466891068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466891066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &466891069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7784,6 +7828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 2
@@ -7848,6 +7894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec158c193bda9cd49a38fa59e253abd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   player: {fileID: 883396279}
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!70 &560061471
@@ -7932,6 +7980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec158c193bda9cd49a38fa59e253abd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   player: {fileID: 883396279}
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!70 &563736023
@@ -8453,6 +8503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 766084964}
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   speed: 5
   frozen: 0
   slow: 0
@@ -8460,6 +8512,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &842475095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842475093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &842475097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8472,6 +8542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 4
@@ -8641,6 +8713,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3545113732452401576, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
   m_PrefabInstance: {fileID: 766551275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &883396280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883396279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &883396282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8653,6 +8743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 1
@@ -8675,6 +8767,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 0
   _nowObj: {fileID: 1031865862}
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   speed: 5
   frozen: 0
   slow: 0
@@ -18849,6 +18943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec158c193bda9cd49a38fa59e253abd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   player: {fileID: 883396279}
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!70 &1113956951
@@ -19918,6 +20014,7 @@ MonoBehaviour:
   playernum: 5
   enemyDead: 0
   Monster: {fileID: 178093378}
+  Monster2: {fileID: 0}
   Particle01: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   monsterdead01: {fileID: 8300000, guid: 0618e54d747945448bcd092263975fe5, type: 3}
 --- !u!4 &1648095689
@@ -20234,6 +20331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 214645234}
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   speed: 5
   frozen: 0
   slow: 0
@@ -20241,6 +20340,24 @@ MonoBehaviour:
   orgspeed: 5
   isdie: 0
   throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
+--- !u!114 &1710463730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710463728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a76f9c03874323b5154b14ac00427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  Speed: 0
+  lookForward: 0
+  reverse: 0
+  currentDistance: 0
+  currentClampedDistance: 0
 --- !u!114 &1710463732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20253,6 +20370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meteorite1: {fileID: 0}
+  Meteorite2: {fileID: 0}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 3
@@ -20671,6 +20790,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4577369688116093826, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
       propertyPath: target
+      value: 
+      objectReference: {fileID: 1416015905}
+    - target: {fileID: 4577369688116093826, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
+      propertyPath: target1
+      value: 
+      objectReference: {fileID: 1416015905}
+    - target: {fileID: 4577369688116093826, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
+      propertyPath: target2
       value: 
       objectReference: {fileID: 1416015905}
     - target: {fileID: 4577369688116093826, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
