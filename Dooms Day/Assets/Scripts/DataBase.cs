@@ -9,7 +9,11 @@ public static class DataBase
 
     public static int characterID = 0, mapID = 0;
 
+    // Online
     public static int playerID = 1;
     public static string WinnerName = "?";
     public static bool isOpt = false;
+
+    // Settings
+    public static float FullVolume = 1.0f, BackgroundVolume = 0.3f, EffectVolume1 = 1.0f, EffectVolume2 = 0.5f;
 }

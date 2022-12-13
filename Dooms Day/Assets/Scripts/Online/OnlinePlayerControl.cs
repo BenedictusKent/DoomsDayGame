@@ -58,13 +58,13 @@ public class OnlinePlayerControl : MonoBehaviour
 
             _audioSource = this.gameObject.AddComponent<AudioSource>();
             _audioSource.loop = false;
-            _audioSource.volume = 1f;
+            _audioSource.volume = DataBase.EffectVolume1;
             _audioSource.clip = throwball;
         }
 
         _audioSourceDead = this.gameObject.AddComponent<AudioSource>();
         _audioSourceDead.loop = false;
-        _audioSourceDead.volume = 0.5f;
+        _audioSourceDead.volume = DataBase.EffectVolume2;
         _audioSourceDead.clip = playerdead01;
         Invoke("checkIsMine", 0.15f);
     }

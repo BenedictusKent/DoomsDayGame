@@ -40,7 +40,7 @@ public class GetMeteorite : MonoBehaviour
 
         _audioSource = this.gameObject.AddComponent<AudioSource>();
         _audioSource.loop = false;
-        _audioSource.volume = 0.5f;
+        _audioSource.volume = DataBase.EffectVolume2;
         _audioSource.clip = playerdead01;
 
         switch(DataBase.characterID)

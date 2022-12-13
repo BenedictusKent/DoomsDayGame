@@ -38,7 +38,7 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
 
         _audioSource = this.gameObject.AddComponent<AudioSource>();
         _audioSource.loop = false;
-        _audioSource.volume = 1f;
+        _audioSource.volume = DataBase.EffectVolume1;
         _audioSource.clip = monsterdead01;
     }
 

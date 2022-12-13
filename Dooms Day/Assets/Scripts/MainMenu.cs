@@ -20,6 +20,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("SelectMenu");
     }
 
+    public void GoSettingMenu()
+    {
+        SceneManager.LoadScene("SettingMenu");
+    }
+
+
     public void PlayGameEasy()
     {
         DataBase.AIattacktime = 1.2f;
