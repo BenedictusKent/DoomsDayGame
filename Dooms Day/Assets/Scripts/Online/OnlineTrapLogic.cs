@@ -78,10 +78,10 @@ public class OnlineTrapLogic : MonoBehaviour
             }
             else if(collider.tag == "Player"){
                 player = collider.gameObject;
-                if(!player.GetComponent<PlayerControl>().isdie)
+                if(!player.GetComponent<OnlinePlayerControl>().isdie)
                 {
                     trapActivated = 0;
-                    player.GetComponent<PlayerControl>().frozen = true;
+                    player.GetComponent<OnlinePlayerControl>().frozen = true;
                     //playerFrozen = true;
                     animator.SetTrigger("isTriggered");
                     Invoke("UnfreezePlayer", 2);
@@ -100,7 +100,7 @@ public class OnlineTrapLogic : MonoBehaviour
 
     private void UnfreezePlayer()
     {
-        player.GetComponent<PlayerControl>().frozen = false;
+        player.GetComponent<OnlinePlayerControl>().frozen = false;
         //playerFrozen = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap_Idle");
