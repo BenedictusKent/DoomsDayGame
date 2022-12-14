@@ -29,7 +29,7 @@ public class OnlinePlayerControl : MonoBehaviour
 
     private GameObject GameService;
 
-    private int RPCaction, RPCorient;
+    private int RPCaction;
     private bool sendRPC;
 
     public GameObject Particle01;
@@ -49,7 +49,6 @@ public class OnlinePlayerControl : MonoBehaviour
         GameService = GameObject.Find("GameService");
         _pv = this.gameObject.GetComponent<PhotonView>();
         RPCaction = 1;
-        RPCorient = 2;
 
         if(isAI)
         {
@@ -151,23 +150,15 @@ public class OnlinePlayerControl : MonoBehaviour
         if(movement.x > 0)
         {
             _nowObj.TurnRight();
-            if(RPCorient != 1){
-                sendRPC = true;
-                RPCorient = 1;
-            }
         }
         else if(movement.x < 0)
         {
             _nowObj.TurnLeft();
-            if(RPCorient != 2){
-                sendRPC = true;
-                RPCorient = 2;
-            }
         }
 
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         if(sendRPC){
-            CallRpcPlayerAnimation(PlayerID, RPCaction, RPCorient);
+            CallRpcPlayerAnimation(PlayerID, RPCaction);
         }
     }
 
@@ -222,26 +213,24 @@ public class OnlinePlayerControl : MonoBehaviour
                 if(movement.x > 0)
                 {
                     _nowObj.TurnRight();
-                    RPCorient = 1;
                 }
                 else if(movement.x < 0)
                 {
                     _nowObj.TurnLeft();
-                    RPCorient = 2;
                 }
 
-                CallRpcPlayerAnimation(PlayerID, RPCaction, RPCorient);
+                CallRpcPlayerAnimation(PlayerID, RPCaction);
             }
         }
     }
 
-    public void CallRpcPlayerAnimation(int who, int action, int orient)
+    public void CallRpcPlayerAnimation(int who, int action)
     {
-        _pv.RPC("RpcPlayerAnimation", RpcTarget.Others, who, action, orient);
+        _pv.RPC("RpcPlayerAnimation", RpcTarget.Others, who, action);
     }
 
     [PunRPC]
-    void RpcPlayerAnimation(int who, int action, int orient, PhotonMessageInfo info)
+    void RpcPlayerAnimation(int who, int action, PhotonMessageInfo info)
     {
         /* action
             1. Idle
@@ -254,10 +243,6 @@ public class OnlinePlayerControl : MonoBehaviour
                 case 2: _nowObj.Run(); break;
             }
 
-            switch(orient){
-                case 1: _nowObj.TurnRight(); break;
-                case 2: _nowObj.TurnLeft(); break;
-            }
         }
     }
 
@@ -272,12 +257,8 @@ public class OnlinePlayerControl : MonoBehaviour
         if(who == PlayerID){
             _nowObj.Death();
             isdie = true;
-            Particle01_copy = Instantiate(Particle01);
-            Particle01_copy.transform.parent = transform;
-            Particle01_copy.transform.localPosition = Vector3.zero;
-            Particle02_copy = Instantiate(Particle02);
-            Particle02_copy.transform.parent = transform;
-            Particle02_copy.transform.localPosition = Vector3.zero;
+            Particle01_copy = Instantiate(Particle01, transform);
+            Particle02_copy = Instantiate(Particle02, transform);
             _audioSourceDead.Play();
         }
     }

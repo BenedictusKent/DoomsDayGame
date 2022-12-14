@@ -5630,6 +5630,7 @@ MonoBehaviour:
   Particle04: {fileID: 4679022235582755459, guid: cf757b3af77f72a49a7e1ff8ab61a711, type: 3}
   Particle05: {fileID: 2704333146655992581, guid: f62626a50dd029b498d548edf2d806e1, type: 3}
   Particle06: {fileID: 7239311344311584200, guid: da97eb81ecfb2854f8871bf36a17daa4, type: 3}
+  Particle07: {fileID: 2584659193886072682, guid: af5d43b88bf79464f833c46d6748aecf, type: 3}
 --- !u!114 &1648095692
 MonoBehaviour:
   m_ObjectHideFlags: 0

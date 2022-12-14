@@ -49,17 +49,14 @@ public class Finish : MonoBehaviour
             {
                 isend = true;
                 enemyDead = true;
-                Particle01_copy = Instantiate(Particle01);
                 switch(DataBase.mapID)
                 {
                     case 0: {
-                        Particle01_copy.transform.parent = Monster.transform;
-                        Particle01_copy.transform.localPosition = Vector3.zero;
+                        Particle01_copy = Instantiate(Particle01, Monster.transform);
                         break;
                     }
                     case 1: {
-                        Particle01_copy.transform.parent = Monster2.transform;
-                        Particle01_copy.transform.localPosition = Vector3.zero;
+                        Particle01_copy = Instantiate(Particle01, Monster2.transform);
                         break;
                     }
                 }

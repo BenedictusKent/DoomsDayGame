@@ -35,13 +35,13 @@ public class OnlineEnemyAI : MonoBehaviour
         _pv = this.gameObject.GetComponent<PhotonView>();
         deadlock = false;
 
-        if(!_pv.IsMine){
-            Destroy(this.gameObject.GetComponent<Rigidbody2D>());
-            Destroy(this);
+        if(_pv.IsMine){
+            InvokeRepeating("UpdatePath", 0f, .5f);
+            InvokeRepeating("IncreaseSpeed", 2f, 2f);
         }
-
-        InvokeRepeating("UpdatePath", 0f, .5f);
-        InvokeRepeating("IncreaseSpeed", 2f, 2f);
+        else{
+            Destroy(this.gameObject.GetComponent<Rigidbody2D>());
+        }
 
     }
 
@@ -69,52 +69,55 @@ public class OnlineEnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(path == null)
-            return;
+        if(_pv.IsMine){
+            if(path == null)
+                return;
 
-        if(currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-            reachedEndOfPath = false;
-
-        if(!trapvar.enemyFrozen)
-        {
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed * Time.fixedDeltaTime;
-
-            rb.AddForce(force);
-
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-            if(distance < nextWaypointDistance)
-                currentWaypoint++;
-
-            if(rb.velocity.x >= 0.01f)
+            if(currentWaypoint >= path.vectorPath.Count)
             {
-                enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+                reachedEndOfPath = true;
+                return;
             }
-            else if(rb.velocity.x <= -0.01f)
+            else
+                reachedEndOfPath = false;
+
+            if(!trapvar.enemyFrozen)
             {
-                enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                Vector2 force = direction * speed * Time.fixedDeltaTime;
+
+                rb.AddForce(force);
+
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                if(distance < nextWaypointDistance)
+                    currentWaypoint++;
+
+                if(rb.velocity.x >= 0.01f)
+                {
+                    enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+                }
+                else if(rb.velocity.x <= -0.01f)
+                {
+                    enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+                }
             }
-        }
-        if(trapvar.enemyFrozen)
-            rb.velocity = Vector3.zero;
-        else if(trap2var.enemySlow){
-            rb.velocity /= 2;
-        }
-        else if(trap3var.enemySlow){
-            rb.velocity /= 3;
-        }
-        if(endScript.enemyDead) {
-            rb.velocity = Vector3.zero;
-            if(!deadlock){
-                animator.SetTrigger("isDead");
-                deadlock = true;
+            if(trapvar.enemyFrozen)
+                rb.velocity = Vector3.zero;
+            else if(trap2var.enemySlow){
+                rb.velocity /= 2;
             }
-            //animator.Play("Enemy_Dead");
+            else if(trap3var.enemySlow){
+                rb.velocity /= 3;
+            }
+            if(endScript.enemyDead) {
+                rb.velocity = Vector3.zero;
+                if(!deadlock){
+                    animator.SetTrigger("isDead");
+                    deadlock = true;
+                }
+                //animator.Play("Enemy_Dead");
+            }
         }
     }
+
 }

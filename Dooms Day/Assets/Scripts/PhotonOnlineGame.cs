@@ -7,6 +7,9 @@ using Photon.Pun;
 public class PhotonOnlineGame : MonoBehaviour
 {
     public PhotonView pv1, pv2, pv3, pv4, pv5;
+
+    public GameObject blueindex;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +34,11 @@ public class PhotonOnlineGame : MonoBehaviour
         }
         DataBase.playerID = count;
         switch(count){
-            case 1: pv1.RequestOwnership(); pv1.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
-            case 2: pv2.RequestOwnership(); pv2.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
-            case 3: pv3.RequestOwnership(); pv3.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
-            case 4: pv4.RequestOwnership(); pv4.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
-            case 5: pv5.RequestOwnership(); pv5.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; break;
+            case 1: pv1.RequestOwnership(); pv1.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; Instantiate(blueindex, pv1.gameObject.transform); break;
+            case 2: pv2.RequestOwnership(); pv2.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; Instantiate(blueindex, pv2.gameObject.transform); break;
+            case 3: pv3.RequestOwnership(); pv3.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; Instantiate(blueindex, pv3.gameObject.transform); break;
+            case 4: pv4.RequestOwnership(); pv4.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; Instantiate(blueindex, pv4.gameObject.transform); break;
+            case 5: pv5.RequestOwnership(); pv5.gameObject.GetComponent<OnlinePlayerControl>().isAI = false; Instantiate(blueindex, pv5.gameObject.transform); break;
         }
 
     }

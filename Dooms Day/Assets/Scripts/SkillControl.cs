@@ -50,6 +50,9 @@ public class SkillControl : MonoBehaviour
     // skill03
 
     // skill04
+    public GameObject Particle07;
+    private GameObject Particle07_copy;
+
     private float EnhanceValue;
 
     // Start is called before the first frame update
@@ -153,21 +156,15 @@ public class SkillControl : MonoBehaviour
                 case 0: {
                     show();
                     player01_control.orgspeed = orgspeed * 2;
-                    Particle01_copy = Instantiate(Particle01);
-                    Particle01_copy.transform.parent = Player01.transform;
-                    Particle01_copy.transform.localPosition = Vector3.zero;
-                    Particle02_copy = Instantiate(Particle02);
-                    Particle02_copy.transform.parent = Player01.transform;
-                    Particle02_copy.transform.localPosition = Vector3.zero;
+                    Particle01_copy = Instantiate(Particle01, Player01.transform);
+                    Particle02_copy = Instantiate(Particle02, Player01.transform);
                     Invoke("endFirstSkill", 2.0f);
                     break;
                 }
                 case 1: {
                     show();
                     checkrandomvalue();
-                    Particle03_copy = Instantiate(Particle03);
-                    Particle03_copy.transform.parent = Player01.transform;
-                    Particle03_copy.transform.localPosition = Vector3.zero;
+                    Particle03_copy = Instantiate(Particle03, Player01.transform);
                     switch(to)
                     {
                         case 2: {
@@ -195,22 +192,16 @@ public class SkillControl : MonoBehaviour
                             break;
                         }
                     }
-                    Particle04_copy = Instantiate(Particle04);
-                    Particle04_copy.transform.parent = PlayerNum[to].transform;
-                    Particle04_copy.transform.localPosition = Vector3.zero;
+                    Particle04_copy = Instantiate(Particle04, PlayerNum[to].transform);
                     Invoke("endFirstSkill", 2.0f);
                     break;
                 }
                 case 2: {
                     show();
                     checkrandomvalue();
-                    Particle05_copy = Instantiate(Particle05);
-                    Particle05_copy.transform.parent = Player01.transform;
-                    Particle05_copy.transform.localPosition = Vector3.zero;
+                    Particle05_copy = Instantiate(Particle05, Player01.transform);
                     Invoke("teleport", 0.5f);
-                    Particle06_copy = Instantiate(Particle06);
-                    Particle06_copy.transform.parent = PlayerNum[to].transform;
-                    Particle06_copy.transform.localPosition = Vector3.zero;
+                    Particle06_copy = Instantiate(Particle06, PlayerNum[to].transform);
                     Invoke("endFirstSkill", 2.0f);
                     break;
                 }
@@ -264,6 +255,10 @@ public class SkillControl : MonoBehaviour
                 Destroy(Particle06_copy);
                 break;
             }
+            case 4: {
+                Destroy(Particle07_copy);
+                break;
+            }
         }
 
     }
@@ -305,6 +300,8 @@ public class SkillControl : MonoBehaviour
     {
         EnhanceValue += 0.25f;
         player01_control.orgspeed = orgspeed * EnhanceValue;
+        Particle07_copy = Instantiate(Particle07, Player01.transform);
+        Invoke("endFirstSkill", 2.0f);
         backp.fillAmount -= (1f / 3f);
         if(EnhanceValue > 1.4f)
         {

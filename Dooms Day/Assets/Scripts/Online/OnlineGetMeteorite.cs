@@ -74,12 +74,8 @@ public class OnlineGetMeteorite : MonoBehaviour
                     _nowObj.Death();
                     GetComponent<OnlinePlayerControl>().isdie = true;
                     isalive = false;
-                    Particle01_copy = Instantiate(Particle01);
-                    Particle01_copy.transform.parent = transform;
-                    Particle01_copy.transform.localPosition = Vector3.zero;
-                    Particle02_copy = Instantiate(Particle02);
-                    Particle02_copy.transform.parent = transform;
-                    Particle02_copy.transform.localPosition = Vector3.zero;
+                    Particle01_copy = Instantiate(Particle01, transform);
+                    Particle02_copy = Instantiate(Particle02, transform);
                     _audioSource.Play();
                     Invoke("attackAndDestroy", 2f);
                     GetComponent<OnlinePlayerControl>().CallRpcPlayerDeadAnimation(PlayerID);
@@ -88,9 +84,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                 {
                     HP -= 1;
                     backp.fillAmount += 0.5f;
-                    Particle03_copy = Instantiate(Particle03);
-                    Particle03_copy.transform.parent = transform;
-                    Particle03_copy.transform.localPosition = Vector3.zero;
+                    Particle03_copy = Instantiate(Particle03, transform);
                     if (haveMeteorite)
                     {
                         attack();
@@ -125,12 +119,8 @@ public class OnlineGetMeteorite : MonoBehaviour
                     _nowObj.Death();
                     GetComponent<OnlinePlayerControl>().isdie = true;
                     isalive = false;
-                    Particle01_copy = Instantiate(Particle01);
-                    Particle01_copy.transform.parent = transform;
-                    Particle01_copy.transform.localPosition = Vector3.zero;
-                    Particle02_copy = Instantiate(Particle02);
-                    Particle02_copy.transform.parent = transform;
-                    Particle02_copy.transform.localPosition = Vector3.zero;
+                    Particle01_copy = Instantiate(Particle01, transform);
+                    Particle02_copy = Instantiate(Particle02, transform);
                     _audioSource.Play();
                     Invoke("attackAndDestroy", 2f);
                     GetComponent<OnlinePlayerControl>().CallRpcPlayerDeadAnimation(PlayerID);
@@ -139,9 +129,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                 {
                     HP -= 1;
                     backp.fillAmount += 0.5f;
-                    Particle03_copy = Instantiate(Particle03);
-                    Particle03_copy.transform.parent = transform;
-                    Particle03_copy.transform.localPosition = Vector3.zero;
+                    Particle03_copy = Instantiate(Particle03, transform);
                     if (haveMeteorite)
                     {
                         attack();
