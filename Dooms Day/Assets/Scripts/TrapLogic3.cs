@@ -87,6 +87,7 @@ public class TrapLogic3 : MonoBehaviour
         enemySlow = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap3_Idle");
+        transform.position = new Vector3(-10.0f, 0f, -23.0f);
         trapActivated = 1;
     }
 
@@ -96,6 +97,7 @@ public class TrapLogic3 : MonoBehaviour
         //playerSlow = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap3_Idle");
+        transform.position = new Vector3(-10.0f, 0f, -23.0f);
         trapActivated = 1;
     }
 }
