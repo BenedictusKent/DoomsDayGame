@@ -43,6 +43,15 @@ MonoBehaviour:
   - RpcPlayerAnimation
   - RpcPlayerDeadAnimation
   - RpcEnemyOrient
+  - RpcTrapLogic
+  - RpcTrapLogic2
+  - RpcTrapLogic2Animation
+  - RpcTrapLogic2Out
+  - RpcTrapLogic3
+  - RpcTrapLogic3Animation
+  - RpcTrapLogic3Out
+  - RpcTrapLogicAnimation
+  - RpcTrapLogicOut
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

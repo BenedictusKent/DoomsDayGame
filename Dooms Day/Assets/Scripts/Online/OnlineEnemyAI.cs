@@ -47,7 +47,7 @@ public class OnlineEnemyAI : MonoBehaviour
 
     void IncreaseSpeed()
     {
-        speed += 100;
+        speed += 125;
         Debug.Log(speed);
     }
 

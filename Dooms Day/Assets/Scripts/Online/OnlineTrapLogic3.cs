@@ -20,25 +20,27 @@ public class OnlineTrapLogic3 : MonoBehaviour
     private GameObject player;
 
     private PhotonView _pv;
+    private float newx, newy;
+    private bool unslowcheck;
 
     // Start is called before the first frame update
     void Start()
     {
         _pv = this.gameObject.GetComponent<PhotonView>();
-        if(!_pv.IsMine){
-            Destroy(this);
-        }
         
         animator = GetComponent<Animator>();
-        master = GameObject.Find("TrapMaster").GetComponent<OnlineTrapMaster>();
-        if(master.randomgen == 2) {
-            x = Random.Range(-6f, 6f);
-            y = Random.Range(-3f, 3f);
-            warning.transform.position = new Vector3(x, y, -8.5f);
-            Invoke("AppearingTrap", 1);
-        }
-        else {
-            transform.position = new Vector3(-10.0f, 2.0f, -8.5f);
+        unslowcheck = false;
+
+        if(_pv.IsMine){
+            master = GameObject.Find("TrapMaster").GetComponent<OnlineTrapMaster>();
+            if(master.randomgen == 2) {
+                newx = Random.Range(-6f, 6f);
+                newy = Random.Range(-3f, 3f);
+                CallRpcTrapLogic3(newx, newy);
+            }
+            else {
+                CallRpcTrapLogic3Out();
+            }   
         }
     }
 
@@ -50,41 +52,55 @@ public class OnlineTrapLogic3 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(allowUpdate) 
-        {
-            allowUpdate = false;
-            x = Random.Range(-6f, 6f);
-            y = Random.Range(-3f, 3f);
-            warning.transform.position = new Vector3(x, y, -8.5f);
-            Invoke("AppearingTrap", 1);
-            trapActivated = -1;
-        }
-        if(allowReset)
-        {
-            allowReset = false;
-            transform.position = new Vector3(-10.0f, -2.0f, -8.5f);
+        if(_pv.IsMine){
+            if(allowUpdate) 
+            {
+                allowUpdate = false;
+                newx = Random.Range(-6f, 6f);
+                newy = Random.Range(-3f, 3f);
+                CallRpcTrapLogic3(newx, newy);
+            }
+            else if(allowReset) 
+            {
+                allowReset = false;
+                CallRpcTrapLogic3Out();
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(trapActivated == -1)
-        {
-            if(collider.tag == "Monster") {
-                trapActivated = 0;
-                enemySlow = true;
-                animator.SetTrigger("isTriggered");
-                Invoke("UnfreezeEnemy", 2);
+        if(_pv.IsMine){
+            if(trapActivated == -1)
+            {
+                if(collider.tag == "Monster") {
+                    enemySlow = true;
+                    CallRpcTrapLogic3Animation(1);
+                }
+                else if(collider.tag == "Player"){
+                    player = collider.gameObject;
+                    if(!player.GetComponent<OnlinePlayerControl>().isdie)
+                    {
+                        player.GetComponent<OnlinePlayerControl>().slow2 = true;
+                        unslowcheck = true;
+                        CallRpcTrapLogic3Animation(2);
+                    }
+                }
             }
-            else if(collider.tag == "Player"){
-                player = collider.gameObject;
-                if(!player.GetComponent<OnlinePlayerControl>().isdie)
-                {
-                    trapActivated = 0;
-                    player.GetComponent<OnlinePlayerControl>().slow2 = true;
-                    //playerSlow = true;
-                    animator.SetTrigger("isTriggered");
-                    Invoke("UnfreezePlayer", 2);
+        }
+        else{
+            if(trapActivated == -1)
+            {
+                if(collider.tag == "Player"){
+                    player = collider.gameObject;
+                    if(player.GetComponent<OnlinePlayerControl>().PlayerID == DataBase.playerID){
+                        if(!player.GetComponent<OnlinePlayerControl>().isdie)
+                        {
+                            player.GetComponent<OnlinePlayerControl>().slow2 = true;
+                            unslowcheck = true;
+                            CallRpcTrapLogic3Animation(2);
+                        }
+                    }
                 }
             }
         }
@@ -95,15 +111,69 @@ public class OnlineTrapLogic3 : MonoBehaviour
         enemySlow = false;
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap3_Idle");
+        transform.position = new Vector3(-10.0f, 0f, -23.0f);
         trapActivated = 1;
     }
 
     private void UnfreezePlayer()
     {
-        player.GetComponent<OnlinePlayerControl>().slow2 = false;
-        //playerSlow = false;
+        if(unslowcheck){
+            player.GetComponent<OnlinePlayerControl>().slow2 = false;
+            unslowcheck = false;
+        }
         animator.ResetTrigger("isTriggered");
         animator.Play("Trap3_Idle");
+        transform.position = new Vector3(-10.0f, 0f, -23.0f);
         trapActivated = 1;
+    }
+
+    public void CallRpcTrapLogic3(float newx, float newy)
+    {
+        _pv.RPC("RpcTrapLogic3", RpcTarget.All, newx, newy);
+    }
+
+    [PunRPC]
+    void RpcTrapLogic3(float newx, float newy, PhotonMessageInfo info)
+    {   
+        x = newx;
+        y = newy;
+        warning.transform.position = new Vector3(x, y, -8.5f);
+        Invoke("AppearingTrap", 1);
+        trapActivated = -1;
+    }
+
+    public void CallRpcTrapLogic3Out()
+    {
+        _pv.RPC("RpcTrapLogic3Out", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RpcTrapLogic3Out(PhotonMessageInfo info)
+    {   
+        transform.position = new Vector3(-10.0f, 2.0f, -8.5f);
+    }
+
+    public void CallRpcTrapLogic3Animation(int action)
+    {
+        _pv.RPC("RpcTrapLogic3Animation", RpcTarget.All, action);
+    }
+
+    [PunRPC]
+    void RpcTrapLogic3Animation(int action, PhotonMessageInfo info)
+    {   
+        switch(action){
+            case 1: {
+                trapActivated = 0;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezeEnemy", 2);
+                break;
+            }
+            case 2: {
+                trapActivated = 0;
+                animator.SetTrigger("isTriggered");
+                Invoke("UnfreezePlayer", 2);
+                break;
+            }
+        }
     }
 }
