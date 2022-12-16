@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SettingMenu.unity
     guid: 8c87aabb46e19ee449fe0f6650d51532
+  - enabled: 1
+    path: Assets/Scenes/OnlineSelectMenu.unity
+    guid: d0f4bbef64467484385d38d3f31fdbdf
   m_configObjects: {}

@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u958B\u59CB\u904A\u6232"
+  m_text: "\u958B\u59CB\u9078\u64C7\u6280\u80FD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f9a1abf50276254abfe497fca098698, type: 2}
   m_sharedMaterial: {fileID: 2363647293900210184, guid: 7f9a1abf50276254abfe497fca098698, type: 2}
@@ -2511,7 +2511,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1178542377}
         m_TargetAssemblyTypeName: PhotonRoom, Assembly-CSharp
-        m_MethodName: OnClickStartGame
+        m_MethodName: OnClickStartChooseSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

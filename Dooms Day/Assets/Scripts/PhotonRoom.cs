@@ -55,9 +55,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         UpdatePlayerList();
     }
 
-    public void OnClickStartGame()
+    public void OnClickStartChooseSkill()
     {
-        SceneManager.LoadScene("OnlineGame");
+        SceneManager.LoadScene("OnlineSelectMenu");
     }
     
     public void OnClickLeaveRoom()
