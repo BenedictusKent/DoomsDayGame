@@ -73,6 +73,9 @@ public class OnlineGetMeteorite : MonoBehaviour
                 {
                     _nowObj.Death();
                     GetComponent<OnlinePlayerControl>().isdie = true;
+                    if(GetComponent<OnlinePlayerControl>().isAI == false){
+                        GameService.GetComponent<OnlineSkillControl>().isalive = false;
+                    }
                     isalive = false;
                     Particle01_copy = Instantiate(Particle01, transform);
                     Particle02_copy = Instantiate(Particle02, transform);
@@ -84,6 +87,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                 {
                     HP -= 1;
                     backp.fillAmount += 0.5f;
+                    GameService.GetComponent<OnlineSkillControl>().CallRpcSkill03Particle(PlayerID);
                     Particle03_copy = Instantiate(Particle03, transform);
                     if (haveMeteorite)
                     {
@@ -118,6 +122,9 @@ public class OnlineGetMeteorite : MonoBehaviour
                 {
                     _nowObj.Death();
                     GetComponent<OnlinePlayerControl>().isdie = true;
+                    if(GetComponent<OnlinePlayerControl>().isAI == false){
+                        GameService.GetComponent<OnlineSkillControl>().isalive = false;
+                    }
                     isalive = false;
                     Particle01_copy = Instantiate(Particle01, transform);
                     Particle02_copy = Instantiate(Particle02, transform);
@@ -129,6 +136,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                 {
                     HP -= 1;
                     backp.fillAmount += 0.5f;
+                    GameService.GetComponent<OnlineSkillControl>().CallRpcSkill03Particle(PlayerID);
                     Particle03_copy = Instantiate(Particle03, transform);
                     if (haveMeteorite)
                     {
@@ -162,4 +170,5 @@ public class OnlineGetMeteorite : MonoBehaviour
         attack();
         PhotonNetwork.Destroy(gameObject);
     }
+
 }

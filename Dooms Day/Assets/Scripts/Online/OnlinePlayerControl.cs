@@ -65,7 +65,7 @@ public class OnlinePlayerControl : MonoBehaviour
         _audioSourceDead.loop = false;
         _audioSourceDead.volume = DataBase.EffectVolume2;
         _audioSourceDead.clip = playerdead01;
-        Invoke("checkIsMine", 0.15f);
+        Invoke("checkIsMine", 0.175f);
     }
 
     void checkIsMine()

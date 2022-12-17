@@ -54,6 +54,13 @@ MonoBehaviour:
   - RpcTrapLogicOut
   - RpcRoomCancelReady
   - RpcRoomPlayerReady
+  - RpcSkill02
+  - RpcSkill00Particle
+  - RpcSkill01Particle
+  - RpcSkill01
+  - RpcSkill02Particle
+  - RpcSkill03Particle
+  - RpcSkill04Particle
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

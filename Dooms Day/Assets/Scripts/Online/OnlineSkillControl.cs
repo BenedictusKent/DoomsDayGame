@@ -30,6 +30,10 @@ public class OnlineSkillControl : MonoBehaviour
     private OnlinePlayerControl MyControl;
     private float MyOrgspeed;
 
+    private PhotonView _pv;
+
+    public bool isalive;
+
     // skill00
     public GameObject Particle01;
     public GameObject Particle02;
@@ -53,16 +57,20 @@ public class OnlineSkillControl : MonoBehaviour
     private GameObject Particle06_copy;
 
     // skill03
-
-    // skill04
     public GameObject Particle07;
     private GameObject Particle07_copy;
+
+    // skill04
+    public GameObject Particle08;
+    private GameObject Particle08_copy;
 
     private float EnhanceValue;
 
     // Start is called before the first frame update
     void Start()
     {
+        _pv = this.gameObject.GetComponent<PhotonView>();
+        isalive = true;
         finish = GetComponent<OnlineFinish>();
         FirstSkill = GameObject.Find("FirstSkill");
         front = FirstSkill.GetComponent<Image>();
@@ -158,12 +166,13 @@ public class OnlineSkillControl : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown("space") && !iscold && finish.playnum > 1)
+        if(Input.GetKeyDown("space") && !iscold && isalive && finish.playnum > 1)
         {
             switch(DataBase.characterID)
             {
                 case 0: {
                     show();
+                    CallRpcSkill00Particle(DataBase.playerID);
                     MyControl.orgspeed = MyOrgspeed * 2;
                     Particle01_copy = Instantiate(Particle01, My.transform);
                     Particle02_copy = Instantiate(Particle02, My.transform);
@@ -173,10 +182,9 @@ public class OnlineSkillControl : MonoBehaviour
                 case 1: {
                     show();
                     checkrandomvalue();
+                    CallRpcSkill01Particle(DataBase.playerID, to);
+                    CallRpcSkill01(to);
                     Particle03_copy = Instantiate(Particle03, My.transform);
-                    PlayerNumControl[to].orgspeed = 0f;
-                    pctemp = PlayerNumControl[to];
-                    ostemp = PlayerNumOrgspeed[to];
                     Particle04_copy = Instantiate(Particle04, PlayerNum[to].transform);
                     Invoke("endFirstSkill", 2.0f);
                     break;
@@ -184,9 +192,10 @@ public class OnlineSkillControl : MonoBehaviour
                 case 2: {
                     show();
                     checkrandomvalue();
+                    CallRpcSkill02Particle(DataBase.playerID, to);
                     Particle05_copy = Instantiate(Particle05, My.transform);
-                    Invoke("teleport", 0.5f);
                     Particle06_copy = Instantiate(Particle06, PlayerNum[to].transform);
+                    Invoke("teleport", 0.5f);
                     Invoke("endFirstSkill", 2.0f);
                     break;
                 }
@@ -230,7 +239,6 @@ public class OnlineSkillControl : MonoBehaviour
                 break;
             }
             case 1: {
-                pctemp.orgspeed = ostemp;
                 Destroy(Particle03_copy);
                 Destroy(Particle04_copy);
                 break;
@@ -241,7 +249,7 @@ public class OnlineSkillControl : MonoBehaviour
                 break;
             }
             case 4: {
-                Destroy(Particle07_copy);
+                Destroy(Particle08_copy);
                 break;
             }
         }
@@ -251,7 +259,7 @@ public class OnlineSkillControl : MonoBehaviour
     void checkrandomvalue()
     {
         to = Random.Range(1, 6);
-        while (dead() && to == DataBase.playerID)
+        while (dead() || to == DataBase.playerID)
         {
             to = Random.Range(1, 6);
         }
@@ -271,7 +279,7 @@ public class OnlineSkillControl : MonoBehaviour
 
     void teleport()
     {
-        PlayerNum[to].transform.position = My.transform.position;
+        CallRpcSkill02(to, DataBase.playerID);
         if (My.GetComponent<OnlineGetMeteorite>().haveMeteorite == true)
         {
             HashTable table = new HashTable();
@@ -284,15 +292,154 @@ public class OnlineSkillControl : MonoBehaviour
 
     void potential()
     {
-        EnhanceValue += 0.25f;
-        MyControl.orgspeed = MyOrgspeed * EnhanceValue;
-        Particle07_copy = Instantiate(Particle07, My.transform);
-        Invoke("endFirstSkill", 2.0f);
-        backp.fillAmount -= (1f / 3f);
-        if(EnhanceValue > 1.4f)
-        {
-            CancelInvoke("potential");
+        if(isalive){
+            EnhanceValue += 0.25f;
+            MyControl.orgspeed = MyOrgspeed * EnhanceValue;
+            CallRpcSkill04Particle(DataBase.playerID);
+            Particle08_copy = Instantiate(Particle08, My.transform);
+            Invoke("endFirstSkill", 2.0f);
+            backp.fillAmount -= (1f / 3f);
+            if(EnhanceValue > 1.4f)
+            {
+                CancelInvoke("potential");
+            }
         }
+    }
+
+    // skill00
+    public void CallRpcSkill00Particle(int target)
+    {
+        _pv.RPC("RpcSkill00Particle", RpcTarget.Others, target);
+    }
+
+    [PunRPC]
+    void RpcSkill00Particle(int target, PhotonMessageInfo info)
+    {
+        GameObject Particle01_temp = Instantiate(Particle01, PlayerNum[target].transform);
+        GameObject Particle02_temp = Instantiate(Particle02, PlayerNum[target].transform);
+        StartCoroutine(WaitAndDestroy00(2.0f, Particle01_temp, Particle02_temp));
+    }
+
+    private IEnumerator WaitAndDestroy00(float waitTime, GameObject P01, GameObject P02)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(P01);
+        Destroy(P02);
+    }
+
+    // skill01
+    public void CallRpcSkill01Particle(int target1, int target2)
+    {
+        _pv.RPC("RpcSkill01Particle", RpcTarget.Others, target1, target2);
+    }
+
+    [PunRPC]
+    void RpcSkill01Particle(int target1, int target2, PhotonMessageInfo info)
+    {
+        GameObject Particle03_temp = Instantiate(Particle03, PlayerNum[target1].transform);
+        GameObject Particle04_temp = Instantiate(Particle04, PlayerNum[target2].transform);
+        StartCoroutine(WaitAndDestroy01(2.0f, Particle03_temp, Particle04_temp));
+    }
+
+    private IEnumerator WaitAndDestroy01(float waitTime, GameObject P01, GameObject P02)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(P01);
+        Destroy(P02);
+    }
+
+    public void CallRpcSkill01(int target)
+    {
+        _pv.RPC("RpcSkill01", RpcTarget.All, target);
+    }
+
+    [PunRPC]
+    void RpcSkill01(int target, PhotonMessageInfo info)
+    {
+        if(PlayerNum[target].GetComponent<PhotonView>().IsMine){
+            PlayerNumControl[target].orgspeed = 0f;
+            StartCoroutine(WaitAndUnfreeze01(2.0f, target));
+        }
+    }
+
+    private IEnumerator WaitAndUnfreeze01(float waitTime, int target)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if(PlayerNum[target] != null){
+            PlayerNumControl[target].orgspeed = PlayerNumOrgspeed[target];
+        }
+    }
+
+    // skill02
+    public void CallRpcSkill02Particle(int target1, int target2)
+    {
+        _pv.RPC("RpcSkill02Particle", RpcTarget.Others, target1, target2);
+    }
+
+    [PunRPC]
+    void RpcSkill02Particle(int target1, int target2, PhotonMessageInfo info)
+    {
+        GameObject Particle05_temp = Instantiate(Particle05, PlayerNum[target1].transform);
+        GameObject Particle06_temp = Instantiate(Particle06, PlayerNum[target2].transform);
+        StartCoroutine(WaitAndDestroy02(2.0f, Particle05_temp, Particle06_temp));
+    }
+
+    private IEnumerator WaitAndDestroy02(float waitTime, GameObject P01, GameObject P02)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(P01);
+        Destroy(P02);
+    }
+
+    public void CallRpcSkill02(int target1, int target2)
+    {
+        _pv.RPC("RpcSkill02", RpcTarget.All, target1, target2);
+    }
+
+    [PunRPC]
+    void RpcSkill02(int target1, int target2, PhotonMessageInfo info)
+    {
+        if(PlayerNum[target1].GetComponent<PhotonView>().IsMine){
+            PlayerNum[target1].transform.position = PlayerNum[target2].transform.position;
+        }
+    }
+
+    // skill03
+    public void CallRpcSkill03Particle(int target)
+    {
+        _pv.RPC("RpcSkill03Particle", RpcTarget.Others, target);
+    }
+
+    [PunRPC]
+    void RpcSkill03Particle(int target, PhotonMessageInfo info)
+    {
+        GameObject Particle07_temp = Instantiate(Particle07, PlayerNum[target].transform);
+        StartCoroutine(WaitAndDestroy03(2.0f, Particle07_temp));
+    }
+
+    private IEnumerator WaitAndDestroy03(float waitTime, GameObject P01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(P01);
+    }
+
+    // skill04
+    public void CallRpcSkill04Particle(int target)
+    {
+        _pv.RPC("RpcSkill04Particle", RpcTarget.Others, target);
+    }
+
+    [PunRPC]
+    void RpcSkill04Particle(int target, PhotonMessageInfo info)
+    {
+        GameObject Particle08_temp = Instantiate(Particle08, PlayerNum[target].transform);
+        StartCoroutine(WaitAndDestroy04(2.0f, Particle08_temp));
+    }
+
+    private IEnumerator WaitAndDestroy04(float waitTime, GameObject P01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(P01);
     }
 }
 
