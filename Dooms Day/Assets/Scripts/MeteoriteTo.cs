@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteoriteTo : MonoBehaviour
 {
-    Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
     public GameObject one, two, three, four, five;
     public int to, AInum, AIfarnum;
     public float speed = 1f;
@@ -13,6 +13,8 @@ public class MeteoriteTo : MonoBehaviour
 
     private float fardistance, fartmp;
     private int farID;
+
+    public int preOwner, newOwner;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class MeteoriteTo : MonoBehaviour
         PlayerNum.Add(5, five);
 
         randomvalue();
+        preOwner = to;
+        newOwner = to;
         speedbool = true;
         AInum = 0;
         AIfarnum = 0;

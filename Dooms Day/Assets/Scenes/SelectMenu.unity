@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5149\u7FFC\u5954\u99B3"
+  m_text: "\u5492\u6CD5\u53CD\u994B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f9a1abf50276254abfe497fca098698, type: 2}
   m_sharedMaterial: {fileID: 2363647293900210184, guid: 7f9a1abf50276254abfe497fca098698, type: 2}
@@ -3635,6 +3635,7 @@ MonoBehaviour:
   sprite02: {fileID: -6729511157232288408, guid: 8525e87fcfad48649b3527e83de192d6, type: 3}
   sprite03: {fileID: 4495478712733764576, guid: d1350266e93f0f9408bb4bfb7ba2cfac, type: 3}
   sprite04: {fileID: -3323803159685573248, guid: baf94dd9e3844424a98a430c15dab7ae, type: 3}
+  sprite05: {fileID: -1301815183739471747, guid: 63a107053614b8c468524181b6848ef5, type: 3}
   mapsprite00: {fileID: 21300000, guid: fcc67cc1b44423f44ad5ac73c7e00826, type: 3}
   mapsprite01: {fileID: 21300000, guid: 27593e397a535204795bc37fb9b7e401, type: 3}
   FirstSkillName: {fileID: 870319657}
@@ -5281,8 +5282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5C07\u79FB\u52D5\u901F\u5EA6\u63D0\u5347\u81F32\u500D\uFF0C\u6301\u7E8C2\u79D2\u3002CD:
-    10s"
+  m_text: "\u88AB\u52D5\u6280\uFF0C\u88AB\u7529\u788E\u7247\u6642\uFF0C\u670920%\u6A5F\u7387\u5C07\u5176\u53CD\u5F48\u7D66\u7529\u788E\u7247\u7684\u4EBA\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f9a1abf50276254abfe497fca098698, type: 2}
   m_sharedMaterial: {fileID: 2363647293900210184, guid: 7f9a1abf50276254abfe497fca098698, type: 2}

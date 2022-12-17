@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour
             if(LocateTime <= 0)
             {
                 LocateTime = LocateNeedTime;
-                _nowObj.GetComponent<GetMeteorite>().haveMeteorite = false;
+                //_nowObj.GetComponent<GetMeteorite>().haveMeteorite = false;
                 attack();
             }
         }

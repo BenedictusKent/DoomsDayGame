@@ -10,7 +10,7 @@ public class SkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -54,6 +54,9 @@ public class SkillControl : MonoBehaviour
     private GameObject Particle07_copy;
 
     private float EnhanceValue;
+
+    // skill05
+
 
     // Start is called before the first frame update
     void Start()
@@ -129,6 +132,13 @@ public class SkillControl : MonoBehaviour
                 player01_control.orgspeed = orgspeed * EnhanceValue;
                 backp.fillAmount = 1f;
                 InvokeRepeating("potential", 10f, 10f);
+                break;
+            }
+            case 5: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite05;
+                backp.sprite = sprite05;
+                Player01.GetComponent<GetMeteorite>().isSkill05 = true;
                 break;
             }
         }
@@ -209,6 +219,9 @@ public class SkillControl : MonoBehaviour
                     break;
                 }
                 case 4: {
+                    break;
+                }
+                case 5: {
                     break;
                 }
             }

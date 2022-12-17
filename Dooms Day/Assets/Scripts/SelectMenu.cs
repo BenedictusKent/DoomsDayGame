@@ -8,7 +8,7 @@ public class SelectMenu : MonoBehaviour
 {
     private Image skillimg, mapimg;
     private GameObject FirstSkill, Map;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05;
     public Sprite mapsprite00, mapsprite01;
 
     public TMP_Text FirstSkillName, FirstSkillDesc;
@@ -55,6 +55,12 @@ public class SelectMenu : MonoBehaviour
                 FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
                 break;
             }
+            case 5: {
+                skillimg.sprite = sprite05;
+                FirstSkillName.text = "咒法反饋";
+                FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
+                break;
+            }
         }
 
         switch(DataBase.mapID)
@@ -82,7 +88,7 @@ public class SelectMenu : MonoBehaviour
 
     public void NextSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 1) % 5;
+        DataBase.characterID = (DataBase.characterID + 1) % 6;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -113,6 +119,12 @@ public class SelectMenu : MonoBehaviour
                 skillimg.sprite = sprite04;
                 FirstSkillName.text = "潛能釋放";
                 FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
+                break;
+            }
+            case 5: {
+                skillimg.sprite = sprite05;
+                FirstSkillName.text = "咒法反饋";
+                FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
                 break;
             }
         }
@@ -120,7 +132,7 @@ public class SelectMenu : MonoBehaviour
 
     public void PreviousSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 4) % 5;
+        DataBase.characterID = (DataBase.characterID + 5) % 6;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -151,6 +163,12 @@ public class SelectMenu : MonoBehaviour
                 skillimg.sprite = sprite04;
                 FirstSkillName.text = "潛能釋放";
                 FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
+                break;
+            }
+            case 5: {
+                skillimg.sprite = sprite05;
+                FirstSkillName.text = "咒法反饋";
+                FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
                 break;
             }
         }
