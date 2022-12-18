@@ -61,6 +61,9 @@ MonoBehaviour:
   - RpcSkill02Particle
   - RpcSkill03Particle
   - RpcSkill04Particle
+  - RpcMeteoriteInitial
+  - RpcMeteoriteOwner
+  - RpcSkill04Audio
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

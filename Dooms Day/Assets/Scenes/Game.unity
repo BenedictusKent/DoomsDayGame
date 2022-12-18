@@ -1131,6 +1131,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  audioSkill05: {fileID: 0}
   isSkill05: 0
 --- !u!1 &413311565
 GameObject:
@@ -1682,6 +1683,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  audioSkill05: {fileID: 0}
   isSkill05: 0
 --- !u!114 &472926042 stripped
 MonoBehaviour:
@@ -2783,6 +2785,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  audioSkill05: {fileID: 0}
   isSkill05: 0
 --- !u!4 &843892743 stripped
 Transform:
@@ -3048,6 +3051,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  audioSkill05: {fileID: 8300000, guid: 476a12e878e60ef4f8c005a92e55302a, type: 3}
   isSkill05: 0
 --- !u!114 &883396283
 MonoBehaviour:
@@ -4403,7 +4407,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4577369687812956994, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4577369688116093825, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
       propertyPath: m_RootOrder
@@ -4477,6 +4481,14 @@ PrefabInstance:
       propertyPath: endScript
       value: 
       objectReference: {fileID: 1648095688}
+    - target: {fileID: 4577369688116093827, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8316189
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577369688116093827, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07118802
+      objectReference: {fileID: 0}
     - target: {fileID: 4577369688116093828, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -4499,7 +4511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8962850390337929029, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48088f4d082c4a4cacf07e406fecdf2, type: 3}
@@ -6004,6 +6016,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  audioSkill05: {fileID: 0}
   isSkill05: 0
 --- !u!1 &1765644305
 GameObject:

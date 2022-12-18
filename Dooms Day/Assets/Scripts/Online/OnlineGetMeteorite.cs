@@ -28,6 +28,8 @@ public class OnlineGetMeteorite : MonoBehaviour
 
     private PhotonView _pv;
 
+    public bool isSkill05;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class OnlineGetMeteorite : MonoBehaviour
         haveMeteorite = false;
         haveMonster = false;
         isalive = true;
+        isSkill05 = false;
         _nowObj = GetComponent<PlayerObject>();
 
         _audioSource = this.gameObject.AddComponent<AudioSource>();
@@ -114,6 +117,22 @@ public class OnlineGetMeteorite : MonoBehaviour
             if (Coll.gameObject.tag == "Meteorite")
             {
                 haveMeteorite = true;
+                int preOwnerTemp = Meteorite.GetComponent<OnlineMeteoriteTo>().newOwner;
+                if(Meteorite.GetComponent<OnlineMeteoriteTo>().newOwner != PlayerID){
+                    Meteorite.GetComponent<OnlineMeteoriteTo>().CallRpcMeteoriteOwner(PlayerID);
+                }
+
+                if(isSkill05){
+                    if(lottery(4)){
+                        if(Meteorite.GetComponent<OnlineMeteoriteTo>().PlayerNum[preOwnerTemp] != null){
+                            GameService.GetComponent<OnlineSkillControl>().CallRpcSkill04Audio();
+                            HashTable table = new HashTable();
+                            table.Add("Action", "Mto");
+                            table.Add("to", preOwnerTemp);
+                            PhotonNetwork.LocalPlayer.SetCustomProperties(table);
+                        }
+                    }
+                }
             }
 
             if (Coll.gameObject.tag == "Meteorite" && haveMonster)
@@ -171,4 +190,11 @@ public class OnlineGetMeteorite : MonoBehaviour
         PhotonNetwork.Destroy(gameObject);
     }
 
+    bool lottery(int p)
+    {
+        if(Random.Range(1, p + 1) == 1){
+            return true;
+        }
+        return false;
+    }
 }

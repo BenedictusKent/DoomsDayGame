@@ -20,8 +20,8 @@ public class GetMeteorite : MonoBehaviour
 
     private bool isalive;
 
-    public AudioClip playerdead01;
-    private AudioSource _audioSource;
+    public AudioClip playerdead01, audioSkill05;
+    private AudioSource _audioSource, _audioSourceSkill05;
 
     private Image backp;
 
@@ -45,6 +45,11 @@ public class GetMeteorite : MonoBehaviour
         _audioSource.loop = false;
         _audioSource.volume = DataBase.EffectVolume2;
         _audioSource.clip = playerdead01;
+
+        _audioSourceSkill05 = this.gameObject.AddComponent<AudioSource>();
+        _audioSourceSkill05.loop = false;
+        _audioSourceSkill05.volume = DataBase.EffectVolume1;
+        _audioSourceSkill05.clip = audioSkill05;
 
         switch(DataBase.characterID)
         {
@@ -121,6 +126,7 @@ public class GetMeteorite : MonoBehaviour
                     if(lottery(4)){
                         int preOwner = Meteorite.GetComponent<MeteoriteTo>().preOwner;
                         if(Meteorite.GetComponent<MeteoriteTo>().PlayerNum[preOwner] != null){
+                            _audioSourceSkill05.Play();
                             Meteorite.GetComponent<MeteoriteTo>().to = preOwner;
                             Meteorite.GetComponent<MeteoriteTo>().speed = 2;
                             Meteorite.GetComponent<MeteoriteTo>().speedbool = true;

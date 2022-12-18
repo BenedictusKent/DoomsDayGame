@@ -7,7 +7,7 @@ using HashTable = ExitGames.Client.Photon.Hashtable;
 
 public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
 {
-    Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> PlayerNum = new Dictionary<int, GameObject>();
     public GameObject one, two, three, four, five;
     public int to, AInum, AIfarnum;
     public float speed = 1f;
@@ -20,6 +20,8 @@ public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
     private GameObject GameService;
 
     private PhotonView _pv;
+
+    public int preOwner, newOwner;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +92,8 @@ public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
         table.Add("Action", "Mto");
         table.Add("to", value);
         PhotonNetwork.LocalPlayer.SetCustomProperties(table);
+
+        CallRpcMeteoriteInitial(value);
     }
 
     void checkrandomvalue(int ID)
@@ -166,4 +170,29 @@ public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
             speedbool = true;
         }
     }
+
+    public void CallRpcMeteoriteOwner(int newValue)
+    {
+        _pv.RPC("RpcMeteoriteOwner", RpcTarget.All, newValue);
+    }
+
+    [PunRPC]
+    void RpcMeteoriteOwner(int newValue, PhotonMessageInfo info)
+    {
+        preOwner = newOwner;
+        newOwner = newValue;
+    }
+
+    public void CallRpcMeteoriteInitial(int newValue)
+    {
+        _pv.RPC("RpcMeteoriteInitial", RpcTarget.All, newValue);
+    }
+
+    [PunRPC]
+    void RpcMeteoriteInitial(int newValue, PhotonMessageInfo info)
+    {
+        preOwner = newValue;
+        newOwner = newValue;
+    }
+
 }

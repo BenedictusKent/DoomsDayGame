@@ -12,7 +12,7 @@ public class OnlineSkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -65,6 +65,10 @@ public class OnlineSkillControl : MonoBehaviour
     private GameObject Particle08_copy;
 
     private float EnhanceValue;
+
+    // skill05
+    public AudioClip audioSkill05;
+    private AudioSource _audioSourceSkill05;
 
     // Start is called before the first frame update
     void Start()
@@ -148,6 +152,18 @@ public class OnlineSkillControl : MonoBehaviour
                 InvokeRepeating("potential", 10f, 10f);
                 break;
             }
+            case 5: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite05;
+                backp.sprite = sprite05;
+                My.GetComponent<OnlineGetMeteorite>().isSkill05 = true;
+
+                _audioSourceSkill05 = this.gameObject.AddComponent<AudioSource>();
+                _audioSourceSkill05.loop = false;
+                _audioSourceSkill05.volume = DataBase.EffectVolume1;
+                _audioSourceSkill05.clip = audioSkill05;
+                break;
+            }
         }
     }
 
@@ -203,6 +219,9 @@ public class OnlineSkillControl : MonoBehaviour
                     break;
                 }
                 case 4: {
+                    break;
+                }
+                case 5: {
                     break;
                 }
             }
@@ -441,5 +460,18 @@ public class OnlineSkillControl : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         Destroy(P01);
     }
+
+    // skill05
+    public void CallRpcSkill04Audio()
+    {
+        _pv.RPC("RpcSkill04Audio", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RpcSkill04Audio(PhotonMessageInfo info)
+    {
+        _audioSourceSkill05.Play();
+    }
+
 }
 

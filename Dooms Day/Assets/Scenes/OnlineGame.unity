@@ -1134,6 +1134,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  isSkill05: 0
 --- !u!1 &413311565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1556,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  isSkill05: 0
 --- !u!114 &466891070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2796,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  isSkill05: 0
 --- !u!4 &843892743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1337621318058762958, guid: 55f2b9a20a4689046a48119f97494c11, type: 3}
@@ -3080,6 +3083,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  isSkill05: 0
 --- !u!114 &883396283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,6 +4957,8 @@ MonoBehaviour:
   AIfarnum: 0
   speed: 1
   speedbool: 0
+  preOwner: 0
+  newOwner: 0
 --- !u!58 &1416015907
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5402,6 +5408,8 @@ MonoBehaviour:
   AIfarnum: 0
   speed: 1
   speedbool: 0
+  preOwner: 0
+  newOwner: 0
 --- !u!212 &1562034289
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5634,6 +5642,7 @@ MonoBehaviour:
   sprite02: {fileID: -6729511157232288408, guid: 8525e87fcfad48649b3527e83de192d6, type: 3}
   sprite03: {fileID: 4495478712733764576, guid: d1350266e93f0f9408bb4bfb7ba2cfac, type: 3}
   sprite04: {fileID: -3323803159685573248, guid: baf94dd9e3844424a98a430c15dab7ae, type: 3}
+  sprite05: {fileID: -1301815183739471747, guid: 63a107053614b8c468524181b6848ef5, type: 3}
   counttimetext: {fileID: 2025264783}
   P1: {fileID: 883396279}
   P2: {fileID: 466891066}
@@ -5649,6 +5658,7 @@ MonoBehaviour:
   Particle06: {fileID: 7239311344311584200, guid: da97eb81ecfb2854f8871bf36a17daa4, type: 3}
   Particle07: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   Particle08: {fileID: 2584659193886072682, guid: af5d43b88bf79464f833c46d6748aecf, type: 3}
+  audioSkill05: {fileID: 8300000, guid: 476a12e878e60ef4f8c005a92e55302a, type: 3}
 --- !u!114 &1648095692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6072,6 +6082,7 @@ MonoBehaviour:
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   Particle03: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
+  isSkill05: 0
 --- !u!1 &1765644305
 GameObject:
   m_ObjectHideFlags: 0
