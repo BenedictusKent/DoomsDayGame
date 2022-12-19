@@ -125,7 +125,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                 if(isSkill05){
                     if(lottery(4)){
                         if(Meteorite.GetComponent<OnlineMeteoriteTo>().PlayerNum[preOwnerTemp] != null){
-                            GameService.GetComponent<OnlineSkillControl>().CallRpcSkill04Audio();
+                            GameService.GetComponent<OnlineSkillControl>().CallRpcSkill05Audio();
                             HashTable table = new HashTable();
                             table.Add("Action", "Mto");
                             table.Add("to", preOwnerTemp);

@@ -12,7 +12,7 @@ public class OnlineSkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -69,6 +69,9 @@ public class OnlineSkillControl : MonoBehaviour
     // skill05
     public AudioClip audioSkill05;
     private AudioSource _audioSourceSkill05;
+
+    // skill06
+    public GameObject Skill06Animation;
 
     // Start is called before the first frame update
     void Start()
@@ -164,6 +167,14 @@ public class OnlineSkillControl : MonoBehaviour
                 _audioSourceSkill05.clip = audioSkill05;
                 break;
             }
+            case 6: {
+                PassiveSkill.SetActive(false);
+                front.sprite = sprite06;
+                back.sprite = sprite06;
+                coldtime = 12f;
+                coldtimeint = 12;
+                break;
+            }
         }
     }
 
@@ -222,6 +233,12 @@ public class OnlineSkillControl : MonoBehaviour
                     break;
                 }
                 case 5: {
+                    break;
+                }
+                case 6: {
+                    show();
+                    CallRpcSkill06Animation(DataBase.playerID);
+                    CallRpcSkill06(DataBase.playerID);
                     break;
                 }
             }
@@ -462,16 +479,62 @@ public class OnlineSkillControl : MonoBehaviour
     }
 
     // skill05
-    public void CallRpcSkill04Audio()
+    public void CallRpcSkill05Audio()
     {
-        _pv.RPC("RpcSkill04Audio", RpcTarget.All);
+        _pv.RPC("RpcSkill05Audio", RpcTarget.All);
     }
 
     [PunRPC]
-    void RpcSkill04Audio(PhotonMessageInfo info)
+    void RpcSkill05Audio(PhotonMessageInfo info)
     {
         _audioSourceSkill05.Play();
     }
 
+    // skill06
+    public void CallRpcSkill06Animation(int user)
+    {
+        _pv.RPC("RpcSkill06Animation", RpcTarget.All, user);
+    }
+
+    [PunRPC]
+    void RpcSkill06Animation(int user, PhotonMessageInfo info)
+    {
+        for(int i = 1; i <= 5; i++){
+            if(i != user && PlayerNum[i] != null){
+                GameObject Skill06Animation_temp = Instantiate(Skill06Animation, PlayerNum[i].transform);
+                StartCoroutine(WaitAndDestroySkill06(2.0f, Skill06Animation_temp));
+            }
+        }
+    }
+
+    private IEnumerator WaitAndDestroySkill06(float waitTime, GameObject A01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(A01);
+    }
+
+    public void CallRpcSkill06(int user)
+    {
+        _pv.RPC("RpcSkill06", RpcTarget.All, user);
+    }
+
+    [PunRPC]
+    void RpcSkill06(int user, PhotonMessageInfo info)
+    {
+        for(int i = 1; i <= 5; i++){
+            if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){
+                PlayerNumControl[i].orgspeed = PlayerNumOrgspeed[i] * 0.5f;
+                StartCoroutine(WaitAndEndSkill06(2.0f, i));
+            }
+        }
+    }
+
+    private IEnumerator WaitAndEndSkill06(float waitTime, int who)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if(PlayerNum[who] != null){
+            PlayerNumControl[who].orgspeed = PlayerNumOrgspeed[who];
+        }
+    }
 }
 

@@ -8,7 +8,7 @@ public class OnlineSelectMenu : MonoBehaviour
 {
     private Image skillimg, mapimg;
     private GameObject FirstSkill, Map;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06;
     //public Sprite mapsprite00, mapsprite01;
 
     public TMP_Text FirstSkillName, FirstSkillDesc;
@@ -61,6 +61,12 @@ public class OnlineSelectMenu : MonoBehaviour
                 FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
                 break;
             }
+            case 6: {
+                skillimg.sprite = sprite06;
+                FirstSkillName.text = "斷序之炎";
+                FirstSkillDesc.text = "將所有其他玩家的移動速度減緩至0.5倍，持續2秒。CD: 12s";
+                break;
+            }
         }
 
     }
@@ -73,7 +79,7 @@ public class OnlineSelectMenu : MonoBehaviour
 
     public void NextSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 1) % 6;
+        DataBase.characterID = (DataBase.characterID + 1) % 7;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -110,6 +116,12 @@ public class OnlineSelectMenu : MonoBehaviour
                 skillimg.sprite = sprite05;
                 FirstSkillName.text = "咒法反饋";
                 FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
+                break;
+            }
+            case 6: {
+                skillimg.sprite = sprite06;
+                FirstSkillName.text = "斷序之炎";
+                FirstSkillDesc.text = "將所有其他玩家的移動速度減緩至0.5倍，持續2秒。CD: 12s";
                 break;
             }
         }
@@ -117,7 +129,7 @@ public class OnlineSelectMenu : MonoBehaviour
 
     public void PreviousSkill()
     {
-        DataBase.characterID = (DataBase.characterID + 5) % 6;
+        DataBase.characterID = (DataBase.characterID + 6) % 7;
         switch(DataBase.characterID)
         {
             case 0: {
@@ -154,6 +166,12 @@ public class OnlineSelectMenu : MonoBehaviour
                 skillimg.sprite = sprite05;
                 FirstSkillName.text = "咒法反饋";
                 FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
+                break;
+            }
+            case 6: {
+                skillimg.sprite = sprite06;
+                FirstSkillName.text = "斷序之炎";
+                FirstSkillDesc.text = "將所有其他玩家的移動速度減緩至0.5倍，持續2秒。CD: 12s";
                 break;
             }
         }

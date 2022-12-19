@@ -65,6 +65,9 @@ MonoBehaviour:
   - RpcMeteoriteOwner
   - RpcSkill04Audio
   - RpcAudioThrowball
+  - RpcSkill05Audio
+  - RpcSkill06
+  - RpcSkill06Animation
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -1053,7 +1053,6 @@ MonoBehaviour:
   slow2: 0
   orgspeed: 5
   isdie: 0
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
@@ -1514,7 +1513,6 @@ MonoBehaviour:
   slow2: 0
   orgspeed: 5
   isdie: 0
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
@@ -1647,7 +1645,6 @@ MonoBehaviour:
   p4: {fileID: 842475093}
   p5: {fileID: 398434282}
   PlayerID: 2
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!70 &560061471
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2715,7 +2712,6 @@ MonoBehaviour:
   slow2: 0
   orgspeed: 5
   isdie: 0
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
@@ -3105,7 +3101,6 @@ MonoBehaviour:
   slow2: 0
   orgspeed: 5
   isdie: 0
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
@@ -5644,6 +5639,7 @@ MonoBehaviour:
   sprite03: {fileID: 4495478712733764576, guid: d1350266e93f0f9408bb4bfb7ba2cfac, type: 3}
   sprite04: {fileID: -3323803159685573248, guid: baf94dd9e3844424a98a430c15dab7ae, type: 3}
   sprite05: {fileID: -1301815183739471747, guid: 63a107053614b8c468524181b6848ef5, type: 3}
+  sprite06: {fileID: -8907479003510519193, guid: 63a107053614b8c468524181b6848ef5, type: 3}
   counttimetext: {fileID: 2025264783}
   P1: {fileID: 883396279}
   P2: {fileID: 466891066}
@@ -5660,6 +5656,7 @@ MonoBehaviour:
   Particle07: {fileID: 3504697431223569504, guid: 9c76d415330b61a42a89db9d021e483b, type: 3}
   Particle08: {fileID: 2584659193886072682, guid: af5d43b88bf79464f833c46d6748aecf, type: 3}
   audioSkill05: {fileID: 8300000, guid: 476a12e878e60ef4f8c005a92e55302a, type: 3}
+  Skill06Animation: {fileID: 2331776061398560170, guid: 23f9dcf6bc145ae4597ee755d3ecab9f, type: 3}
 --- !u!114 &1648095692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6013,7 +6010,6 @@ MonoBehaviour:
   slow2: 0
   orgspeed: 5
   isdie: 0
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
@@ -6223,7 +6219,6 @@ MonoBehaviour:
   p4: {fileID: 842475093}
   p5: {fileID: 398434282}
   PlayerID: 4
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!50 &1815351466
 Rigidbody2D:
   serializedVersion: 4
@@ -6312,7 +6307,6 @@ MonoBehaviour:
   p4: {fileID: 842475093}
   p5: {fileID: 398434282}
   PlayerID: 1
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!50 &1826322971
 Rigidbody2D:
   serializedVersion: 4
@@ -6675,7 +6669,6 @@ MonoBehaviour:
   p4: {fileID: 842475093}
   p5: {fileID: 398434282}
   PlayerID: 5
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!50 &1930744770
 Rigidbody2D:
   serializedVersion: 4
@@ -6764,7 +6757,6 @@ MonoBehaviour:
   p4: {fileID: 842475093}
   p5: {fileID: 398434282}
   PlayerID: 3
-  throwball: {fileID: 8300000, guid: a20ac4aafebb53e4085d465549f5f02a, type: 3}
 --- !u!50 &1933562953
 Rigidbody2D:
   serializedVersion: 4
