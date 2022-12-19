@@ -8,7 +8,6 @@ public class PlayerControl : MonoBehaviour
 
     public PlayerObject _nowObj;
 
-    public GameObject Meteorite1, Meteorite2;
     private GameObject Meteorite;
 
     public float speed = 10.0f;
@@ -37,10 +36,7 @@ public class PlayerControl : MonoBehaviour
 
         if(isAI)
         {
-            switch(DataBase.mapID){
-                case 0: Meteorite = Meteorite1; break;
-                case 1: Meteorite = Meteorite2; break;
-            }
+            Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
             InvokeRepeating("ChangeMove", 0.5f, MoveNeedTime);
 
             _audioSource = this.gameObject.AddComponent<AudioSource>();

@@ -11,9 +11,6 @@ public class OnlineMousePress : MonoBehaviour
     private GameObject Meteorite, GameService;
     public int PlayerID;
 
-    public AudioClip throwball;
-    private AudioSource _audioSource;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +23,6 @@ public class OnlineMousePress : MonoBehaviour
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
         GameService = GameObject.Find("GameService");
 
-        _audioSource = this.gameObject.AddComponent<AudioSource>();
-        _audioSource.loop = false;
-        _audioSource.volume = DataBase.EffectVolume1;
-        _audioSource.clip = throwball;
     }
 
     // Update is called once per frame
@@ -44,7 +37,7 @@ public class OnlineMousePress : MonoBehaviour
         {
             if (PlayerNum[DataBase.playerID].GetComponent<OnlineGetMeteorite>().haveMeteorite == true)
             {
-                _audioSource.Play();
+                GameService.GetComponent<OnlineAudioControl>().CallRpcAudioThrowball();
                 HashTable table = new HashTable();
                 table.Add("Action", "Mto");
                 table.Add("to", PlayerID);

@@ -22,8 +22,8 @@ public class OnlinePlayerControl : MonoBehaviour
 
     public bool isdie;
 
-    public AudioClip throwball, playerdead01;
-    private AudioSource _audioSource, _audioSourceDead;
+    public AudioClip playerdead01;
+    private AudioSource _audioSourceDead;
 
     private PhotonView _pv;
 
@@ -54,11 +54,6 @@ public class OnlinePlayerControl : MonoBehaviour
         {
             Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
             InvokeRepeating("ChangeMove", 0.5f, MoveNeedTime);
-
-            _audioSource = this.gameObject.AddComponent<AudioSource>();
-            _audioSource.loop = false;
-            _audioSource.volume = DataBase.EffectVolume1;
-            _audioSource.clip = throwball;
         }
 
         _audioSourceDead = this.gameObject.AddComponent<AudioSource>();
@@ -180,7 +175,7 @@ public class OnlinePlayerControl : MonoBehaviour
     void attack()
     {
         if(GameService.GetComponent<OnlineFinish>().playnum > 1){
-            _audioSource.Play();
+            GameService.GetComponent<OnlineAudioControl>().CallRpcAudioThrowball();
             Meteorite.GetComponent<OnlineMeteoriteTo>().AInum = _nowObj.GetComponent<OnlineGetMeteorite>().PlayerID;
         }
     }

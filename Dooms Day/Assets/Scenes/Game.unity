@@ -1082,8 +1082,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 2030951760}
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   speed: 5
   frozen: 0
   slow: 0
@@ -1121,8 +1119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 5
@@ -1634,8 +1630,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 843892744}
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   speed: 5
   frozen: 0
   slow: 0
@@ -1673,8 +1667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 2
@@ -2736,8 +2728,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 766084964}
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   speed: 5
   frozen: 0
   slow: 0
@@ -2775,8 +2765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 4
@@ -3041,8 +3029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 1
@@ -3067,8 +3053,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 0
   _nowObj: {fileID: 1031865862}
-  Meteorite1: {fileID: 0}
-  Meteorite2: {fileID: 0}
   speed: 5
   frozen: 0
   slow: 0
@@ -5007,7 +4991,7 @@ GameObject:
   - component: {fileID: 1416015906}
   - component: {fileID: 1416015907}
   m_Layer: 2
-  m_Name: Meteorite1
+  m_Name: Meteorite
   m_TagString: Meteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5688,8 +5672,6 @@ MonoBehaviour:
   Grid2: {fileID: 1413627221}
   Enemy1: {fileID: 178093378}
   Enemy2: {fileID: 760905639}
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
 --- !u!114 &1648095693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5967,8 +5949,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAI: 1
   _nowObj: {fileID: 214645234}
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   speed: 5
   frozen: 0
   slow: 0
@@ -6006,8 +5986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839f83e63bf8dbf4a90d13170ee1f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meteorite1: {fileID: 1416015902}
-  Meteorite2: {fileID: 938667523}
   haveMeteorite: 0
   haveMonster: 0
   PlayerID: 3

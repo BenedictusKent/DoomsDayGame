@@ -77,6 +77,7 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
             else{
                 DataBase.WinnerName = "AI";
             }
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             Invoke("toOnlineEndMenu", 2.25f);
         }
 
@@ -90,6 +91,7 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
             else{
                 DataBase.WinnerName = "AI";
             }
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 
@@ -100,7 +102,6 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
 
     void toOnlineEndMenu()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         SceneManager.LoadScene("OnlineEndMenu");
     }
 

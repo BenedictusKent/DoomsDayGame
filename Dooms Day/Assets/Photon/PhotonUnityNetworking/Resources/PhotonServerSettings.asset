@@ -64,6 +64,7 @@ MonoBehaviour:
   - RpcMeteoriteInitial
   - RpcMeteoriteOwner
   - RpcSkill04Audio
+  - RpcAudioThrowball
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
