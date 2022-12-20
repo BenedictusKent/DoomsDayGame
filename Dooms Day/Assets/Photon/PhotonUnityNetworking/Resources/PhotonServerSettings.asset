@@ -68,6 +68,7 @@ MonoBehaviour:
   - RpcSkill05Audio
   - RpcSkill06
   - RpcSkill06Animation
+  - RpcSkill07
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -12,7 +12,7 @@ public class OnlineSkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -29,6 +29,9 @@ public class OnlineSkillControl : MonoBehaviour
     private GameObject My;
     private OnlinePlayerControl MyControl;
     private float MyOrgspeed;
+
+    public GameObject Monster;
+    private OnlineEnemyAI MonsterAI;
 
     private PhotonView _pv;
 
@@ -73,6 +76,9 @@ public class OnlineSkillControl : MonoBehaviour
     // skill06
     public GameObject Skill06Animation;
 
+    // skill07
+    public GameObject Skill07Animation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,22 +118,24 @@ public class OnlineSkillControl : MonoBehaviour
 
         Meteorite = GameObject.FindGameObjectsWithTag("Meteorite")[0];
 
+        MonsterAI = Monster.GetComponent<OnlineEnemyAI>();
+
         switch(DataBase.characterID)
         {
             case 0: {
                 PassiveSkill.SetActive(false);
                 front.sprite = sprite00;
                 back.sprite = sprite00;
-                coldtime = 10f;
-                coldtimeint = 10;
+                coldtime = 8f;
+                coldtimeint = 8;
                 break;
             }
             case 1: {
                 PassiveSkill.SetActive(false);
                 front.sprite = sprite01;
                 back.sprite = sprite01;
-                coldtime = 8f;
-                coldtimeint = 8;
+                coldtime = 9f;
+                coldtimeint = 9;
                 break;
             }
             case 2: {
@@ -173,6 +181,14 @@ public class OnlineSkillControl : MonoBehaviour
                 back.sprite = sprite06;
                 coldtime = 12f;
                 coldtimeint = 12;
+                break;
+            }
+            case 7: {
+                PassiveSkill.SetActive(false);
+                front.sprite = sprite07;
+                back.sprite = sprite07;
+                coldtime = 10f;
+                coldtimeint = 10;
                 break;
             }
         }
@@ -237,8 +253,12 @@ public class OnlineSkillControl : MonoBehaviour
                 }
                 case 6: {
                     show();
-                    CallRpcSkill06Animation(DataBase.playerID);
                     CallRpcSkill06(DataBase.playerID);
+                    break;
+                }
+                case 7: {
+                    show();
+                    CallRpcSkill07();
                     break;
                 }
             }
@@ -491,18 +511,23 @@ public class OnlineSkillControl : MonoBehaviour
     }
 
     // skill06
-    public void CallRpcSkill06Animation(int user)
+    public void CallRpcSkill06(int user)
     {
-        _pv.RPC("RpcSkill06Animation", RpcTarget.All, user);
+        _pv.RPC("RpcSkill06", RpcTarget.All, user);
     }
 
     [PunRPC]
-    void RpcSkill06Animation(int user, PhotonMessageInfo info)
+    void RpcSkill06(int user, PhotonMessageInfo info)
     {
         for(int i = 1; i <= 5; i++){
             if(i != user && PlayerNum[i] != null){
                 GameObject Skill06Animation_temp = Instantiate(Skill06Animation, PlayerNum[i].transform);
                 StartCoroutine(WaitAndDestroySkill06(2.0f, Skill06Animation_temp));
+            }
+
+            if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){
+                PlayerNumControl[i].orgspeed = PlayerNumOrgspeed[i] * 0.5f;
+                StartCoroutine(WaitAndEndSkill06(2.0f, i));
             }
         }
     }
@@ -513,28 +538,41 @@ public class OnlineSkillControl : MonoBehaviour
         Destroy(A01);
     }
 
-    public void CallRpcSkill06(int user)
-    {
-        _pv.RPC("RpcSkill06", RpcTarget.All, user);
-    }
-
-    [PunRPC]
-    void RpcSkill06(int user, PhotonMessageInfo info)
-    {
-        for(int i = 1; i <= 5; i++){
-            if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){
-                PlayerNumControl[i].orgspeed = PlayerNumOrgspeed[i] * 0.5f;
-                StartCoroutine(WaitAndEndSkill06(2.0f, i));
-            }
-        }
-    }
-
     private IEnumerator WaitAndEndSkill06(float waitTime, int who)
     {
         yield return new WaitForSeconds(waitTime);
         if(PlayerNum[who] != null){
             PlayerNumControl[who].orgspeed = PlayerNumOrgspeed[who];
         }
+    }
+
+    // skill07
+    public void CallRpcSkill07()
+    {
+        _pv.RPC("RpcSkill07", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RpcSkill07(PhotonMessageInfo info)
+    {
+        GameObject Skill07Animation_temp = Instantiate(Skill07Animation, Monster.transform);
+        StartCoroutine(WaitAndDestroySkill07(1.5f, Skill07Animation_temp));
+        if(Monster.GetComponent<PhotonView>().IsMine){
+            MonsterAI.speed += 4000f;
+            StartCoroutine(WaitAndEndSkill07(1.5f));
+        }
+    }
+
+    private IEnumerator WaitAndDestroySkill07(float waitTime, GameObject A01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(A01);
+    }
+
+    private IEnumerator WaitAndEndSkill07(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        MonsterAI.speed -= 4000f;
     }
 }
 
