@@ -550,6 +550,7 @@ MonoBehaviour:
   enemyGFX: {fileID: 832547944}
   endScript: {fileID: 1648095688}
   speed: 1800
+  increasespeed: 125
   nextWaypointDistance: 1.2
 --- !u!114 &214645234 stripped
 MonoBehaviour:
@@ -5642,6 +5643,7 @@ MonoBehaviour:
   sprite05: {fileID: -1301815183739471747, guid: 63a107053614b8c468524181b6848ef5, type: 3}
   sprite06: {fileID: -8907479003510519193, guid: 63a107053614b8c468524181b6848ef5, type: 3}
   sprite07: {fileID: -827016883341640748, guid: ef57be551c192d84babc29a02c38a74c, type: 3}
+  sprite08: {fileID: -4412621582066746438, guid: 2e17ea7123a607648a7cda9b1dd9f161, type: 3}
   counttimetext: {fileID: 2025264783}
   P1: {fileID: 883396279}
   P2: {fileID: 466891066}
@@ -5661,6 +5663,7 @@ MonoBehaviour:
   audioSkill05: {fileID: 8300000, guid: 476a12e878e60ef4f8c005a92e55302a, type: 3}
   Skill06Animation: {fileID: 2331776061398560170, guid: 23f9dcf6bc145ae4597ee755d3ecab9f, type: 3}
   Skill07Animation: {fileID: 2930403238054860667, guid: 2f6309ccfcf5cea4ca6031b2d4e49178, type: 3}
+  Skill08Animation: {fileID: 3409642679703249765, guid: b7f97eff2815fed46b69ff06c3c1c500, type: 3}
 --- !u!114 &1648095692
 MonoBehaviour:
   m_ObjectHideFlags: 0

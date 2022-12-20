@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: baf94dd9e3844424a98a430c15dab7ae
+guid: 2e17ea7123a607648a7cda9b1dd9f161
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3323803159685573248
-    second: spearsman_0
+      213: -4412621582066746438
+    second: necromancer_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spearsman_0
+      name: necromancer_0
       rect:
         serializedVersion: 2
-        x: 1216
-        y: 484
-        width: 128
-        height: 128
+        x: 505
+        y: 802
+        width: 166
+        height: 166
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 085de93f2aa7fd1d0800000000000000
-      internalID: -3323803159685573248
+      spriteID: abb70b8dc0833c2c0800000000000000
+      internalID: -4412621582066746438
       vertices: []
       indices: 
       edges: []

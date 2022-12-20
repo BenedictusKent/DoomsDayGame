@@ -13,6 +13,7 @@ public class OnlineEnemyAI : MonoBehaviour
     public Transform enemyGFX;
     public OnlineFinish endScript;
     public float speed = 200f;
+    public float increasespeed = 125f;
     public float nextWaypointDistance = 1.2f;
 
     private Path path;
@@ -47,7 +48,7 @@ public class OnlineEnemyAI : MonoBehaviour
 
     void IncreaseSpeed()
     {
-        speed += 125;
+        speed += increasespeed;
         Debug.Log(speed);
     }
 

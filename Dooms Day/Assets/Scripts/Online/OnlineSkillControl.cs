@@ -12,7 +12,7 @@ public class OnlineSkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -78,6 +78,9 @@ public class OnlineSkillControl : MonoBehaviour
 
     // skill07
     public GameObject Skill07Animation;
+
+    // skill08
+    public GameObject Skill08Animation;
 
     // Start is called before the first frame update
     void Start()
@@ -191,6 +194,14 @@ public class OnlineSkillControl : MonoBehaviour
                 coldtimeint = 10;
                 break;
             }
+            case 8: {
+                PassiveSkill.SetActive(false);
+                front.sprite = sprite08;
+                back.sprite = sprite08;
+                coldtime = 9f;
+                coldtimeint = 9;
+                break;
+            }
         }
     }
 
@@ -259,6 +270,11 @@ public class OnlineSkillControl : MonoBehaviour
                 case 7: {
                     show();
                     CallRpcSkill07();
+                    break;
+                }
+                case 8: {
+                    show();
+                    CallRpcSkill08();
                     break;
                 }
             }
@@ -573,6 +589,38 @@ public class OnlineSkillControl : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         MonsterAI.speed -= 4000f;
+    }
+
+    // skill08
+    public void CallRpcSkill08()
+    {
+        _pv.RPC("RpcSkill08", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RpcSkill08(PhotonMessageInfo info)
+    {
+        GameObject Skill08Animation_temp = Instantiate(Skill08Animation, Monster.transform);
+        StartCoroutine(WaitAndDestroySkill08(1.5f, Skill08Animation_temp));
+        if(Monster.GetComponent<PhotonView>().IsMine){
+            float tempspeed = MonsterAI.speed;
+            MonsterAI.speed = 0f;
+            MonsterAI.increasespeed = 0f;
+            StartCoroutine(WaitAndEndSkill08(1.5f, tempspeed));
+        }
+    }
+
+    private IEnumerator WaitAndDestroySkill08(float waitTime, GameObject A01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(A01);
+    }
+
+    private IEnumerator WaitAndEndSkill08(float waitTime, float tempspeed)
+    {
+        yield return new WaitForSeconds(waitTime);
+        MonsterAI.speed = tempspeed;
+        MonsterAI.increasespeed = 125f;
     }
 }
 
