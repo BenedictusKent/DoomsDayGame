@@ -12,7 +12,7 @@ public class OnlineSkillControl : MonoBehaviour
     private bool iscold = false;
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08, sprite09;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -81,6 +81,9 @@ public class OnlineSkillControl : MonoBehaviour
 
     // skill08
     public GameObject Skill08Animation;
+
+    // skill09
+    public GameObject Skill09Animation;
 
     // Start is called before the first frame update
     void Start()
@@ -202,6 +205,14 @@ public class OnlineSkillControl : MonoBehaviour
                 coldtimeint = 9;
                 break;
             }
+            case 9: {
+                PassiveSkill.SetActive(false);
+                front.sprite = sprite09;
+                back.sprite = sprite09;
+                coldtime = 20f;
+                coldtimeint = 20;
+                break;
+            }
         }
     }
 
@@ -275,6 +286,11 @@ public class OnlineSkillControl : MonoBehaviour
                 case 8: {
                     show();
                     CallRpcSkill08();
+                    break;
+                }
+                case 9: {
+                    show();
+                    CallRpcSkill09(DataBase.playerID);
                     break;
                 }
             }
@@ -621,6 +637,42 @@ public class OnlineSkillControl : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         MonsterAI.speed = tempspeed;
         MonsterAI.increasespeed = 125f;
+    }
+
+    // skill09
+    public void CallRpcSkill09(int user)
+    {
+        _pv.RPC("RpcSkill09", RpcTarget.All, user);
+    }
+
+    [PunRPC]
+    void RpcSkill09(int user, PhotonMessageInfo info)
+    {
+        for(int i = 1; i <= 5; i++){
+            if(i != user && PlayerNum[i] != null){
+                GameObject Skill09Animation_temp = Instantiate(Skill09Animation, PlayerNum[i].transform);
+                StartCoroutine(WaitAndDestroySkill09(5.0f, Skill09Animation_temp));
+            }
+
+            if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){
+                PlayerNumControl[i].isSkill09 = true;
+                StartCoroutine(WaitAndEndSkill09(5.0f, i));
+            }
+        }
+    }
+
+    private IEnumerator WaitAndDestroySkill09(float waitTime, GameObject A01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(A01);
+    }
+
+    private IEnumerator WaitAndEndSkill09(float waitTime, int who)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if(PlayerNum[who] != null){
+            PlayerNumControl[who].isSkill09 = false;
+        }
     }
 }
 

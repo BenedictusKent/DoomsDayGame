@@ -8,13 +8,13 @@ public class OnlineSelectMenu : MonoBehaviour
 {
     private Image skillimg, mapimg;
     private GameObject FirstSkill, Map;
-    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08;
+    public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08, sprite09;
     //public Sprite mapsprite00, mapsprite01;
 
     public TMP_Text FirstSkillName, FirstSkillDesc;
     //public TMP_Text MapName, MapDesc;
 
-    private int skillnumber = 9;
+    private int skillnumber = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +84,12 @@ public class OnlineSelectMenu : MonoBehaviour
                 skillimg.sprite = sprite08;
                 FirstSkillName.text = "元素衰弱";
                 FirstSkillDesc.text = "使怪物進入失神狀態，持續1.5秒。CD: 9s";
+                break;
+            }
+            case 9: {
+                skillimg.sprite = sprite09;
+                FirstSkillName.text = "邪靈附體";
+                FirstSkillDesc.text = "使所有其他玩家的操控方向顛倒，持續5秒。CD: 20s";
                 break;
             }
         }

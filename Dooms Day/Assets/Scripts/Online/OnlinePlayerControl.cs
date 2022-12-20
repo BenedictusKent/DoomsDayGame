@@ -37,6 +37,8 @@ public class OnlinePlayerControl : MonoBehaviour
     public GameObject Particle02;
     private GameObject Particle02_copy;
 
+    public bool isSkill09;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class OnlinePlayerControl : MonoBehaviour
         slow = false;
         slow2 = false;
         isdie = false;
+        isSkill09 = false;
         GameService = GameObject.Find("GameService");
         _pv = this.gameObject.GetComponent<PhotonView>();
         RPCaction = 1;
@@ -115,8 +118,14 @@ public class OnlinePlayerControl : MonoBehaviour
     // Human
     void HumanControl()
     {
-        movement.x = Input.GetAxisRaw("Horizontal"); //A,D
-        movement.y = Input.GetAxisRaw("Vertical"); //W,S
+        if(isSkill09){
+            movement.x = -Input.GetAxisRaw("Horizontal"); //A,D
+            movement.y = -Input.GetAxisRaw("Vertical"); //W,S
+        }
+        else{
+            movement.x = Input.GetAxisRaw("Horizontal"); //A,D
+            movement.y = Input.GetAxisRaw("Vertical"); //W,S
+        }
         sendRPC = false;
 
         if(movement.x != 0 && movement.y != 0)

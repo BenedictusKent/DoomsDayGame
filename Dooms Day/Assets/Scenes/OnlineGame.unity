@@ -1058,6 +1058,7 @@ MonoBehaviour:
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  isSkill09: 0
 --- !u!114 &398434284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,6 +1519,7 @@ MonoBehaviour:
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  isSkill09: 0
 --- !u!114 &466891068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,6 +2719,7 @@ MonoBehaviour:
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  isSkill09: 0
 --- !u!114 &842475095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3106,6 +3109,7 @@ MonoBehaviour:
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  isSkill09: 0
 --- !u!114 &883396284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5644,6 +5648,7 @@ MonoBehaviour:
   sprite06: {fileID: -8907479003510519193, guid: 63a107053614b8c468524181b6848ef5, type: 3}
   sprite07: {fileID: -827016883341640748, guid: ef57be551c192d84babc29a02c38a74c, type: 3}
   sprite08: {fileID: -4412621582066746438, guid: 2e17ea7123a607648a7cda9b1dd9f161, type: 3}
+  sprite09: {fileID: 4832831038814496759, guid: 2e17ea7123a607648a7cda9b1dd9f161, type: 3}
   counttimetext: {fileID: 2025264783}
   P1: {fileID: 883396279}
   P2: {fileID: 466891066}
@@ -5664,6 +5669,7 @@ MonoBehaviour:
   Skill06Animation: {fileID: 2331776061398560170, guid: 23f9dcf6bc145ae4597ee755d3ecab9f, type: 3}
   Skill07Animation: {fileID: 2930403238054860667, guid: 2f6309ccfcf5cea4ca6031b2d4e49178, type: 3}
   Skill08Animation: {fileID: 3409642679703249765, guid: b7f97eff2815fed46b69ff06c3c1c500, type: 3}
+  Skill09Animation: {fileID: 6560594996146844127, guid: 033db94d2fa006542a140482e7636a0c, type: 3}
 --- !u!114 &1648095692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6020,6 +6026,7 @@ MonoBehaviour:
   playerdead01: {fileID: 8300000, guid: 7059c10af6ca76f41ac09f1096dbf8c6, type: 3}
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
+  isSkill09: 0
 --- !u!114 &1710463730
 MonoBehaviour:
   m_ObjectHideFlags: 0
