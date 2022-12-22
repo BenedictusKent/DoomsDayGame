@@ -49,6 +49,12 @@ public class OnlineOptMenu : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Lobby");
     }
 
+    public void OnClickBackToRoom()
+    {
+        DataBase.isOpt = false;
+        SceneManager.LoadScene("Room");
+    }
+
     public void OnClickQuitGame()
     {
         Debug.Log("QUIT!");

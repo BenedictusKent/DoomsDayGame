@@ -35,7 +35,7 @@ public class OnlineSelectMenu : MonoBehaviour
             case 0: {
                 skillimg.sprite = sprite00;
                 FirstSkillName.text = "光翼奔馳";
-                FirstSkillDesc.text = "將移動速度提升至2倍，持續2秒。CD: 8s";
+                FirstSkillDesc.text = "解除所有技能造成的緩速及定身效果，並將移動速度提升至2.25倍，持續2秒。CD: 8s";
                 break;
             }
             case 1: {
@@ -47,25 +47,25 @@ public class OnlineSelectMenu : MonoBehaviour
             case 2: {
                 skillimg.sprite = sprite02;
                 FirstSkillName.text = "黑暗新星";
-                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，如果有碎片則甩給該玩家，施法0.5秒。CD: 12s";
+                FirstSkillDesc.text = "隨機將一名玩家傳送至你的身旁，如果有碎片則甩給該玩家，施法1.5秒。CD: 14s";
                 break;
             }
             case 3: {
                 skillimg.sprite = sprite03;
                 FirstSkillName.text = "聖光守護";
-                FirstSkillDesc.text = "被動技，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
+                FirstSkillDesc.text = "被動技，移動速度為0.9倍，持有碎片被怪物撞到時，會保護你並將碎片甩給最遠的玩家，能發動2次。";
                 break;
             }
             case 4: {
                 skillimg.sprite = sprite04;
                 FirstSkillName.text = "潛能釋放";
-                FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.5倍。";
+                FirstSkillDesc.text = "被動技，初始移動速度為0.75倍，每10秒增加0.25倍，最多達到1.75倍。";
                 break;
             }
             case 5: {
                 skillimg.sprite = sprite05;
                 FirstSkillName.text = "咒法反饋";
-                FirstSkillDesc.text = "被動技，被甩碎片時，有25%機率將其反彈給甩碎片的人。";
+                FirstSkillDesc.text = "被動技，被甩碎片時，有30%機率將其反彈給甩碎片的人。";
                 break;
             }
             case 6: {
@@ -83,13 +83,13 @@ public class OnlineSelectMenu : MonoBehaviour
             case 8: {
                 skillimg.sprite = sprite08;
                 FirstSkillName.text = "元素衰弱";
-                FirstSkillDesc.text = "使怪物進入失神狀態，持續1.5秒。CD: 9s";
+                FirstSkillDesc.text = "使怪物進入失神狀態，持續1.5秒。CD: 8s";
                 break;
             }
             case 9: {
                 skillimg.sprite = sprite09;
                 FirstSkillName.text = "邪靈附體";
-                FirstSkillDesc.text = "使所有其他玩家的操控方向顛倒，持續5秒。CD: 20s";
+                FirstSkillDesc.text = "使所有其他玩家的操控方向顛倒，持續4秒。CD: 20s";
                 break;
             }
         }

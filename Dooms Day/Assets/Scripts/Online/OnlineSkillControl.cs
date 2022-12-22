@@ -23,8 +23,6 @@ public class OnlineSkillControl : MonoBehaviour
     Dictionary<int, OnlinePlayerControl> PlayerNumControl = new Dictionary<int, OnlinePlayerControl>();
     Dictionary<int, float> PlayerNumOrgspeed = new Dictionary<int, float>();
     public GameObject P1, P2, P3, P4, P5;
-    private OnlinePlayerControl pctemp;
-    private float ostemp;
 
     private GameObject My;
     private OnlinePlayerControl MyControl;
@@ -112,11 +110,11 @@ public class OnlineSkillControl : MonoBehaviour
         PlayerNumControl.Add(3, PlayerNum[3].GetComponent<OnlinePlayerControl>());
         PlayerNumControl.Add(4, PlayerNum[4].GetComponent<OnlinePlayerControl>());
         PlayerNumControl.Add(5, PlayerNum[5].GetComponent<OnlinePlayerControl>());
-        PlayerNumOrgspeed.Add(1, PlayerNumControl[1].speed);
-        PlayerNumOrgspeed.Add(2, PlayerNumControl[2].speed);
-        PlayerNumOrgspeed.Add(3, PlayerNumControl[3].speed);
-        PlayerNumOrgspeed.Add(4, PlayerNumControl[4].speed);
-        PlayerNumOrgspeed.Add(5, PlayerNumControl[5].speed);
+        PlayerNumOrgspeed.Add(1, PlayerNumControl[1].orgspeed);
+        PlayerNumOrgspeed.Add(2, PlayerNumControl[2].orgspeed);
+        PlayerNumOrgspeed.Add(3, PlayerNumControl[3].orgspeed);
+        PlayerNumOrgspeed.Add(4, PlayerNumControl[4].orgspeed);
+        PlayerNumOrgspeed.Add(5, PlayerNumControl[5].orgspeed);
 
         My = PlayerNum[DataBase.playerID];
         MyControl = PlayerNumControl[DataBase.playerID];
@@ -148,14 +146,15 @@ public class OnlineSkillControl : MonoBehaviour
                 PassiveSkill.SetActive(false);
                 front.sprite = sprite02;
                 back.sprite = sprite02;
-                coldtime = 12f;
-                coldtimeint = 12;
+                coldtime = 14f;
+                coldtimeint = 14;
                 break;
             }
             case 3: {
                 FirstSkill.SetActive(false);
                 frontp.sprite = sprite03;
                 backp.sprite = sprite03;
+                MyControl.orgspeed = MyOrgspeed * 0.9f;
                 My.GetComponent<OnlineGetMeteorite>().HP = 3;
                 break;
             }
@@ -201,8 +200,8 @@ public class OnlineSkillControl : MonoBehaviour
                 PassiveSkill.SetActive(false);
                 front.sprite = sprite08;
                 back.sprite = sprite08;
-                coldtime = 9f;
-                coldtimeint = 9;
+                coldtime = 8f;
+                coldtimeint = 8;
                 break;
             }
             case 9: {
@@ -238,7 +237,8 @@ public class OnlineSkillControl : MonoBehaviour
                 case 0: {
                     show();
                     CallRpcSkill00Particle(DataBase.playerID);
-                    MyControl.orgspeed = MyOrgspeed * 2;
+                    MyControl.skillSpeedUp = 2.25f;
+                    MyControl.skillSpeedDown = 1.0f;
                     Particle01_copy = Instantiate(Particle01, My.transform);
                     Particle02_copy = Instantiate(Particle02, My.transform);
                     Invoke("endFirstSkill", 2.0f);
@@ -260,7 +260,7 @@ public class OnlineSkillControl : MonoBehaviour
                     CallRpcSkill02Particle(DataBase.playerID, to);
                     Particle05_copy = Instantiate(Particle05, My.transform);
                     Particle06_copy = Instantiate(Particle06, PlayerNum[to].transform);
-                    Invoke("teleport", 0.5f);
+                    Invoke("teleport", 1.5f);
                     Invoke("endFirstSkill", 2.0f);
                     break;
                 }
@@ -321,7 +321,7 @@ public class OnlineSkillControl : MonoBehaviour
         switch(DataBase.characterID)
         {
             case 0: {
-                MyControl.orgspeed = MyOrgspeed;
+                MyControl.skillSpeedUp = 1.0f;
                 Destroy(Particle01_copy);
                 Destroy(Particle02_copy);
                 break;
@@ -386,8 +386,8 @@ public class OnlineSkillControl : MonoBehaviour
             CallRpcSkill04Particle(DataBase.playerID);
             Particle08_copy = Instantiate(Particle08, My.transform);
             Invoke("endFirstSkill", 2.0f);
-            backp.fillAmount -= (1f / 3f);
-            if(EnhanceValue > 1.4f)
+            backp.fillAmount -= (1f / 4f);
+            if(EnhanceValue > 1.7f)
             {
                 CancelInvoke("potential");
             }
@@ -445,7 +445,8 @@ public class OnlineSkillControl : MonoBehaviour
     void RpcSkill01(int target, PhotonMessageInfo info)
     {
         if(PlayerNum[target].GetComponent<PhotonView>().IsMine){
-            PlayerNumControl[target].orgspeed = 0f;
+            PlayerNumControl[target].skillSpeedDownCount++;
+            PlayerNumControl[target].skillSpeedDown = 0f;
             StartCoroutine(WaitAndUnfreeze01(2.0f, target));
         }
     }
@@ -454,7 +455,10 @@ public class OnlineSkillControl : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         if(PlayerNum[target] != null){
-            PlayerNumControl[target].orgspeed = PlayerNumOrgspeed[target];
+            PlayerNumControl[target].skillSpeedDownCount--;
+            if(PlayerNumControl[target].skillSpeedDownCount == 0){
+                PlayerNumControl[target].skillSpeedDown = 1.0f;
+            }
         }
     }
 
@@ -558,7 +562,8 @@ public class OnlineSkillControl : MonoBehaviour
             }
 
             if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){
-                PlayerNumControl[i].orgspeed = PlayerNumOrgspeed[i] * 0.5f;
+                PlayerNumControl[i].skillSpeedDownCount++;
+                PlayerNumControl[i].skillSpeedDown = 0.5f;
                 StartCoroutine(WaitAndEndSkill06(2.0f, i));
             }
         }
@@ -574,7 +579,10 @@ public class OnlineSkillControl : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         if(PlayerNum[who] != null){
-            PlayerNumControl[who].orgspeed = PlayerNumOrgspeed[who];
+            PlayerNumControl[who].skillSpeedDownCount--;
+            if(PlayerNumControl[who].skillSpeedDownCount == 0){
+                PlayerNumControl[who].skillSpeedDown = 1.0f;
+            }
         }
     }
 
@@ -655,8 +663,9 @@ public class OnlineSkillControl : MonoBehaviour
             }
 
             if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){
+                PlayerNumControl[i].isSkill09Count++;
                 PlayerNumControl[i].isSkill09 = true;
-                StartCoroutine(WaitAndEndSkill09(5.0f, i));
+                StartCoroutine(WaitAndEndSkill09(4.0f, i));
             }
         }
     }
@@ -671,7 +680,10 @@ public class OnlineSkillControl : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         if(PlayerNum[who] != null){
-            PlayerNumControl[who].isSkill09 = false;
+            PlayerNumControl[who].isSkill09Count--;
+            if(PlayerNumControl[who].isSkill09Count == 0){
+                PlayerNumControl[who].isSkill09 = false;
+            }
         }
     }
 }

@@ -15,5 +15,5 @@ public static class DataBase
     public static bool isOpt = false;
 
     // Settings
-    public static float FullVolume = 1.0f, BackgroundVolume = 0.3f, EffectVolume1 = 1.0f, EffectVolume2 = 0.5f;
+    public static float FullVolume = 1.0f, BackgroundVolume = 0.2f, EffectVolume1 = 1.0f, EffectVolume2 = 0.5f;
 }

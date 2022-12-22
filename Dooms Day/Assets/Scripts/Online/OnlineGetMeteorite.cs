@@ -123,7 +123,7 @@ public class OnlineGetMeteorite : MonoBehaviour
                 }
 
                 if(isSkill05){
-                    if(lottery(4)){
+                    if(lottery(10)){
                         if(Meteorite.GetComponent<OnlineMeteoriteTo>().PlayerNum[preOwnerTemp] != null){
                             GameService.GetComponent<OnlineSkillControl>().CallRpcSkill05Audio();
                             HashTable table = new HashTable();
@@ -192,7 +192,7 @@ public class OnlineGetMeteorite : MonoBehaviour
 
     bool lottery(int p)
     {
-        if(Random.Range(1, p + 1) == 1){
+        if(Random.Range(1, p + 1) < 4){
             return true;
         }
         return false;

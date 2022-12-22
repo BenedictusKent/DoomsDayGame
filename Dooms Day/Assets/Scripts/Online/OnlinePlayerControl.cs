@@ -11,14 +11,14 @@ public class OnlinePlayerControl : MonoBehaviour
     public PlayerObject _nowObj;
     private GameObject Meteorite;
 
-    public float speed = 10.0f;
+    private float speed = 5.0f;
     private float LocateTime = DataBase.AIattacktime, LocateNeedTime = DataBase.AIattacktime, MoveNeedTime = DataBase.AImovetime;
 
     private Rigidbody2D rb;
     private Vector2 movement;
 
     public bool frozen, slow, slow2;
-    public float orgspeed = 10.0f;
+    public float orgspeed = 5.0f, skillSpeedUp = 1.0f, skillSpeedDown = 1.0f;
 
     public bool isdie;
 
@@ -38,17 +38,19 @@ public class OnlinePlayerControl : MonoBehaviour
     private GameObject Particle02_copy;
 
     public bool isSkill09;
+    public int skillSpeedDownCount, isSkill09Count;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = _nowObj.GetComponent<Rigidbody2D>();
-        orgspeed = speed;
         frozen = false;
         slow = false;
         slow2 = false;
         isdie = false;
         isSkill09 = false;
+        skillSpeedDownCount = 0;
+        isSkill09Count = 0;
         GameService = GameObject.Find("GameService");
         _pv = this.gameObject.GetComponent<PhotonView>();
         RPCaction = 1;
@@ -91,15 +93,15 @@ public class OnlinePlayerControl : MonoBehaviour
                 }
                 else if(slow)
                 {
-                    speed = orgspeed / 2;
+                    speed = (orgspeed * skillSpeedUp * skillSpeedDown) / 2;
                 }
                 else if(slow2)
                 {
-                    speed = orgspeed / 3;
+                    speed = (orgspeed * skillSpeedUp * skillSpeedDown) / 3;
                 }
                 else
                 {
-                    speed = orgspeed;
+                    speed = orgspeed * skillSpeedUp * skillSpeedDown;
                 }
 
                 if(isAI)
