@@ -37,7 +37,7 @@ public class OnlinePlayerControl : MonoBehaviour
     public GameObject Particle02;
     private GameObject Particle02_copy;
 
-    public bool isSkill09;
+    public bool isSkill09, isSkill11 = false;
     public int skillSpeedDownCount, isSkill09Count;
 
     // Start is called before the first frame update
@@ -87,7 +87,10 @@ public class OnlinePlayerControl : MonoBehaviour
         if(_pv.IsMine){
             if(!isdie)
             {
-                if(frozen)
+                if(isSkill11){
+                    speed = orgspeed * skillSpeedUp * skillSpeedDown;
+                }
+                else if(frozen)
                 {
                     speed = 0f;
                 }

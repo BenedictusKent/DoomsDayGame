@@ -9,12 +9,13 @@ public class OnlineSelectMenu : MonoBehaviour
     private Image skillimg, mapimg;
     private GameObject FirstSkill, Map;
     public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08, sprite09;
+    public Sprite sprite10, sprite11, sprite12;
     //public Sprite mapsprite00, mapsprite01;
 
     public TMP_Text FirstSkillName, FirstSkillDesc;
     //public TMP_Text MapName, MapDesc;
 
-    private int skillnumber = 10;
+    private int skillnumber = 13;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +91,24 @@ public class OnlineSelectMenu : MonoBehaviour
                 skillimg.sprite = sprite09;
                 FirstSkillName.text = "邪靈附體";
                 FirstSkillDesc.text = "使所有其他玩家的操控方向顛倒，持續4秒。CD: 20s";
+                break;
+            }
+            case 10: {
+                skillimg.sprite = sprite10;
+                FirstSkillName.text = "神佑真言";
+                FirstSkillDesc.text = "被動技，當場上剩下2名玩家時，移動速度提升至1.5倍，並獲得1次聖光守護。";
+                break;
+            }
+            case 11: {
+                skillimg.sprite = sprite11;
+                FirstSkillName.text = "雷電反應";
+                FirstSkillDesc.text = "被動技，移動速度為1.2倍，能觸發陷阱但不受其影響。";
+                break;
+            }
+            case 12: {
+                skillimg.sprite = sprite12;
+                FirstSkillName.text = "天堂降臨";
+                FirstSkillDesc.text = "被動技，遊戲開始的前20秒擁有無數次聖光守護的效果。";
                 break;
             }
         }

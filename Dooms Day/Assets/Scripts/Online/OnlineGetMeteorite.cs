@@ -28,7 +28,7 @@ public class OnlineGetMeteorite : MonoBehaviour
 
     private PhotonView _pv;
 
-    public bool isSkill05;
+    public bool isSkill05 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,6 @@ public class OnlineGetMeteorite : MonoBehaviour
         haveMeteorite = false;
         haveMonster = false;
         isalive = true;
-        isSkill05 = false;
         _nowObj = GetComponent<PlayerObject>();
 
         _audioSource = this.gameObject.AddComponent<AudioSource>();
@@ -89,13 +88,15 @@ public class OnlineGetMeteorite : MonoBehaviour
                 else
                 {
                     HP -= 1;
-                    backp.fillAmount += 0.5f;
+                    if(DataBase.characterID == 3){
+                        backp.fillAmount += 0.5f;
+                    }
                     GameService.GetComponent<OnlineSkillControl>().CallRpcSkill03Particle(PlayerID);
                     Particle03_copy = Instantiate(Particle03, transform);
                     if (haveMeteorite)
                     {
                         attack();
-                        haveMeteorite = false;
+                        //haveMeteorite = false;
                     }
                 }
             }

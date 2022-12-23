@@ -13,6 +13,7 @@ public class OnlineSkillControl : MonoBehaviour
     private float times, coldtime;
     private GameObject FirstSkill, PassiveSkill;
     public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08, sprite09;
+    public Sprite sprite10, sprite11, sprite12;
     public TMP_Text counttimetext;
     private int coldtimeint;
     private int counttime;
@@ -82,6 +83,13 @@ public class OnlineSkillControl : MonoBehaviour
 
     // skill09
     public GameObject Skill09Animation;
+
+    // skill10
+    public GameObject Skill10Animation;
+
+    // skill11
+
+    // skill12
 
     // Start is called before the first frame update
     void Start()
@@ -212,6 +220,30 @@ public class OnlineSkillControl : MonoBehaviour
                 coldtimeint = 20;
                 break;
             }
+            case 10: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite10;
+                backp.sprite = sprite10;
+                backp.fillAmount = 1f;
+                finish.isSkill10 = true;
+                break;
+            }
+            case 11: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite11;
+                backp.sprite = sprite11;
+                MyControl.isSkill11 = true;
+                MyControl.orgspeed = MyOrgspeed * 1.2f;
+                break;
+            }
+            case 12: {
+                FirstSkill.SetActive(false);
+                frontp.sprite = sprite12;
+                backp.sprite = sprite12;
+                My.GetComponent<OnlineGetMeteorite>().HP = 1000;
+                StartCoroutine(WaitAndEndSkill12(20.0f));
+                break;
+            }
         }
     }
 
@@ -291,6 +323,15 @@ public class OnlineSkillControl : MonoBehaviour
                 case 9: {
                     show();
                     CallRpcSkill09(DataBase.playerID);
+                    break;
+                }
+                case 10: {
+                    break;
+                }
+                case 11: {
+                    break;
+                }
+                case 12: {
                     break;
                 }
             }
@@ -391,6 +432,9 @@ public class OnlineSkillControl : MonoBehaviour
             {
                 CancelInvoke("potential");
             }
+        }
+        else{
+            CancelInvoke("potential");
         }
     }
 
@@ -685,6 +729,41 @@ public class OnlineSkillControl : MonoBehaviour
                 PlayerNumControl[who].isSkill09 = false;
             }
         }
+    }
+
+    // skill10
+    public void CallRpcSkill10(int who)
+    {
+        _pv.RPC("RpcSkill10", RpcTarget.All, who);
+    }
+
+    [PunRPC]
+    void RpcSkill10(int who, PhotonMessageInfo info)
+    {
+        if(PlayerNum[who] != null){
+            GameObject Skill10Animation_temp = Instantiate(Skill10Animation, PlayerNum[who].transform);
+            StartCoroutine(WaitAndDestroySkill10(2.0f, Skill10Animation_temp));
+        }
+
+        if(PlayerNum[who] != null && PlayerNum[who].GetComponent<PhotonView>().IsMine){
+            MyControl.orgspeed = MyOrgspeed * 1.5f;
+            My.GetComponent<OnlineGetMeteorite>().HP = 2;
+            backp.fillAmount = 0f;
+        }
+    }
+
+    private IEnumerator WaitAndDestroySkill10(float waitTime, GameObject A01)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(A01);
+    }
+
+    // skill12
+    private IEnumerator WaitAndEndSkill12(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        My.GetComponent<OnlineGetMeteorite>().HP = 1;
+        backp.fillAmount = 1f;
     }
 }
 

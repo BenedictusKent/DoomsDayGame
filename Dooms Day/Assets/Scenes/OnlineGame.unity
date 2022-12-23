@@ -1282,6 +1282,7 @@ MonoBehaviour:
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   isSkill09: 0
+  isSkill11: 0
   skillSpeedDownCount: 0
   isSkill09Count: 0
 --- !u!114 &398434284
@@ -1746,6 +1747,7 @@ MonoBehaviour:
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   isSkill09: 0
+  isSkill11: 0
   skillSpeedDownCount: 0
   isSkill09Count: 0
 --- !u!114 &466891068
@@ -2949,6 +2951,7 @@ MonoBehaviour:
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   isSkill09: 0
+  isSkill11: 0
   skillSpeedDownCount: 0
   isSkill09Count: 0
 --- !u!114 &842475095
@@ -3451,6 +3454,7 @@ MonoBehaviour:
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   isSkill09: 0
+  isSkill11: 0
   skillSpeedDownCount: 0
   isSkill09Count: 0
 --- !u!114 &883396284
@@ -5941,6 +5945,7 @@ MonoBehaviour:
   Monster: {fileID: 178093378}
   Particle01: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   monsterdead01: {fileID: 8300000, guid: 0618e54d747945448bcd092263975fe5, type: 3}
+  isSkill10: 0
 --- !u!4 &1648095689
 Transform:
   m_ObjectHideFlags: 0
@@ -5992,6 +5997,9 @@ MonoBehaviour:
   sprite07: {fileID: -827016883341640748, guid: ef57be551c192d84babc29a02c38a74c, type: 3}
   sprite08: {fileID: -4412621582066746438, guid: 2e17ea7123a607648a7cda9b1dd9f161, type: 3}
   sprite09: {fileID: 4832831038814496759, guid: 2e17ea7123a607648a7cda9b1dd9f161, type: 3}
+  sprite10: {fileID: -2735361975599426438, guid: d1350266e93f0f9408bb4bfb7ba2cfac, type: 3}
+  sprite11: {fileID: 5728512208896428891, guid: 28d61d20f94ba1540b5382642609c44f, type: 3}
+  sprite12: {fileID: -1407740466742159478, guid: ef57be551c192d84babc29a02c38a74c, type: 3}
   counttimetext: {fileID: 2025264783}
   P1: {fileID: 883396279}
   P2: {fileID: 466891066}
@@ -6013,6 +6021,7 @@ MonoBehaviour:
   Skill07Animation: {fileID: 2930403238054860667, guid: 2f6309ccfcf5cea4ca6031b2d4e49178, type: 3}
   Skill08Animation: {fileID: 3409642679703249765, guid: b7f97eff2815fed46b69ff06c3c1c500, type: 3}
   Skill09Animation: {fileID: 6560594996146844127, guid: 033db94d2fa006542a140482e7636a0c, type: 3}
+  Skill10Animation: {fileID: 3364161962564972547, guid: 1ceb645c15b84f6488282308c3d5e9e2, type: 3}
 --- !u!114 &1648095692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6371,6 +6380,7 @@ MonoBehaviour:
   Particle01: {fileID: 5838688379881905985, guid: 6f7b428c1f6774a438a7f0c728d2d129, type: 3}
   Particle02: {fileID: 5144911376296203468, guid: 2315aa4e4487846438a287be3a9f571f, type: 3}
   isSkill09: 0
+  isSkill11: 0
   skillSpeedDownCount: 0
   isSkill09Count: 0
 --- !u!114 &1710463730

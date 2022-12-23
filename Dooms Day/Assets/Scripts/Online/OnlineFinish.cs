@@ -24,6 +24,9 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
 
     public Dictionary<Player, bool> alivePlayerMap = new Dictionary<Player, bool>();
 
+    private OnlineSkillControl skillControl;
+    public bool isSkill10 = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,7 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
                 alivePlayerMap[kvp.Value] = true;
             }
         }
+        skillControl = GetComponent<OnlineSkillControl>();
         playnum = 5;
         lastnum = 15;
 
@@ -65,6 +69,12 @@ public class OnlineFinish : MonoBehaviourPunCallbacks
             alivePlayerMap[info.Sender] = false;
             playnum--;
             lastnum -= who;
+        }
+
+        if(isSkill10){
+            if(playnum == 2 && skillControl.isalive){
+                skillControl.CallRpcSkill10(DataBase.playerID);
+            }
         }
 
         if(PhotonNetwork.IsMasterClient && CheckGameOver()){
