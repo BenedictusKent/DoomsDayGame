@@ -36,7 +36,7 @@ public class OnlineSelectMenu : MonoBehaviour
             case 0: {
                 skillimg.sprite = sprite00;
                 FirstSkillName.text = "光翼奔馳";
-                FirstSkillDesc.text = "解除所有技能造成的緩速及定身效果，並將移動速度提升至2.25倍，持續2秒。CD: 8s";
+                FirstSkillDesc.text = "解除所有技能造成的緩速及定身效果，並將移動速度提升至2.25倍，持續2秒。CD: 9s";
                 break;
             }
             case 1: {
@@ -83,14 +83,14 @@ public class OnlineSelectMenu : MonoBehaviour
             }
             case 8: {
                 skillimg.sprite = sprite08;
-                FirstSkillName.text = "元素衰弱";
-                FirstSkillDesc.text = "使怪物進入失神狀態，持續1.5秒。CD: 8s";
+                FirstSkillName.text = "審判之鎚";
+                FirstSkillDesc.text = "瞬間將怪物傳送至地圖中心位置，並使之進入失神狀態，持續1.5秒。CD: 10s";
                 break;
             }
             case 9: {
                 skillimg.sprite = sprite09;
                 FirstSkillName.text = "邪靈附體";
-                FirstSkillDesc.text = "使所有其他玩家的操控方向顛倒，持續4秒。CD: 20s";
+                FirstSkillDesc.text = "使所有其他玩家的操控方向顛倒，施法1秒，持續4秒。CD: 20s";
                 break;
             }
             case 10: {
@@ -102,13 +102,13 @@ public class OnlineSelectMenu : MonoBehaviour
             case 11: {
                 skillimg.sprite = sprite11;
                 FirstSkillName.text = "雷電反應";
-                FirstSkillDesc.text = "被動技，移動速度為1.2倍，能觸發陷阱但不受其影響。";
+                FirstSkillDesc.text = "被動技，能觸發陷阱但不受其影響，初始移動速度為1.1倍，每觸發1個陷阱增加0.05倍，最多達到1.75倍。";
                 break;
             }
             case 12: {
                 skillimg.sprite = sprite12;
                 FirstSkillName.text = "天堂降臨";
-                FirstSkillDesc.text = "被動技，遊戲開始的前20秒擁有無數次聖光守護的效果。";
+                FirstSkillDesc.text = "使用後的2.5秒內擁有無數次聖光守護的效果。CD: 13s";
                 break;
             }
         }

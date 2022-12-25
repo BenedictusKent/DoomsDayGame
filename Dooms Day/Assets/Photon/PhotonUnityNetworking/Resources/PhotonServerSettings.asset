@@ -73,6 +73,10 @@ MonoBehaviour:
   - RpcSkill09
   - RpcChangeAILevel
   - RpcSkill10
+  - RpcSkill09Particle
+  - RpcSkill11Particle
+  - RpcSkill12
+  - RpcChangeMap
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

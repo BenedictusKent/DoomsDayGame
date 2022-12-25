@@ -15,10 +15,10 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
     [SerializeField]
     Text textPlayerList;
     [SerializeField]
-    Button buttonStartGame, buttonPreviousAILevel, buttonNextAILevel;
+    Button buttonStartGame, buttonPreviousAILevel, buttonNextAILevel, buttonPreviousMap, buttonNextMap;
 
-    public TMP_Text AILevelChoose;
-    private int AILevelNumber = 4;
+    public TMP_Text AILevelChoose, MapChoose;
+    private int AILevelNumber = 4, MapNumber = 2;
 
     private PhotonView _pv;
 
@@ -37,6 +37,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
             buttonStartGame.interactable = PhotonNetwork.IsMasterClient;
             buttonNextAILevel.interactable = PhotonNetwork.IsMasterClient;
             buttonPreviousAILevel.interactable = PhotonNetwork.IsMasterClient;
+            buttonPreviousMap.interactable = PhotonNetwork.IsMasterClient;
+            buttonNextMap.interactable = PhotonNetwork.IsMasterClient;
             if(PhotonNetwork.IsMasterClient){
                 AILevel();
                 OnClickChangeAILevel(DataBase.AILevel);
@@ -49,6 +51,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         buttonStartGame.interactable = PhotonNetwork.IsMasterClient;
         buttonNextAILevel.interactable = PhotonNetwork.IsMasterClient;
         buttonPreviousAILevel.interactable = PhotonNetwork.IsMasterClient;
+        buttonPreviousMap.interactable = PhotonNetwork.IsMasterClient;
+        buttonNextMap.interactable = PhotonNetwork.IsMasterClient;
         if(PhotonNetwork.IsMasterClient){
             AILevel();
             OnClickChangeAILevel(DataBase.AILevel);
@@ -126,6 +130,21 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         }
     }
 
+    void Map()
+    {
+        switch(DataBase.mapID)
+        {
+            case 0: {
+                MapChoose.text = "死亡谷地";
+                break;
+            }
+            case 1: {
+                MapChoose.text = "殘酷冰原";
+                break;
+            }
+        }
+    }
+
     public void OnClickNextAILevel()
     {
         DataBase.AILevel = (DataBase.AILevel + 1) % AILevelNumber;
@@ -140,6 +159,20 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         OnClickChangeAILevel(DataBase.AILevel);
     }
 
+    public void OnClickNextMap()
+    {
+        DataBase.mapID = (DataBase.mapID + 1) % MapNumber;
+        Map();
+        OnClickChangeMap(DataBase.mapID);
+    }
+
+    public void OnClickPreviousMap()
+    {
+        DataBase.mapID = (DataBase.mapID + MapNumber - 1) % MapNumber;
+        Map();
+        OnClickChangeMap(DataBase.mapID);
+    }
+
     public void OnClickChangeAILevel(int level)
     {
         _pv.RPC("RpcChangeAILevel", RpcTarget.Others, level);
@@ -150,5 +183,17 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
     {
         DataBase.AILevel = level;
         AILevel();
+    }
+
+    public void OnClickChangeMap(int id)
+    {
+        _pv.RPC("RpcChangeMap", RpcTarget.Others, id);
+    }
+
+    [PunRPC]
+    void RpcChangeMap(int id, PhotonMessageInfo info)
+    {
+        DataBase.mapID = id;
+        Map();
     }
 }

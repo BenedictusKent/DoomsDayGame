@@ -23,10 +23,13 @@ public class OnlineTrapLogic3 : MonoBehaviour
     private float newx, newy;
     private bool unslowcheck;
 
+    private GameObject GameService;
+
     // Start is called before the first frame update
     void Start()
     {
         _pv = this.gameObject.GetComponent<PhotonView>();
+        GameService = GameObject.Find("GameService");
         
         animator = GetComponent<Animator>();
         unslowcheck = false;
@@ -81,6 +84,12 @@ public class OnlineTrapLogic3 : MonoBehaviour
                     player = collider.gameObject;
                     if(!player.GetComponent<OnlinePlayerControl>().isdie)
                     {
+                        if(player.GetComponent<OnlinePlayerControl>().isSkill11){
+                            if(player.GetComponent<OnlinePlayerControl>().orgspeed < 5f * 1.73f){
+                                GameService.GetComponent<OnlineSkillControl>().CallRpcSkill11Particle(DataBase.playerID);
+                                player.GetComponent<OnlinePlayerControl>().orgspeed += 5f * 0.05f;
+                            }
+                        }
                         player.GetComponent<OnlinePlayerControl>().slow2 = true;
                         unslowcheck = true;
                         CallRpcTrapLogic3Animation(2);
@@ -96,6 +105,12 @@ public class OnlineTrapLogic3 : MonoBehaviour
                     if(player.GetComponent<OnlinePlayerControl>().PlayerID == DataBase.playerID){
                         if(!player.GetComponent<OnlinePlayerControl>().isdie)
                         {
+                            if(player.GetComponent<OnlinePlayerControl>().isSkill11){
+                                if(player.GetComponent<OnlinePlayerControl>().orgspeed < 5f * 1.73f){
+                                    GameService.GetComponent<OnlineSkillControl>().CallRpcSkill11Particle(DataBase.playerID);
+                                    player.GetComponent<OnlinePlayerControl>().orgspeed += 5f * 0.05f;
+                                }
+                            }
                             player.GetComponent<OnlinePlayerControl>().slow2 = true;
                             unslowcheck = true;
                             CallRpcTrapLogic3Animation(2);
