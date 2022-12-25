@@ -132,6 +132,11 @@ public class OnlineSkillControl : MonoBehaviour
 
         MonsterAI = Monster.GetComponent<OnlineEnemyAI>();
 
+        _audioSourceSkill05 = this.gameObject.AddComponent<AudioSource>();
+        _audioSourceSkill05.loop = false;
+        _audioSourceSkill05.volume = DataBase.EffectVolume1;
+        _audioSourceSkill05.clip = audioSkill05;
+
         switch(DataBase.characterID)
         {
             case 0: {
@@ -181,11 +186,6 @@ public class OnlineSkillControl : MonoBehaviour
                 frontp.sprite = sprite05;
                 backp.sprite = sprite05;
                 My.GetComponent<OnlineGetMeteorite>().isSkill05 = true;
-
-                _audioSourceSkill05 = this.gameObject.AddComponent<AudioSource>();
-                _audioSourceSkill05.loop = false;
-                _audioSourceSkill05.volume = DataBase.EffectVolume1;
-                _audioSourceSkill05.clip = audioSkill05;
                 break;
             }
             case 6: {
@@ -703,7 +703,7 @@ public class OnlineSkillControl : MonoBehaviour
         for(int i = 1; i <= 5; i++){
             if(i != user && PlayerNum[i] != null){
                 GameObject Skill09Animation_temp = Instantiate(Skill09Animation, PlayerNum[i].transform);
-                StartCoroutine(WaitAndDestroySkill09(5.0f, Skill09Animation_temp));
+                StartCoroutine(WaitAndDestroySkill09(4.0f, Skill09Animation_temp));
             }
 
             if(i != user && PlayerNum[i] != null && PlayerNum[i].GetComponent<PhotonView>().IsMine){

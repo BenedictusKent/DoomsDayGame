@@ -58,7 +58,9 @@ public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
 
         if(AIfarnum > 0)
         {
-            farvalue(AIfarnum);
+            if(_pv.IsMine){
+                farvalue(AIfarnum);
+            }
             AIfarnum = 0;
         }
 
@@ -126,7 +128,10 @@ public class OnlineMeteoriteTo : MonoBehaviourPunCallbacks
             }
         }
 
-        to = farID;
+        HashTable table = new HashTable();
+        table.Add("Action", "Mto");
+        table.Add("to", farID);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(table);
     }
 
     bool dead(int value)

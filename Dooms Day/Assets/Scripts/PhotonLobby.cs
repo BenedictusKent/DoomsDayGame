@@ -9,7 +9,7 @@ using System.Text;
 
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
-    public GameObject CreateRoomWindow, JoinRoomWindow;
+    public GameObject CreateRoomWindow, JoinRoomWindow, HintMessageWindow;
 
     [SerializeField]
     InputField inputRoomNameCreate, inputRoomNameJoin;
@@ -56,6 +56,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public void OpenCreateRoomWindow()
     {
         JoinRoomWindow.SetActive(false);
+        HintMessageWindow.SetActive(false);
         CreateRoomWindow.SetActive(true);
     }
 
@@ -67,12 +68,25 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public void OpenJoinRoomWindow()
     {
         CreateRoomWindow.SetActive(false);
+        HintMessageWindow.SetActive(false);
         JoinRoomWindow.SetActive(true);
     }
 
     public void CloseJoinRoomWindow()
     {
         JoinRoomWindow.SetActive(false);
+    }
+
+    public void OpenHintMessageWindow()
+    {
+        CreateRoomWindow.SetActive(false);
+        JoinRoomWindow.SetActive(false);
+        HintMessageWindow.SetActive(true);
+    }
+
+    public void CloseHintMessageWindow()
+    {
+        HintMessageWindow.SetActive(false);
     }
 
     public void OnClickCreateRoom()
@@ -87,7 +101,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.Log("Invalid RoomName or PlayerName!");
+            OpenHintMessageWindow();
+            //Debug.Log("Invalid RoomName or PlayerName!");
         }
     }
 
@@ -121,7 +136,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.Log("Invalid RoomName or PlayerName!");
+            OpenHintMessageWindow();
+            //Debug.Log("Invalid RoomName or PlayerName!");
         }
     }
 
