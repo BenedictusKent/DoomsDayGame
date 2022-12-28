@@ -14,6 +14,9 @@ public static class DataBase
     public static string WinnerName = "?";
     public static bool isOpt = false;
 
+    public static string NickName = "";
+
     // Settings
     public static float FullVolume = 1.0f, BackgroundVolume = 0.2f, EffectVolume1 = 1.0f, EffectVolume2 = 0.5f;
+    public static bool isFullScreen = true;
 }

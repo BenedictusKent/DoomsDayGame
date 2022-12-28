@@ -6,8 +6,8 @@ using TMPro;
 
 public class OnlineSelectMenu : MonoBehaviour
 {
-    private Image skillimg, mapimg;
-    private GameObject FirstSkill, Map;
+    private Image skillimg;
+    private GameObject FirstSkill;
     public Sprite sprite00, sprite01, sprite02, sprite03, sprite04, sprite05, sprite06, sprite07, sprite08, sprite09;
     public Sprite sprite10, sprite11, sprite12;
     //public Sprite mapsprite00, mapsprite01;

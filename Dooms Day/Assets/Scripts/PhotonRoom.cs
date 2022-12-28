@@ -42,6 +42,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
             if(PhotonNetwork.IsMasterClient){
                 AILevel();
                 OnClickChangeAILevel(DataBase.AILevel);
+                Map();
+                OnClickChangeMap(DataBase.mapID);
             }
         }
     }
@@ -56,6 +58,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient){
             AILevel();
             OnClickChangeAILevel(DataBase.AILevel);
+            Map();
+            OnClickChangeMap(DataBase.mapID);
         }
     }
 

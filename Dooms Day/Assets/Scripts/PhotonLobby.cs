@@ -10,6 +10,7 @@ using System.Text;
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
     public GameObject CreateRoomWindow, JoinRoomWindow, HintMessageWindow;
+    public GameObject buttonPrefab, buttonParent;
 
     [SerializeField]
     InputField inputRoomNameCreate, inputRoomNameJoin;
@@ -28,11 +29,11 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         }
         else
         {
-            if(PhotonNetwork.CurrentLobby == null){
+            if(PhotonNetwork.IsConnectedAndReady){
                 PhotonNetwork.JoinLobby();
             }
-            CreateRoomWindow.SetActive(false);
-            JoinRoomWindow.SetActive(false);
+
+            inputPlayerName.text = DataBase.NickName;
         }
 
     }
@@ -96,8 +97,9 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
         if(roomName.Length > 0 && playerName.Length > 0)
         {
-            PhotonNetwork.CreateRoom(roomName);
+            PhotonNetwork.CreateRoom(roomName, new Photon.Realtime.RoomOptions { MaxPlayers = 5 });
             PhotonNetwork.LocalPlayer.NickName = playerName;
+            DataBase.NickName = playerName;
         }
         else
         {
@@ -112,18 +114,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Room");
     }
 
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
-        Debug.Log("update");
-        StringBuilder sb = new StringBuilder();
-        foreach(RoomInfo roomInfo in roomList){
-            if(roomInfo.PlayerCount > 0){
-                sb.AppendLine("# " + roomInfo.Name + " / 人數： " + roomInfo.PlayerCount);
-            }
-        }
-        textRoomList.text = sb.ToString();
-    }
-
     public void OnClickJoinRoom()
     {
         string roomName = inputRoomNameJoin.text.Trim();
@@ -133,6 +123,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.JoinRoom(roomName);
             PhotonNetwork.LocalPlayer.NickName = playerName;
+            DataBase.NickName = playerName;
         }
         else
         {
@@ -141,8 +132,46 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        RemoveAllChildren(buttonParent);
+
+        foreach(RoomInfo roomInfo in roomList){
+            if(roomInfo.PlayerCount > 0){
+                GameObject  newButton = Instantiate(buttonPrefab, buttonParent.transform);
+                newButton.GetComponent<RoomButton>().RoomName.text = "# " + roomInfo.Name + " / 人數： " + roomInfo.PlayerCount + " / 5";
+                newButton.GetComponent<ButtonExtension>().onDoubleClick.AddListener(() => JoinSelectRoom(roomInfo.Name));
+            }
+        }
+
+    }
+
+    private void JoinSelectRoom(string roomName)
+    {
+        string playerName = GetPlayerName();
+
+        if(playerName.Length > 0){
+            PhotonNetwork.JoinRoom(roomName);
+            PhotonNetwork.LocalPlayer.NickName = playerName;
+            DataBase.NickName = playerName;
+        }
+        else{
+            OpenHintMessageWindow();
+        }
+    }
+
+    public static void RemoveAllChildren(GameObject parent)
+    {
+        Transform transform;
+        for(int i = 0; i < parent.transform.childCount; i++){
+            transform = parent.transform.GetChild(i);
+            GameObject.Destroy(transform.gameObject);
+        }
+    }
+
     public void OnClickMainMenu()
     {
+        PhotonNetwork.LeaveLobby();
         PhotonNetwork.Disconnect();
     }
 
@@ -150,4 +179,5 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("MainMenu");
     }
+
 }

@@ -180,7 +180,7 @@ public class OnlinePlayerControl : MonoBehaviour
             if(LocateTime <= 0)
             {
                 LocateTime = LocateNeedTime;
-                _nowObj.GetComponent<OnlineGetMeteorite>().haveMeteorite = false;
+                //_nowObj.GetComponent<OnlineGetMeteorite>().haveMeteorite = false;
                 attack();
             }
         }
